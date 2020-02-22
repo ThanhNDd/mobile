@@ -19,6 +19,12 @@
     @include('theme.layout.sidebar')
 
     <!-- content -->
+
+        @desktop
+        <h1>Desktop view</h1>
+        @elsedesktop
+        <h1>Mobile view</h1>
+        @enddesktop
     <!-- slider -->
         <div class="slider">
             <div class="swiper-container swiper-init swiper-container-horizontal" data-space-between="10"
