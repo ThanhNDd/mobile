@@ -2,9 +2,12 @@
 var routes = [
   {
     path: '/',
-    Url: './index.html',
+    Url: './',
   },
-
+  {
+    path: '/home',
+    Url: './',
+  },
   {
     path: '/all-categories/',
     url: './all-categories.html',
@@ -16,13 +19,13 @@ var routes = [
   },
 
   {
-    path: '/product-details/',
-    url: './product-details.html',
+    path: '/product-details/:id',
+    url: 'http://localhost:8000/product-details/{{id}}',
   },
 
   {
-    path: '/all-reviews/',
-    url: './all-reviews.html',
+    path: '/all-reviews/:id',
+    url: 'http://localhost:8000/all-reviews/{{id}}',
   },
 
   {

@@ -1,6 +1,6 @@
 <div class="panel panel-left panel-cover sidebar">
     <div class="user-view">
-        <img src="images/user-buyer6.png" alt="">
+        <img src="{{ url('images/user-buyer6.png') }}" alt="">
         <div class="title-name">
             <h5>Fardanz Track</h5>
             <p><i class="fas fa-map-marker-alt"></i> Melbourne</p>

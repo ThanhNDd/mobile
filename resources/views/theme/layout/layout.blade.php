@@ -17,29 +17,46 @@
 	<link rel="stylesheet" href="{!! asset('css/font-awesome.min.css') !!}">
 	<link rel="stylesheet" href="{!! asset('css/swiper.min.css') !!}">
 
-
 	<link rel="stylesheet" href="{!! asset('css/style.css') !!}">
 </head>
 <body>
 
-	<div id="app">
+	<div id="app" class="framework7-root">
 		<!-- Navigation -->
+		<div class="view view-main view-init ios-edges">
+{{--			<div class="page page-home page-with-subnavbar">--}}
+{{--				@include('theme.layout.tabbar')--}}
 
-		<div class="view view-main view-init ios-edges" data-url="/">
-			<div class="page page-home page-with-subnavbar">
-				<!-- content -->
-				@yield('content')
-				<!-- end content -->
-			</div>
+{{--				<div class="tabs">--}}
+{{--					<div id="tab-home" class="tab tab-home tab-active">--}}
+{{--						<!-- home -->--}}
+
+{{--						<!-- navbar home -->--}}
+{{--					@include('theme.layout.header')--}}
+{{--					<!-- end navbar home -->--}}
+
+{{--						<!-- sidebarbar or panel -->--}}
+{{--						<div class="panel-backdrop"></div>--}}
+
+{{--						<!-- end sidebarbar or panel -->--}}
+{{--					@include('theme.layout.sidebar')--}}
+{{--				<!-- content -->--}}
+{{--				@yield('content')--}}
+{{--				<!-- end content -->--}}
+{{--					</div>--}}
+
+{{--				</div>--}}
+{{--			</div>--}}
+			@yield('content')
 		</div>
 	</div>
 
 </div>
 
-	<script src="{!! asset('js/framework7.bundle.min.js') !!}"></script>
-	<script src="{!! asset('js/routes.js') !!}"></script>
-	<script src="{!! asset('js/swiper.min.js') !!}"></script>
-	<script src="{!! asset('js/app.js') !!}"></script>
+{{--	<script src="{!! asset('js/framework7.bundle.min.js') !!}"></script>--}}
+{{--	<script src="{!! asset('js/routes.js') !!}"></script>--}}
+{{--	<script src="{!! asset('js/swiper.min.js') !!}"></script>--}}
+{{--	<script src="{!! asset('js/app.js') !!}"></script>--}}
 
 	<script src="{!! asset('js/jquery-3.4.1.min.js') !!}"></script>
 	<script src="{!! asset('js/bootstrap.min.js') !!}"></script>

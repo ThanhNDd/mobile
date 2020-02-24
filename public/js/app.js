@@ -7,15 +7,17 @@ var app = new Framework7({
 	root: '#app',
 	theme: 'ios',
 	routes: routes,
-	view: {
-		pushState: false,
-	},
+	// view: {
+	// 	// pushState: false,
+	// },
 
 });
 
 var mainView = app.views.create('.view-main', {
-	url: './index.html'
+	url: '/'
 });
 
-
+// var mainView = app.views.create('.view-product', {
+// 	url: '/product-details/'
+// });
 

@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('theme.page.home');
 });
+
+Route::get('/product-details/{id}', function ($id) {
+    return view('theme.page.product.detail');
+});
+
+Route::get('/all-reviews/{id}', function ($id) {
+    return view('theme.page.product.reviews');
+});
