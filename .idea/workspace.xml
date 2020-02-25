@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49445592-2958-4c44-9772-7086750d91d3" name="Default Changelist" comment="" />
+    <list default="true" id="49445592-2958-4c44-9772-7086750d91d3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/theme/layout/breadcrum.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/tabbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/tabbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/toolbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/toolbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/page/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/page/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/page/home2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/page/home2.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/page/product/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/page/product/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/page/product/reviews.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/page/product/reviews.blade.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,32 +30,14 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.75145257">
+    <splitter split-orientation="horizontal" split-proportion="0.8576973">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/layout.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="17" column="70" lean-forward="true" selection-start-line="17" selection-start-column="70" selection-end-line="17" selection-end-column="70" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public/js/app.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="21" column="6" lean-forward="true" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/routes/web.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+                <state relative-caret-position="459">
+                  <caret line="27" column="56" lean-forward="true" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
                 </state>
               </provider>
             </entry>
@@ -48,48 +45,51 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/views/theme/page/product/detail.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="95" />
+                <state relative-caret-position="102">
+                  <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+                  <folding>
+                    <element signature="e#7854#7861#0#HTML" expanded="true" />
+                    <element signature="e#12541#12567#0#HTML" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/theme/page/home.blade.php">
+            <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/header.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2831">
-                  <caret line="492" selection-start-line="492" selection-end-line="492" />
+                <state relative-caret-position="51">
+                  <caret line="3" column="43" lean-forward="true" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/breadcrum.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
                   <folding>
-                    <element signature="e#576#594#0#HTML" expanded="true" />
-                    <element signature="e#6425#6471#0#HTML" expanded="true" />
-                    <element signature="e#6543#6570#0#HTML" expanded="true" />
-                    <element signature="e#6923#6950#0#HTML" expanded="true" />
-                    <element signature="e#7285#7312#0#HTML" expanded="true" />
-                    <element signature="e#14598#14644#0#HTML" expanded="true" />
-                    <element signature="e#14720#14747#0#HTML" expanded="true" />
-                    <element signature="e#15653#15680#0#HTML" expanded="true" />
-                    <element signature="e#16568#16595#0#HTML" expanded="true" />
-                    <element signature="e#17483#17510#0#HTML" expanded="true" />
-                    <element signature="e#23168#23214#0#HTML" expanded="true" />
-                    <element signature="e#23290#23317#0#HTML" expanded="true" />
-                    <element signature="e#24223#24250#0#HTML" expanded="true" />
-                    <element signature="e#25138#25165#0#HTML" expanded="true" />
-                    <element signature="e#26053#26080#0#HTML" expanded="true" />
-                    <element signature="e#27605#27651#0#HTML" expanded="true" />
-                    <element signature="e#27727#27754#0#HTML" expanded="true" />
-                    <element signature="e#28660#28687#0#HTML" expanded="true" />
-                    <element signature="e#29575#29602#0#HTML" expanded="true" />
-                    <element signature="e#30490#30517#0#HTML" expanded="true" />
-                    <element signature="e#32043#32089#0#HTML" expanded="true" />
-                    <element signature="e#32165#32192#0#HTML" expanded="true" />
-                    <element signature="e#33098#33125#0#HTML" expanded="true" />
-                    <element signature="e#34013#34040#0#HTML" expanded="true" />
-                    <element signature="e#34928#34955#0#HTML" expanded="true" />
-                    <element signature="e#36486#36532#0#HTML" expanded="true" />
-                    <element signature="e#36608#36635#0#HTML" expanded="true" />
-                    <element signature="e#37541#37568#0#HTML" expanded="true" />
-                    <element signature="e#38456#38483#0#HTML" expanded="true" />
-                    <element signature="e#39371#39398#0#HTML" expanded="true" />
+                    <element signature="e#122#129#0#HTML" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/toolbar.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="323">
+                  <caret line="498" lean-forward="true" selection-start-line="498" selection-end-line="498" />
+                  <folding>
+                    <element signature="n#div#0;n#!!top" />
+                    <element signature="n#div#1;n#!!top" />
+                    <element signature="n#div#2;n#!!top" />
+                    <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#!!top" />
+                    <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#!!top" />
+                    <element signature="n#div#0;n#div#2;n#div#0;n#div#1;n#div#2;n#!!top" />
+                    <element signature="n#div#0;n#div#3;n#div#0;n#div#1;n#div#2;n#!!top" />
+                    <element signature="n#div#0;n#div#4;n#div#0;n#div#1;n#div#2;n#!!top" />
                   </folding>
                 </state>
               </provider>
@@ -98,8 +98,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/views/theme/page/product/reviews.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="51">
-                  <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+                <state relative-caret-position="578">
+                  <caret line="34" column="26" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="34" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
@@ -107,8 +107,39 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/sidebar.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="34">
-                  <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+                <state>
+                  <caret column="61" selection-start-column="54" selection-end-column="61" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public/css/style.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="589">
+                  <caret line="2482" column="17" lean-forward="true" selection-start-line="2482" selection-start-column="17" selection-end-line="2482" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/public/js/main.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="637">
+                  <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/views/theme/page/home.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="238">
+                  <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="48" />
+                  <folding>
+                    <element signature="e#8961#8968#0#HTML" expanded="true" />
+                    <element signature="e#17835#17842#0#HTML" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -121,7 +152,7 @@
             <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="289">
-                  <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+                  <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
                 </state>
               </provider>
             </entry>
@@ -130,16 +161,25 @@
             <entry file="file://$PROJECT_DIR$/public/evone/evone02/all-reviews.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="102">
-                  <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+                  <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/views/theme/page/home2.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="153">
+                  <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/theme/page/home2.blade.php">
+            <entry file="file://$PROJECT_DIR$/public/evone/evone02/all-categories.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1003">
-                  <caret line="49" column="65" lean-forward="true" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
+                <state relative-caret-position="136">
+                  <caret line="8" column="31" lean-forward="true" selection-end-line="125" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -148,7 +188,7 @@
             <entry file="file://$PROJECT_DIR$/public/js/routes.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="357">
-                  <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="28" />
+                  <caret line="21" column="28" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="28" />
                 </state>
               </provider>
             </entry>
@@ -177,6 +217,25 @@
       <find>.wrap-action-product-d</find>
       <find>all R</find>
       <find>banne</find>
+      <find>.all-categories .content i</find>
+      <find>.navbar</find>
+      <find>.segments</find>
+      <find>.ios .searchbar .searchbar-input-wrap input</find>
+      <find>vi</find>
+      <find>#005bbd</find>
+      <find>.navbar .navbar-inner</find>
+      <find>segmebn</find>
+      <find>1449</find>
+      <find>.product-details.segments</find>
+      <find>.flash-sale .swiper-slide</find>
+      <find>.ios a</find>
+      <find>.page-content</find>
+      <find>xem</find>
+      <find>.product-review.segments</find>
+      <find>.section-title</find>
+      <find>box-sha</find>
+      <find>Description</find>
+      <find>xem th</find>
     </findStrings>
     <replaceStrings>
       <replace>Xem thêm</replace>
@@ -196,20 +255,23 @@
         <option value="$PROJECT_DIR$/resources/views/theme/layout/menu.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/theme/layout/default.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/theme/home.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/theme/layout/header.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/main.js" />
-        <option value="$PROJECT_DIR$/resources/views/theme/layout/tabbar.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/theme/layout/toolbar.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/resources/views/theme/layout/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/public/evone/evone01/js/app.js" />
         <option value="$PROJECT_DIR$/public/js/routes.js" />
-        <option value="$PROJECT_DIR$/resources/views/theme/page/product/detail.blade.php" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
-        <option value="$PROJECT_DIR$/resources/views/theme/page/product/reviews.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/theme/layout/layout.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/theme/page/category/category.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/theme/page/category/all.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/theme/page/home.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/theme/layout/toolbar.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/theme/layout/tabbar.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/theme/page/product/reviews.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/resources/views/theme/layout/breadcrum.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/theme/layout/header.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/theme/page/product/detail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/theme/layout/layout.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/main.js" />
       </list>
     </option>
   </component>
@@ -306,8 +368,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="51" />
-    <option name="y" value="-27" />
+    <option name="x" value="110" />
+    <option name="y" value="-18" />
     <option name="width" value="1400" />
     <option name="height" value="827" />
   </component>
@@ -319,6 +381,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -401,29 +464,29 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/theme/page" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\mobile\resources\views\theme\page" />
+      <recent name="C:\xampp\htdocs\mobile\resources\views\theme\page\product" />
+      <recent name="C:\xampp\htdocs\mobile\public" />
+      <recent name="C:\xampp\htdocs\mobile\resources\views\theme\layout" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\mobile\public\images" />
       <recent name="C:\xampp\htdocs\mobile\resources\views\theme\page" />
       <recent name="C:\xampp\htdocs\mobile\public" />
       <recent name="C:\xampp\htdocs\mobile\public\css" />
       <recent name="C:\xampp\htdocs\mobile\public\js" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\mobile\resources\views\theme\page\product" />
-      <recent name="C:\xampp\htdocs\mobile\public" />
-      <recent name="C:\xampp\htdocs\mobile\resources\views\theme\page" />
-      <recent name="C:\xampp\htdocs\mobile\resources\views\theme\layout" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -459,16 +522,18 @@
       <workItem from="1582349642875" duration="4533000" />
       <workItem from="1582376996384" duration="793000" />
       <workItem from="1582538149443" duration="12559000" />
+      <workItem from="1582617706562" duration="16276000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28280000" />
+    <option name="totallyTimeSpent" value="44556000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17430703" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15618336" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -499,24 +564,10 @@
     <entry file="file://$PROJECT_DIR$/public/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/menu.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1275">
           <caret line="75" column="6" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/tabbar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -530,31 +581,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/toolbar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="609" column="60" selection-start-line="609" selection-start-column="60" selection-end-line="609" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/evone/evone02/all-reviews.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -578,13 +608,6 @@
     <entry file="file://$PROJECT_DIR$/public/evone/evone02/faq.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="1596" column="12" selection-start-line="1596" selection-start-column="12" selection-end-line="1596" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/evone/evone01/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -592,52 +615,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/header.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="72" lean-forward="true" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
+        <state relative-caret-position="357">
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/evone/evone02/all-reviews.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/theme/page/product/reviews.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/theme/page/home2.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1003">
-          <caret line="49" column="65" lean-forward="true" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/theme/page/product/detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="6" lean-forward="true" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -648,49 +650,132 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/theme/page/home2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/evone/evone02/all-categories.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="31" lean-forward="true" selection-end-line="125" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/framework/views/42d834ffc75800cacf993cd2884e02c1778f4ee3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="122" column="79" selection-start-line="122" selection-start-column="79" selection-end-line="122" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/theme/page/categories.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="773">
+          <caret line="122" column="6" lean-forward="true" selection-end-line="122" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/user-buyer6.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/tabbar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="2482" column="17" lean-forward="true" selection-start-line="2482" selection-start-column="17" selection-end-line="2482" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/theme/page/product/reviews.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="26" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="34" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/toolbar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="498" lean-forward="true" selection-start-line="498" selection-end-line="498" />
+          <folding>
+            <element signature="n#div#0;n#!!top" />
+            <element signature="n#div#1;n#!!top" />
+            <element signature="n#div#2;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#div#0;n#div#1;n#div#2;n#!!top" />
+            <element signature="n#div#0;n#div#3;n#div#0;n#div#1;n#div#2;n#!!top" />
+            <element signature="n#div#0;n#div#4;n#div#0;n#div#1;n#div#2;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/breadcrum.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#122#129#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="61" selection-start-column="54" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/theme/page/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2831">
-          <caret line="492" selection-start-line="492" selection-end-line="492" />
+        <state relative-caret-position="238">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="48" />
           <folding>
-            <element signature="e#576#594#0#HTML" expanded="true" />
-            <element signature="e#6425#6471#0#HTML" expanded="true" />
-            <element signature="e#6543#6570#0#HTML" expanded="true" />
-            <element signature="e#6923#6950#0#HTML" expanded="true" />
-            <element signature="e#7285#7312#0#HTML" expanded="true" />
-            <element signature="e#14598#14644#0#HTML" expanded="true" />
-            <element signature="e#14720#14747#0#HTML" expanded="true" />
-            <element signature="e#15653#15680#0#HTML" expanded="true" />
-            <element signature="e#16568#16595#0#HTML" expanded="true" />
-            <element signature="e#17483#17510#0#HTML" expanded="true" />
-            <element signature="e#23168#23214#0#HTML" expanded="true" />
-            <element signature="e#23290#23317#0#HTML" expanded="true" />
-            <element signature="e#24223#24250#0#HTML" expanded="true" />
-            <element signature="e#25138#25165#0#HTML" expanded="true" />
-            <element signature="e#26053#26080#0#HTML" expanded="true" />
-            <element signature="e#27605#27651#0#HTML" expanded="true" />
-            <element signature="e#27727#27754#0#HTML" expanded="true" />
-            <element signature="e#28660#28687#0#HTML" expanded="true" />
-            <element signature="e#29575#29602#0#HTML" expanded="true" />
-            <element signature="e#30490#30517#0#HTML" expanded="true" />
-            <element signature="e#32043#32089#0#HTML" expanded="true" />
-            <element signature="e#32165#32192#0#HTML" expanded="true" />
-            <element signature="e#33098#33125#0#HTML" expanded="true" />
-            <element signature="e#34013#34040#0#HTML" expanded="true" />
-            <element signature="e#34928#34955#0#HTML" expanded="true" />
-            <element signature="e#36486#36532#0#HTML" expanded="true" />
-            <element signature="e#36608#36635#0#HTML" expanded="true" />
-            <element signature="e#37541#37568#0#HTML" expanded="true" />
-            <element signature="e#38456#38483#0#HTML" expanded="true" />
-            <element signature="e#39371#39398#0#HTML" expanded="true" />
+            <element signature="e#8961#8968#0#HTML" expanded="true" />
+            <element signature="e#17835#17842#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/header.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="43" lean-forward="true" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/theme/page/product/detail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding>
+            <element signature="e#7854#7861#0#HTML" expanded="true" />
+            <element signature="e#12541#12567#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/theme/layout/layout.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="70" lean-forward="true" selection-start-line="17" selection-start-column="70" selection-end-line="17" selection-end-column="70" />
+        <state relative-caret-position="459">
+          <caret line="27" column="56" lean-forward="true" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
         </state>
       </provider>
     </entry>

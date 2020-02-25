@@ -4,21 +4,21 @@
             <i class="fas fa-home"></i>
             <span class="tabbar-label">Home</span>
         </a>
-        <a href="#tab-wishlist" class="tab-link">
-            <i class="fas fa-heart"></i>
-            <span class="tabbar-label">Wishlist</span>
+        <a href="#tab-category" class="tab-link">
+            <i class="fas fa-list-alt"></i>
+            <span class="tabbar-label">Danh mục</span>
         </a>
-        <a href="#tab-brand" class="tab-link">
-            <i class="fas fa-star"></i>
-            <span class="tabbar-label">Official Brand</span>
+        <a href="#tab-sale" class="tab-link">
+            <i class="fas fa-gift"></i>
+            <span class="tabbar-label">Khuyến mãi</span>
         </a>
         <a href="#tab-cart" class="tab-link">
             <i class="fas fa-shopping-cart"></i>
-            <span class="tabbar-label">Cart</span>
+            <span class="tabbar-label">Giỏ hàng</span>
         </a>
-        <a href="#tab-account" class="tab-link">
-            <i class="fas fa-user"></i>
-            <span class="tabbar-label">Account</span>
+        <a href="#tab-info" class="tab-link">
+            <i class="fas fa-info-circle"></i>
+            <span class="tabbar-label">Giới thiệu</span>
         </a>
     </div>
 </div>

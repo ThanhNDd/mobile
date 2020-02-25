@@ -1,4 +1,4 @@
-<div class="panel panel-left panel-cover sidebar">
+<div class="panel panel-left panel-cover sidebar" id="sidebar">
     <div class="user-view">
         <img src="{{ url('images/user-buyer6.png') }}" alt="">
         <div class="title-name">

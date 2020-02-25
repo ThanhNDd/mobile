@@ -1,3 +1,64 @@
+var swiper = new Swiper('.swiper1', {
+    pagination: {
+        el: '.swiper-pagination1',
+        dynamicBullets: true,
+        paginationClickable: true
+    },
+});
+
+var swiper2 = new Swiper('.swiper2',{
+    slidesPerView: 3
+});
+var swiper3 = new Swiper('.swiper-detail-product', {
+    pagination: {
+        el: '.swiper-pagination-detail-product',
+        dynamicBullets: true,
+        paginationClickable: true
+    },
+});
+var swiper4 = new Swiper('.swiper-relate-product',{
+    slidesPerView: 3
+});
+var swiper5 = new Swiper('.swiper-recommended-product',{
+    slidesPerView: 3
+});
+// var swiper6 = new Swiper('.swiper6',{
+//     slidesPerView: 3
+// });
 $(document).ready(function () {
+    $('a[href="#tab-home"]').click(function(){
+        set_active_tab('tab-home');
+    });
+    $('a[href="#tab-category"]').click(function(){
+        set_active_tab('tab-category');
+    });
+    $('a[href="#tab-sale"]').click(function(){
+        set_active_tab('tab-sale');
+    });
+    $('a[href="#tab-cart"]').click(function(){
+        set_active_tab('tab-cart');
+    });
+    $('a[href="#tab-info"]').click(function(){
+        set_active_tab('tab-info');
+    });
+
+    $(".panel-open").click(function () {
+        $("#sidebar").addClass("panel-in");
+        $("html").addClass("with-panel");
+        $("html").addClass("with-panel-left-cover");
+        $(".panel-backdrop").click(function() {
+            $("#sidebar").removeClass("panel-in");
+            $("html").removeClass("with-panel");
+            $("html").removeClass("with-panel-left-cover");
+        });
+    });
 
 });
+
+function set_active_tab(id) {
+    let idactive = $('.page').find('.tab-active').attr('id');
+    $("[id="+idactive+"]").removeClass('tab-active');
+    $('.page').find('[id='+id+']').addClass('tab-active');
+    $('a[href="#'+idactive+'"]').removeClass('tab-link-active');
+    $('a[href="#'+id+'"]').addClass('tab-link-active');
+}
