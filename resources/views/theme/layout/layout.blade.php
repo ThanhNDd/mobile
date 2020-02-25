@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="ios device-pixel-ratio-2 device-desktop device-macos">
+<html lang="en" class="ios device-pixel-ratio-1 device-desktop device-windows">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,16 +12,18 @@
 	<title>Shop Mẹ Ỉn - Thời trang trẻ em cao cấp</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,900&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="{!! asset('css/bootstrap.min.css') !!}">
 	<link rel="stylesheet" href="{!! asset('css/framework7.bundle.min.css') !!}">
 	<link rel="stylesheet" href="{!! asset('css/font-awesome.min.css') !!}">
 	<link rel="stylesheet" href="{!! asset('css/swiper.min.css') !!}">
+	<link rel="stylesheet" href="{!! asset('css/bootstrap.min.css') !!}">
 
 	<link rel="stylesheet" href="{!! asset('css/style.css') !!}">
 </head>
 <body>
 
 	<div id="app" class="framework7-root">
+		<div class="panel-backdrop"></div>
+	@include('theme.layout.sidebar')
 		<!-- Navigation -->
 		<div class="view view-main view-init ios-edges">
 			@yield('content')

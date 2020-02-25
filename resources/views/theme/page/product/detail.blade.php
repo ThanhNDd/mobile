@@ -2,27 +2,14 @@
 
 @section('content')
 <div class="page">
-    <div class="navbar navbar-page">
-        <div class="navbar-inner sliding">
-            <div class="left">
-                <a href="/" class="link back">
-                    <i class="fas fa-arrow-left"></i>
-                </a>
-            </div>
-            <div class="right nav-product-detail">
-                <a href="#"><i class="fas fa-share-alt"></i></a>
-                <a href="#" @click="showToastBottom"><i class="fas fa-heart"></i></a>
-                <a href="/shopping-cart/"><i class="fas fa-shopping-cart"></i></a>
-            </div>
-        </div>
-    </div>
+    @include('theme.layout.header')
+    @include('theme.layout.breadcrum')
     <div class="page-content">
-        <!-- product details -->
+
         <div class="product-details segments">
             <div class="container">
-                <!-- slider product details -->
                 <div class="slider-p-details">
-                    <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" class="swiper-container swiper-init swiper-container-horizontal">
+                    <div class="swiper-container swiper-detail-product">
                         <div class="swiper-pagination"></div>
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -44,6 +31,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="swiper-pagination swiper-pagination-detail-product"></div>
                     </div>
                 </div>
                 <!-- end slider product details -->
@@ -61,21 +49,11 @@
                         <div class="list">
                             <ul>
                                 <li>
-                                    <a href="#" class="item-link item-content sheet-open" data-sheet=".description-sheet">
+                                    <a href="#" class="item-link item-content sheet-open">
                                         <div class="item-inner item-cell">
                                             <div class="item-row">
-                                                <div class="item-cell">Product Details</div>
-                                                <div class="item-cell">Description</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="item-link item-content sheet-open" data-sheet=".specification-sheet">
-                                        <div class="item-inner item-cell">
-                                            <div class="item-row">
-                                                <div class="item-cell">Specification</div>
-                                                <div class="item-cell">Merk, Model, Material</div>
+                                                <div class="item-cell ">Thông tin sản phẩm</div>
+                                                <div class="item-cell description">Mô tả</div>
                                             </div>
                                         </div>
                                     </a>
@@ -97,23 +75,17 @@
                                 <div class="page-content">
                                     <div class="container">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere eveniet totam optio eaque nemo, autem doloremque in impedit sequi deleniti!</p>
-
                                         <!-- divider space for text -->
                                         <div class="divider-space-text"></div>
                                         <!-- end divider space for text -->
-
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, laudantium.</p>
-
                                         <!-- divider space for text -->
                                         <div class="divider-space-text"></div>
                                         <!-- end divider space for text -->
-
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis odit accusamus laborum nemo magnam suscipit!</p>
-
                                         <!-- divider space for text -->
                                         <div class="divider-space-text"></div>
                                         <!-- end divider space for text -->
-
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum quidem expedita nihil molestias quibusdam dolores at sunt obcaecati repudiandae nemo.</p>
                                     </div>
                                 </div>
@@ -146,15 +118,13 @@
                             </div>
                         </div>
                         <!-- end specification sheet modal -->
-
                     </div>
-
                     <!-- related products -->
                     <div class="related-products segments no-pd-b">
                         <div class="section-title">
-                            <h3>Related Products <a href="#" class="see-all-link">See All</a></h3>
+                            <h3>Sản phẩm tương tự <a href="#" class="see-all-link">Xem thêm &raquo;</a></h3>
                         </div>
-                        <div data-space-between="10" data-slides-per-view="auto" class="swiper-container swiper-init">
+                        <div class="swiper-container swiper-relate-product">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="content content-shadow-product">
@@ -227,7 +197,11 @@
             <div class="product-review segments">
                 <div class="container">
                     <div class="section-title">
-                        <h3>Product Reviews</h3>
+                        <h3>Đánh giá sản phẩm
+                            <a href="http://localhost:8000/#" class="see-all-link btn btn-sm btn-warning" style="color: #333;">
+                                <i class="fas fa-pen-nib"></i> Viết nhận xét
+                            </a>
+                        </h3>
                     </div>
                     <div class="content">
                         <img src="{{ url('images/user-buyer2.png') }}" alt="">
@@ -289,7 +263,7 @@
                     </div>
                     <!-- view all reviews -->
                     <div class="view-all-review">
-                        <a href="/all-reviews/123456">View All Reviews</a>
+                        <a href="/all-reviews/123456">Xem tất cả</a>
                     </div>
                     <!-- end view all reviews -->
                 </div>
@@ -304,9 +278,9 @@
             <div class="recommended-you">
                 <div class="container">
                     <div class="section-title">
-                        <h3>Recommended</h3>
+                        <h3>Có thể bạn quan tâm</h3>
                     </div>
-                    <div data-space-between="10" data-slides-per-view="auto" class="swiper-container swiper-init">
+                    <div class="swiper-container swiper-recommended-product">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="content content-shadow-product">

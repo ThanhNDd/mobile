@@ -11,7 +11,7 @@
                         </a>
                     </div>
                     <div class="title">
-                        All Product Review
+                        41002 đánh giá cho sản phẩm Áo siêu nhân người nhện
                     </div>
                     <div class="right"></div>
                     <div class="subnavbar">
@@ -25,6 +25,11 @@
                                     <li><i class="fas fa-star-half-alt"></i></li>
                                     <li class="rating-total">4.5/5 <span>(41002)</span></li>
                                 </ul>
+                            </div>
+                            <div class="write-rating">
+                                <a href="http://localhost:8000/#" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-pen-nib"></i> Viết nhận xét
+                                </a>
                             </div>
                         </div>
                     </div>

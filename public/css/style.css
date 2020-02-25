@@ -64,6 +64,12 @@ order history
 
 */
 /*general*/
+
+:root {
+  --main-color: #005bbd;
+}
+
+
 body {
   font-family: 'Roboto', sans-serif;
   color: #888;
@@ -181,7 +187,7 @@ ul li {
 }
 
 .segments {
-  padding: 25px 0;
+  padding: 15px;
 }
 
 .segments-bottom {
@@ -189,7 +195,7 @@ ul li {
 }
 
 .section-title {
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 .section-title h3 {
   font-size: 19px;
@@ -198,7 +204,7 @@ ul li {
 .section-title h3 .see-all-link {
   float: right;
   /*color: #ff3643;*/
-  color: #007bff;
+  color: var(--main-color);
   font-size: 12px;
   font-weight: 500;
 }
@@ -311,7 +317,7 @@ ul li {
   font-size: 14px;
   font-weight: 700;
   /*color: #ff3643 !important;*/
-  color: #007bff !important;
+  color: var(--main-color) !important;
 }
 
 .location {
@@ -342,8 +348,10 @@ ul li {
 
 /*toolbar & tabbar home*/
 .ios .toolbar {
-  background: #fff;
-  box-shadow: 0 -1px 8px 0 rgba(0, 0, 0, 0.11);
+  /*background: #fff;*/
+  /*box-shadow: 0 -1px 8px 0 rgba(0, 0, 0, 0.11);*/
+  background: var(--main-color);
+  box-shadow: 0 -1px 9px 4px rgba(0, 0, 0, 0.42);
 }
 .ios .toolbar::before {
   display: none;
@@ -351,11 +359,11 @@ ul li {
 .ios .toolbar.tabbar-labels a.tab-link {
   padding-top: 7px;
   padding-bottom: 7px;
-  color: #888;
+  color: #fff;
 }
 .ios .toolbar.tabbar-labels a.tab-link.tab-link-active {
   /*color: #ff3643;*/
-  color: #007bff;
+  color: #ffd406;
 }
 .ios .toolbar.tabbar-labels .tabbar-label {
   font-size: 10px;
@@ -397,18 +405,21 @@ ul li {
 
 /*navbar*/
 .navbar {
-  background: #fff;
+  /*background: #fff;*/
+  background: var(--main-color);
+  color: #fff;
+  box-shadow: 0 -1px 5px 5px rgba(0, 0, 0, 0.42);
 }
 .navbar .navbar-inner {
   padding-left: 12px;
   padding-right: 12px;
-  padding-top: 8px;
+  /*padding-top: 8px;*/
 }
 .navbar .navbar-inner .title {
   font-size: 15px;
 }
 .navbar .navbar-inner .right a {
-  color: #aaa;
+  color: #fff;
 }
 .navbar .nav-product-detail a i {
   color: #aaa;
@@ -427,7 +438,8 @@ ul li {
 }
 
 .navbar-page {
-  box-shadow: 0 6px 15px -5px rgba(0, 0, 0, 0.09) !important;
+  /*box-shadow: 0 6px 15px -5px rgba(0, 0, 0, 0.09) !important;*/
+  box-shadow: 0 7px 10px -6px rgba(0, 0, 0, 0.65) !important;
 }
 .navbar-page .navbar-inner .right a + a {
   margin-left: 5px !important;
@@ -543,17 +555,17 @@ ul li {
 .categories .content .icon {
   background: #fff;
   border-radius: 12px;
-  width: 50px;
+  width: 70px;
   height: 50px;
   line-height: 57px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.15);
+  margin: 0 auto 10px auto;
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.39);
+  border: 1px solid var(--main-color);
 }
 .categories .content .icon i {
   font-size: 22px;
   /*color: #ff3643;*/
-  color: #007bff;
+  color: var(--main-color);
 }
 .categories .content span {
   font-size: 12px;
@@ -611,6 +623,7 @@ ul li {
 }
 .latest-product .content .text .title-product {
   margin-bottom: 5px;
+  color: #333 !important;
 }
 .latest-product .content .text .price {
   margin-bottom: 0;
@@ -626,7 +639,7 @@ ul li {
   padding-bottom: 25px;
 }
 .flash-sale .swiper-slide {
-  max-width: 40%;
+  max-width: 50%;
 }
 .flash-sale .swiper-slide .content {
   background: #fff;
@@ -1411,11 +1424,13 @@ ul li {
   height: 100px;
   line-height: 100px;
   background: #fff;
-  color: #ff3643;
+  /*color: #ff3643;*/
+  color: var(--main-color);
   font-size: 36px;
   border-radius: 12px;
   margin-bottom: 10px;
   box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--main-color);
 }
 .all-categories .content p {
   font-weight: 500;
@@ -1432,7 +1447,7 @@ ul li {
 
 /*product details*/
 .product-details.segments {
-  padding-bottom: 50px;
+  padding: 15px 0 50px 0;
 }
 .product-details .swiper-slide .content img {
   width: 100%;
@@ -1496,7 +1511,7 @@ ul li {
 
 /*product reviews*/
 .product-review.segments {
-  padding-bottom: 0;
+  padding: 0;
 }
 .product-review .content img {
   width: 28px;
@@ -1671,7 +1686,7 @@ ul li {
 }
 
 .all-reviews.segments {
-  padding-bottom: 25px;
+  padding: 60px 0 25px 0;
 }
 
 /*form*/
@@ -1869,12 +1884,12 @@ form.list ul::after {
 
 /*searchbar*/
 .ios .searchbar {
-  background: #fff;
+  background: var(--main-color);
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.03);
 }
 .ios .searchbar .searchbar-input-wrap input {
   font-size: 13px;
-  background: #eee;
+  background: #fff;
   border-radius: 4px;
 }
 .ios .searchbar:before {
@@ -2432,8 +2447,46 @@ form.list ul::after {
 .view-more {
   font-size: 14px;
   font-weight: 700;
-  color: #007bff !important;
-  border: 1px solid #007bff;
+  color: var(--main-color) !important;
+  border: 1px solid var(--main-color);
   padding: 5px 40px;
   border-radius: 4px;
+}
+
+/*breadcrums*/
+.page-content .breadcrums {
+  top: 8px;
+  position: relative;
+  left: 15px;
+}
+
+.page-content .breadcrums a {
+  color: #333;
+}
+a.panel-open {
+  color: #fff;
+}
+
+.row>.col, .row>[class*=col-] {
+  flex: none !important;
+}
+.related-products {
+  padding: 0;
+}
+a.back {
+  color: #fff;
+}
+.write-rating {
+  /*width: 160px;*/
+}
+
+.write-rating a {
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+  float: right;
+}
+
+.ios .subnavbar {
+  box-shadow: 0px 3px 11px -5px rgba(0, 0, 0, 0.34);
 }
