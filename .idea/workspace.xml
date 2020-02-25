@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="49445592-2958-4c44-9772-7086750d91d3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/toolbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/toolbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/page/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/page/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/page/home2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/page/home2.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/page/product/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/page/product/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/page/product/reviews.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/page/product/reviews.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +180,7 @@
       <workItem from="1582538149443" duration="12431000" />
       <workItem from="1582597469359" duration="268000" />
       <workItem from="1582597803574" duration="39000" />
-      <workItem from="1582597972607" duration="5051000" />
+      <workItem from="1582597972607" duration="5384000" />
     </task>
     <servers />
   </component>
