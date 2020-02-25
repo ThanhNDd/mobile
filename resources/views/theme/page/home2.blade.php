@@ -19,7 +19,7 @@
                 <!-- end sidebarbar or panel -->
             @include('theme.layout.sidebar')
             <!-- content -->
-            @yield('content')
+{{--            @yield('content')--}}
             <!-- end content -->
 
 {{--        @desktop--}}

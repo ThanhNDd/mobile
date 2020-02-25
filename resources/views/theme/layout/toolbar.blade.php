@@ -1,4 +1,4 @@
-<div id="tab-wishlist" class="tab tab-wishlist">
+<div id="tab-wishlist" class="page-content tab tab-wishlist">
     <!-- wishlist -->
 
     <!-- navbar -->
@@ -19,9 +19,9 @@
                 <div class="col-50">
                     <div class="content content-shadow-product">
                         <a href="/product-details/">
-                            <div class="love-button">
-                                <i class="fas fa-heart"></i>
-                            </div>
+{{--                            <div class="love-button">--}}
+{{--                                <i class="fas fa-heart"></i>--}}
+{{--                            </div>--}}
                             <div class="image">
                                 <img src="images/product1.png" alt="product">
                             </div>
@@ -35,9 +35,9 @@
                 <div class="col-50">
                     <div class="content content-shadow-product">
                         <a href="/product-details/">
-                            <div class="love-button">
-                                <i class="fas fa-heart"></i>
-                            </div>
+{{--                            <div class="love-button">--}}
+{{--                                <i class="fas fa-heart"></i>--}}
+{{--                            </div>--}}
                             <div class="image">
                                 <img src="images/product2.png" alt="product">
                             </div>
@@ -53,9 +53,9 @@
                 <div class="col-50">
                     <div class="content content-shadow-product">
                         <a href="/product-details/">
-                            <div class="love-button">
-                                <i class="fas fa-heart"></i>
-                            </div>
+{{--                            <div class="love-button">--}}
+{{--                                <i class="fas fa-heart"></i>--}}
+{{--                            </div>--}}
                             <div class="image">
                                 <img src="images/product3.png" alt="product">
                             </div>
@@ -69,9 +69,9 @@
                 <div class="col-50">
                     <div class="content content-shadow-product">
                         <a href="/product-details/">
-                            <div class="love-button">
-                                <i class="fas fa-heart"></i>
-                            </div>
+{{--                            <div class="love-button">--}}
+{{--                                <i class="fas fa-heart"></i>--}}
+{{--                            </div>--}}
                             <div class="image">
                                 <img src="images/product4.png" alt="product">
                             </div>
@@ -87,9 +87,9 @@
                 <div class="col-50">
                     <div class="content content-shadow-product">
                         <a href="/product-details/">
-                            <div class="love-button">
-                                <i class="fas fa-heart"></i>
-                            </div>
+{{--                            <div class="love-button">--}}
+{{--                                <i class="fas fa-heart"></i>--}}
+{{--                            </div>--}}
                             <div class="image">
                                 <img src="images/product5.png" alt="product">
                             </div>
@@ -103,9 +103,9 @@
                 <div class="col-50">
                     <div class="content content-shadow-product">
                         <a href="/product-details/">
-                            <div class="love-button">
-                                <i class="fas fa-heart"></i>
-                            </div>
+{{--                            <div class="love-button">--}}
+{{--                                <i class="fas fa-heart"></i>--}}
+{{--                            </div>--}}
                             <div class="image">
                                 <img src="images/product6.png" alt="product">
                             </div>
@@ -122,7 +122,7 @@
 
     <!-- end wishlist -->
 </div>
-<div id="tab-brand" class="page-content tab">
+<div id="tab-brand" class="page-content tab tab-brand">
     <!-- official brand -->
 
     <!-- navbar -->
@@ -332,7 +332,7 @@
     </div>
     <!-- end official brand -->
 </div>
-<div id="tab-cart" class="page-content tab">
+<div id="tab-cart" class="page-content tab tab-cart">
     <!-- cart -->
 
     <!-- navbar -->
@@ -555,7 +555,7 @@
 
     <!-- end cart -->
 </div>
-<div id="tab-account" class="page-content tab">
+<div id="tab-account" class="page-content tab tab-account">
     <!-- account buyer -->
 
     <!-- content account -->

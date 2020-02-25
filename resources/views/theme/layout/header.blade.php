@@ -1,7 +1,7 @@
 <div class="navbar navbar-home">
     <div class="navbar-inner">
         <div class="left">
-            <a href="#" class="panel-open" data-panel="left">
+            <a href="#" class="panel-open" data-toggle="sidebar" data-target="#sidebar">
                 <i class="fas fa-align-left"></i>
             </a>
         </div>

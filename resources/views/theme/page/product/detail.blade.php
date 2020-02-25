@@ -1,14 +1,11 @@
 @extends('theme.layout.layout')
 
 @section('content')
-{{--    @include('theme.layout.header')--}}
-{{--    @include('theme.layout.sidebar')--}}
-<div class="view view-product ios-edges">
 <div class="page">
     <div class="navbar navbar-page">
         <div class="navbar-inner sliding">
             <div class="left">
-                <a href="#" class="link back">
+                <a href="/" class="link back">
                     <i class="fas fa-arrow-left"></i>
                 </a>
             </div>
@@ -226,31 +223,6 @@
                 </div>
                 <!-- end wrap content product details -->
             </div>
-            <!-- wrap store -->
-{{--            <div class="wrap-store">--}}
-{{--                <div class="container">--}}
-{{--                    <div class="row">--}}
-{{--                        <div class="col-70">--}}
-{{--                            <div class="user-caption">--}}
-{{--                                <img src="images/user-seller1.png" alt="">--}}
-{{--                                <div class="title-name">--}}
-{{--                                    <h4>Variantsports</h4>--}}
-{{--                                    <p class="date">online 2 minute ago</p>--}}
-{{--                                    <p class="location"><i class="fas fa-map-marker-alt"></i>Washington</p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-30">--}}
-{{--                            <div class="user-button">--}}
-{{--                                <a href="#" class="button primary-button">Follow</a>--}}
-{{--                                <a href="/account-seller/" class="button secondary-button">Visit Store</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-            <!-- end wrap store -->
-
             <!-- product review -->
             <div class="product-review segments">
                 <div class="container">
@@ -417,6 +389,5 @@
         </div>
         <!-- end action product details -->
     </div>
-</div>
 </div>
 @endsection
