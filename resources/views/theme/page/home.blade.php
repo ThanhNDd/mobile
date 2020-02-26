@@ -1,6 +1,7 @@
 @extends('theme.layout.layout')
 
 @section('content')
+<div class="view view-main view-init ios-edges">
     <div class="page page-home page-with-subnavbar">
         @include('theme.layout.tabbar')
         <div class="tabs">
@@ -360,4 +361,5 @@
             @include('theme.layout.toolbar')
         </div>
     </div>
+</div>
 @endsection
