@@ -54,7 +54,7 @@
                             <div class="row">
                                 <div class="col-25">
                                     <div class="content">
-                                        <a href="{{ url("/categories/boys") }}">
+                                        <a href="{{ url("/categories/girls") }}">
                                             <div class="icon">
                                                 <i class="fas fa-tshirt"></i>
                                             </div>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col-25">
                                     <div class="content">
-                                        <a href="{{ url("/categories/girls") }}">
+                                        <a href="{{ url("/categories/boys") }}">
                                             <div class="icon">
                                                 <i class="fas fa-tshirt"></i>
                                             </div>
@@ -173,7 +173,7 @@
                         <div class="container">
                             <div class="section-title">
                                 <h3>Flash Sale
-                                    <a href="http://localhost:8000/#" class="see-all-link">Xem thêm &raquo;</a>
+                                    <a href="{{ url("/sales") }}" class="see-all-link">Xem thêm &raquo;</a>
                                 </h3>
                             </div>
                             <div class="swiper-container swiper2">
