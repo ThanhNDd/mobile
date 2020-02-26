@@ -1,5 +1,5 @@
 @extends('theme.layout.layout')
-
+@section('title', 'Shop Mẹ Ỉn - Thời trang trẻ em cao cấp')
 @section('content')
     <div class="view view-main view-init ios-edges">
         @include('theme.layout.header')

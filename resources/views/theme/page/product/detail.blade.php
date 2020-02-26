@@ -360,7 +360,7 @@
                             </div>
                             <div class="col-40">
                                 <div class="content-button">
-                                    <a href="#" class="button primary-button"><i class="fas fa-cart-plus"></i>Buy
+                                    <a href="#" class="button secondary-button"><i class="fas fa-cart-plus"></i>Buy
                                         Now</a>
                                 </div>
                             </div>

@@ -11,33 +11,27 @@ class CategoriesController extends Controller
 {
 
     public function categories() {
-        $title = "allCategory";
-        return view('theme.page.product.detail', compact('title'));
+        $is_active = 'categories';
+        return view('theme.page.category.categories', compact('is_active'));
     }
 
     function getGirls() {
-        return $this->getCategory(1);
+        $cat_title = 'Thời trang bé gái';
+        return $this->getCategory($cat_title);
     }
     function getBoys() {
-        return $this->getCategory(2);
+        $cat_title = 'Thời trang bé trai';
+        return $this->getCategory($cat_title);
     }
     function getShoes() {
-        return $this->getCategory(3);
+        $cat_title = 'Giày dép';
+        return $this->getCategory($cat_title);
     }
     function getAccessories() {
-        return $this->getCategory(4);
+        $cat_title = 'Phụ kiện';
+        return $this->getCategory($cat_title);
     }
-    function getCategory($id) {
-        $cat_title = '';
-        if($id == 1) {
-            $cat_title = 'Thời trang bé gái';
-        } else if($id == 2) {
-            $cat_title = 'Thời trang bé trai';
-        } else if($id == 3) {
-            $cat_title = 'Giày dép';
-        } else if($id == 4) {
-            $cat_title = 'Phụ kiện';
-        }
+    function getCategory($cat_title) {
         return view('theme.page.category.category', compact('cat_title'));
     }
 }

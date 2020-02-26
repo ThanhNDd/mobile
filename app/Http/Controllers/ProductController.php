@@ -10,6 +10,10 @@ use Illuminate\Routing\Controller as BaseController;
 class ProductController extends Controller
 {
 
+    public function add_to_cart() {
+
+    }
+
     public function getProduct($id) {
         $isDetail = "isDetail";
         $cat_title = '';

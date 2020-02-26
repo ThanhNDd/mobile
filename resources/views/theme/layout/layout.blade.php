@@ -9,7 +9,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 
 	<link rel="icon" href="{{ url('images/favicon.png') }}">
-	<title>Shop Mẹ Ỉn - Thời trang trẻ em cao cấp</title>
+	<title>@yield('title')</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,900&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="{!! asset('css/framework7.bundle.min.css') !!}">
