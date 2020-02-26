@@ -80,13 +80,27 @@
                                                     <div class="item-row">
                                                         <div class="item-cell ">Size</div>
                                                         <div class="item-cell">
-                                                            <select>
-                                                                <option>S</option>
-                                                                <option>M</option>
-                                                                <option>L</option>
-                                                                <option>XL</option>
-                                                                <option>XXL</option>
-                                                            </select>
+                                                            <div class="size-choose">
+                                                                <div>
+                                                                    <input type="radio" id="XXL" name="size" value="XXL" checked>
+                                                                    <label for="XXL"><span>XXL</span></label>
+                                                                </div>
+                                                                <div>
+                                                                    <input type="radio" id="XL" name="size" value="XL">
+                                                                    <label for="XL"><span>XL</span></label>
+                                                                </div>
+                                                                <div>
+                                                                    <input type="radio" id="160" name="size" value="160">
+                                                                    <label for="160"><span>160</span></label>
+                                                                </div>
+                                                            </div>
+{{--                                                            <select>--}}
+{{--                                                                <option>S</option>--}}
+{{--                                                                <option>M</option>--}}
+{{--                                                                <option>L</option>--}}
+{{--                                                                <option>XL</option>--}}
+{{--                                                                <option>XXL</option>--}}
+{{--                                                            </select>--}}
                                                         </div>
                                                     </div>
                                                 </div>

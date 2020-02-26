@@ -365,7 +365,7 @@ ul li {
     /*background: #fff;*/
     /*box-shadow: 0 -1px 8px 0 rgba(0, 0, 0, 0.11);*/
     background: var(--main-color);
-    box-shadow: 0 -1px 9px 4px rgba(0, 0, 0, 0.42);
+    box-shadow: 0 -2px 10px 0px rgba(0, 0, 0, 0.31);
 }
 
 .ios .toolbar::before {
@@ -468,7 +468,7 @@ ul li {
 
 .navbar-page {
     /*box-shadow: 0 6px 15px -5px rgba(0, 0, 0, 0.09) !important;*/
-    box-shadow: 0 7px 10px -6px rgba(0, 0, 0, 0.65) !important;
+    box-shadow: 0 -9px 10px 11px rgba(0, 0, 0, 0.29) !important;
 }
 
 .navbar-page .navbar-inner .right a + a {
@@ -549,7 +549,7 @@ ul li {
 }
 
 .sidebar .media-list .item-media i {
-    color: #ff3643;
+    color: var(--main-color);
 }
 
 .sidebar .media-list .item-title {
@@ -2868,8 +2868,8 @@ a.back {
 
 .color-choose input[type="radio"] + label span {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     margin: -1px 4px 0 0;
     vertical-align: middle;
     cursor: pointer;
@@ -2890,13 +2890,55 @@ a.back {
 .color-choose input[type="radio"]#black + label span {
     background-color: #323232;
 }
-
 .color-choose input[type="radio"]:checked + label span {
     background-image: url(../images/check-icn.svg);
     background-repeat: no-repeat;
     background-position: center;
 }
 
+.size-choose div {
+    display: inline-block;
+}
+
+.size-choose input[type="radio"] {
+    display: none;
+}
+
+.size-choose input[type="radio"] + label span {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    margin: -1px 4px 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.33);
+    padding: 7px 4px;
+    text-align: center;
+}
+
+.size-choose input[type="radio"]:checked + label span {
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #005bbdbf;
+    box-shadow: 0 1px 5px 0 #005bbdbf;
+}
+@keyframes myborder {
+    70% {
+        border-color: lightcoral;
+    }
+}
 .item-link.item-content.sheet-open {
     text-decoration: none;
+}
+.blog .image {
+    padding: 10px;
+}
+
+.all-categories img {
+    width: 100%;
+    border-radius: 8px;
+}
+.all-categories .content {
+    padding: 15px;
 }

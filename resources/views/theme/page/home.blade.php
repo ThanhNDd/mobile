@@ -54,7 +54,7 @@
                             <div class="row">
                                 <div class="col-25">
                                     <div class="content">
-                                        <a href="{{ url("/categories-details/") }}">
+                                        <a href="{{ url("/categories/boys") }}">
                                             <div class="icon">
                                                 <i class="fas fa-tshirt"></i>
                                             </div>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col-25">
                                     <div class="content">
-                                        <a href="{{ url("/categories-details/") }}">
+                                        <a href="{{ url("/categories/girls") }}">
                                             <div class="icon">
                                                 <i class="fas fa-tshirt"></i>
                                             </div>
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-25">
                                     <div class="content">
-                                        <a href="{{ url("/categories-details/") }}">
+                                        <a href="{{ url("/categories/shoes") }}">
                                             <div class="icon">
                                                 <i class="fas fa-tools"></i>
                                             </div>
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="col-25">
                                     <div class="content">
-                                        <a href="{{ url("/categories-details/") }}">
+                                        <a href="{{ url("/categories/accessories") }}">
                                             <div class="icon">
                                                 <i class="fas fa-hat-cowboy-side"></i>
                                             </div>
@@ -358,7 +358,6 @@
                     </div>
                 </div>
             </div>
-            @include('theme.layout.toolbar')
         </div>
     </div>
 </div>
