@@ -6,7 +6,7 @@
             @include('theme.layout.header')
             @include('theme.layout.breadcrum')
             <div class="page-content">
-
+                {{ $title ?? '' }}
                 <div class="product-details segments">
                     <div class="container">
                         <div class="slider-p-details">
@@ -57,7 +57,7 @@
                                                         <div class="item-cell">
                                                             <div class="color-choose">
                                                                 <div>
-                                                                    <input data-image="red" type="radio" id="red" name="color" value="red" checked>
+                                                                    <input data-image="red" type="radio" id="red" name="color" value="red">
                                                                     <label for="red"><span></span></label>
                                                                 </div>
                                                                 <div>
@@ -82,7 +82,7 @@
                                                         <div class="item-cell">
                                                             <div class="size-choose">
                                                                 <div>
-                                                                    <input type="radio" id="XXL" name="size" value="XXL" checked>
+                                                                    <input type="radio" id="XXL" name="size" value="XXL">
                                                                     <label for="XXL"><span>XXL</span></label>
                                                                 </div>
                                                                 <div>
@@ -122,7 +122,7 @@
                             <!-- related products -->
                             <div class="related-products segments no-pd-b">
                                 <div class="section-title">
-                                    <h3>Sản phẩm tương tự <a href="#" class="see-all-link">Xem thêm &raquo;</a></h3>
+                                    <h3>Sản phẩm tương tự <a href="{{ url("/categories/boys") }}" class="see-all-link">Xem thêm &raquo;</a></h3>
                                 </div>
                                 <div class="swiper-container swiper-relate-product">
                                     <div class="swiper-wrapper">

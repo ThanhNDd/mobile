@@ -18,10 +18,17 @@
             </form>
         </div>
         <div class="right">
-            <a href="/notifications/">
-                <i class="fas fa-bell"></i>
-                <span></span>
-            </a>
+            @if (isset($isDetail) && $isDetail)
+                <a href="/cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge badge-danger">2</span>
+                </a>
+            @else
+                <a href="/notifications/">
+                    <i class="fas fa-bell"></i>
+{{--                    <span></span>--}}
+                </a>
+            @endif
         </div>
     </div>
 </div>
