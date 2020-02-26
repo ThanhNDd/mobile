@@ -52,7 +52,22 @@ $(document).ready(function () {
             $("html").removeClass("with-panel-left-cover");
         });
     });
+    $(".description").click(function () {
+        $(".description-sheet").addClass("modal-in");
+        $("html").addClass("with-modal-sheet");
+        $(".sheet-close").click(function() {
+            $(".description-sheet").removeClass("modal-in");
+            $("html").removeClass("with-modal-sheet");
+        });
+    });
 
+    $('.color-choose input').on('click', function() {
+        var headphonesColor = $(this).attr('data-image');
+
+        $('.active').removeClass('active');
+        $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
+        $(this).addClass('active');
+    });
 });
 
 function set_active_tab(id) {

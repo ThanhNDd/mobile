@@ -23,11 +23,8 @@
 
 	<div id="app" class="framework7-root">
 		<div class="panel-backdrop"></div>
-	@include('theme.layout.sidebar')
-		<!-- Navigation -->
-		<div class="view view-main view-init ios-edges">
-			@yield('content')
-		</div>
+	    @include('theme.layout.sidebar')
+        @yield('content')
 	</div>
 
 </div>

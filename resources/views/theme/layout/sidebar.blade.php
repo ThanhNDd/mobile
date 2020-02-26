@@ -1,57 +1,69 @@
 <div class="panel panel-left panel-cover sidebar" id="sidebar">
     <div class="user-view">
-        <img src="{{ url('images/user-buyer6.png') }}" alt="">
+        <img src="{{ url('images/icon.png') }}" alt="">
         <div class="title-name">
-            <h5>Fardanz Track</h5>
-            <p><i class="fas fa-map-marker-alt"></i> Melbourne</p>
+            <h2>Shop Mẹ Ỉn</h2>
+            <p class="center">Thời trang trẻ em</p>
         </div>
     </div>
     <div class="list media-list">
         <ul>
             <li>
-                <a href="/wishlist/" class="item-link panel-close item-content">
+                <a href="/" class="item-link panel-close item-content">
                     <div class="item-media">
-                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-home"></i>
                     </div>
                     <div class="item-inner">
                         <div class="item-title-row">
-                            <div class="item-title">Wishlist</div>
+                            <div class="item-title">Trang chủ</div>
                         </div>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="/notification/" class="item-link panel-close item-content">
+                <a href="/categories/girls/" class="item-link panel-close item-content">
                     <div class="item-media">
-                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-tshirt"></i>
                     </div>
                     <div class="item-inner">
                         <div class="item-title-row">
-                            <div class="item-title">Notification</div>
+                            <div class="item-title">Thời trang bé gái</div>
                         </div>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="/transaction/" class="item-link panel-close item-content">
+                <a href="/categories/boys/" class="item-link panel-close item-content">
+                    <div class="item-media">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title-row">
+                            <div class="item-title">Thời trang bé trai</div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/categories/shoes/" class="item-link panel-close item-content">
                     <div class="item-media">
                         <i class="fas fa-credit-card"></i>
                     </div>
                     <div class="item-inner">
                         <div class="item-title-row">
-                            <div class="item-title">Transaction</div>
+                            <div class="item-title">Giày dép</div>
                         </div>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="/settings/" class="item-link panel-close item-content">
+                <a href="/categories/accessories/" class="item-link panel-close item-content">
                     <div class="item-media">
-                        <i class="fas fa-cog"></i>
+                        <i class="fas fa-hat-cowboy"></i>
                     </div>
                     <div class="item-inner">
                         <div class="item-title-row">
-                            <div class="item-title">Settings</div>
+                            <div class="item-title">Phụ kiện</div>
                         </div>
                     </div>
                 </a>
@@ -63,18 +75,18 @@
                     </div>
                     <div class="item-inner">
                         <div class="item-title-row">
-                            <div class="item-title">Help Center</div>
+                            <div class="item-title">Câu hỏi thuờng gặp</div>
                         </div>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="#" class="item-link panel-close item-content">
+                <a href="/login/" class="item-link panel-close item-content">
                     <div class="item-media">
                         <i class="fas fa-sign-out-alt"></i>
                     </div>
                     <div class="item-inner">
-                        <div class="item-title">Logout</div>
+                        <div class="item-title">Đăng nhập</div>
                     </div>
                 </a>
             </li>

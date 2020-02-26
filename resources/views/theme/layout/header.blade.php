@@ -18,7 +18,7 @@
             </form>
         </div>
         <div class="right">
-            <a href="/notification/">
+            <a href="/notifications/">
                 <i class="fas fa-bell"></i>
                 <span></span>
             </a>
