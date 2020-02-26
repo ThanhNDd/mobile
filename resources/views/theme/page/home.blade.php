@@ -42,7 +42,6 @@
                             <div class="swiper-pagination swiper-pagination1"></div>
                         </div>
                     </div>
-
                     <!-- end slider -->
 
                     <!-- cateogries -->
@@ -105,61 +104,65 @@
                                 <h3>Mới nhất</h3>
                             </div>
                             <div class="row">
-                                <div class="col-50">
-                                    <div class="content content-shadow-product">
-                                        <a href="{{ url("/product-details/123456") }}">
-                                            <div class="image">
-                                                <img src="{{ url('images/product1.jpg') }}" alt="">
-                                            </div>
-                                            <div class="text">
-                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>
-                                                <p class="price">$80.00</p>
-                                            </div>
-                                        </a>
+                                @foreach ($products as $product)
+                                    <div class="col-50">
+                                        <div class="content content-shadow-product">
+                                            <a href="{{ url("/product-details/".$product->id) }}">
+                                                <div class="image">
+                                                    <img src="{{ url($product->image ?? 'images/product2.jpg') }}" alt="">
+                                                </div>
+                                                <div class="text">
+                                                    <p class="title-product title-product-center">{{ $product->name }}</p>
+                                                    <p class="price">{{ $product->retail }}</p>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-50">
-                                    <div class="content content-shadow-product">
-                                        <a href="{{ url("/product-details/") }}">
-                                            <div class="image">
-                                                <img src="{{ url('images/product2.jpg') }}" alt="">
-                                            </div>
-                                            <div class="text">
-                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>
-                                                <p class="price">$80.00</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+
+                                @endforeach
+
+{{--                                <div class="col-50">--}}
+{{--                                    <div class="content content-shadow-product">--}}
+{{--                                        <a href="{{ url("/product-details/") }}">--}}
+{{--                                            <div class="image">--}}
+{{--                                                <img src="{{ url('images/product2.jpg') }}" alt="">--}}
+{{--                                            </div>--}}
+{{--                                            <div class="text">--}}
+{{--                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>--}}
+{{--                                                <p class="price">$80.00</p>--}}
+{{--                                            </div>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
-                            <div class="row">
-                                <div class="col-50">
-                                    <div class="content content-shadow-product">
-                                        <a href="{{ url("/product-details/") }}">
-                                            <div class="image">
-                                                <img src="{{ url('images/product3.jpg') }}" alt="">
-                                            </div>
-                                            <div class="text">
-                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>
-                                                <p class="price">$80.00</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-50">
-                                    <div class="content content-shadow-product">
-                                        <a href="{{ url("/product-details/") }}">
-                                            <div class="image">
-                                                <img src="{{ url('images/product4.jpg') }}" alt="">
-                                            </div>
-                                            <div class="text">
-                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>
-                                                <p class="price">$80.00</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="row">--}}
+{{--                                <div class="col-50">--}}
+{{--                                    <div class="content content-shadow-product">--}}
+{{--                                        <a href="{{ url("/product-details/") }}">--}}
+{{--                                            <div class="image">--}}
+{{--                                                <img src="{{ url('images/product3.jpg') }}" alt="">--}}
+{{--                                            </div>--}}
+{{--                                            <div class="text">--}}
+{{--                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>--}}
+{{--                                                <p class="price">$80.00</p>--}}
+{{--                                            </div>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-50">--}}
+{{--                                    <div class="content content-shadow-product">--}}
+{{--                                        <a href="{{ url("/product-details/") }}">--}}
+{{--                                            <div class="image">--}}
+{{--                                                <img src="{{ url('images/product4.jpg') }}" alt="">--}}
+{{--                                            </div>--}}
+{{--                                            <div class="text">--}}
+{{--                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>--}}
+{{--                                                <p class="price">$80.00</p>--}}
+{{--                                            </div>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="row justify-content-center">
                                 <a href="#" class="view-more">Xem thêm 12 sản phẩm <i
                                             class="fas fa-caret-down"></i></a>

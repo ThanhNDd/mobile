@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use App\Product;
 
 class ProductController extends Controller
 {
+
+    public function find_all() {
+        $products = Product::where('status', 0)
+            ->orderBy('id', 'desc')
+            ->take(10)
+            ->get();
+        return view('theme.page.product.home', compact('products'));
+    }
 
     public function add_to_cart() {
 

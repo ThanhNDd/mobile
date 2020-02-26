@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
 
     public function show() {
+        $products = DB::table('smi_products')->where('status', 0)
+            ->orderBy('id', 'desc')
+            ->take(10)
+            ->get();
         $is_active = 'home';
-        return view('theme.page.home', compact('is_active'));
+        return view('theme.page.home', compact('is_active', 'products'));
     }
 }
