@@ -15,6 +15,7 @@
                 <!-- end sidebarbar or panel -->
                 @include('theme.layout.sidebar')
                 <div class="page-content">
+                    <product-component></product-component>
                     <!-- slider -->
                     <div class="slider">
                         <div class="swiper-container swiper1">
