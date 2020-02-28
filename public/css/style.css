@@ -2953,3 +2953,11 @@ a.back {
     margin-right: 5px !important;
     margin-top: 5px !important;
 }
+.col-50 {
+    margin-bottom: 10px;
+}
+p.price.sale-price {
+    font-size: 12px !important;
+    text-decoration: line-through;
+    color: #ff3643 !important;
+}

@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+    public function index() {
+        $products = DB::table('smi_products')->where('status', 0)
+            ->orderBy('id', 'desc')
+            ->take(4)
+            ->get()->jsonSerialize();
+        return response($products, Response::HTTP_OK);
+    }
 
     public function find_all() {
         $products = DB::table('smi_products')->where('status', 0)
@@ -14,10 +21,6 @@ class ProductController extends Controller
             ->take(10)
             ->get();
         return view('theme.page.product.home', compact('products'));
-    }
-
-    public function add_to_cart() {
-
     }
 
     public function getProduct($id) {

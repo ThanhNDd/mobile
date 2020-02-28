@@ -7,7 +7,7 @@ var swiper = new Swiper('.swiper1', {
 });
 
 var swiper2 = new Swiper('.swiper2',{
-    slidesPerView: 3
+    slidesPerView: 5
 });
 var swiper3 = new Swiper('.swiper-detail-product', {
     pagination: {

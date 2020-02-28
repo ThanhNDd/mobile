@@ -15,7 +15,6 @@
                 <!-- end sidebarbar or panel -->
                 @include('theme.layout.sidebar')
                 <div class="page-content">
-                    <product-component></product-component>
                     <!-- slider -->
                     <div class="slider">
                         <div class="swiper-container swiper1">
@@ -46,56 +45,7 @@
                     <!-- end slider -->
 
                     <!-- cateogries -->
-                    <div class="categories segments no-pd-b">
-                        <div class="container">
-                            <div class="section-title">
-                                <h3>Danh mục</h3>
-                            </div>
-                            <div class="row">
-                                <div class="col-25">
-                                    <div class="content">
-                                        <a href="{{ url("/categories/girls") }}">
-                                            <div class="icon">
-                                                <i class="fas fa-tshirt"></i>
-                                            </div>
-                                            <span>Bé gái</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-25">
-                                    <div class="content">
-                                        <a href="{{ url("/categories/boys") }}">
-                                            <div class="icon">
-                                                <i class="fas fa-tshirt"></i>
-                                            </div>
-                                            <span>Bé trai</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-25">
-                                    <div class="content">
-                                        <a href="{{ url("/categories/shoes") }}">
-                                            <div class="icon">
-                                                <i class="fas fa-tools"></i>
-                                            </div>
-                                            <span>Giày dép</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-25">
-                                    <div class="content">
-                                        <a href="{{ url("/categories/accessories") }}">
-                                            <div class="icon">
-                                                <i class="fas fa-hat-cowboy-side"></i>
-                                            </div>
-                                            <span>Phụ kiện</span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                    @include('theme.page.category.category-wiget')
                     <!-- end cateogries -->
 
                     <!-- latest product -->
@@ -104,23 +54,24 @@
                             <div class="section-title">
                                 <h3>Mới nhất</h3>
                             </div>
-                            <div class="row">
-                                @foreach ($products as $product)
-                                    <div class="col-50">
-                                        <div class="content content-shadow-product">
-                                            <a href="{{ url("/product-details/".$product->id) }}">
-                                                <div class="image">
-                                                    <img src="{{ url($product->image ?? 'images/product2.jpg') }}" alt="">
-                                                </div>
-                                                <div class="text">
-                                                    <p class="title-product title-product-center">{{ $product->name }}</p>
-                                                    <p class="price">{{ $product->retail }}</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
+                            <latest-product-component></latest-product-component>
+{{--                            <div class="row">--}}
+{{--                                @foreach ($products as $product)--}}
+{{--                                    <div class="col-50">--}}
+{{--                                        <div class="content content-shadow-product">--}}
+{{--                                            <a href="{{ url("/product-details/".$product->id) }}">--}}
+{{--                                                <div class="image">--}}
+{{--                                                    <img src="{{ url($product->image ?? 'images/product2.jpg') }}" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text">--}}
+{{--                                                    <p class="title-product title-product-center">{{ $product->name }}</p>--}}
+{{--                                                    <p class="price">{{ $product->retail }}</p>--}}
+{{--                                                </div>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
-                                @endforeach
+{{--                                @endforeach--}}
 
 {{--                                <div class="col-50">--}}
 {{--                                    <div class="content content-shadow-product">--}}
@@ -135,7 +86,7 @@
 {{--                                        </a>--}}
 {{--                                    </div>--}}
 {{--                                </div>--}}
-                            </div>
+{{--                            </div>--}}
 {{--                            <div class="row">--}}
 {{--                                <div class="col-50">--}}
 {{--                                    <div class="content content-shadow-product">--}}
@@ -180,66 +131,67 @@
                                     <a href="{{ url("/sales") }}" class="see-all-link">Xem thêm &raquo;</a>
                                 </h3>
                             </div>
-                            <div class="swiper-container swiper2">
-                                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                                    <div class="swiper-slide" style="margin-right: 15px;">
-                                        <div class="content content-shadow-product">
-                                            <a href="http://localhost:8000/product-details/">
-                                                <div class="image">
-                                                    <img src="{{ url('images/product1.jpg') }}" alt="">
-                                                </div>
-                                                <div class="text">
-                                                    <p>7 sold</p>
-                                                    <span class="notifi-line"></span>
-                                                    <p class="price">$49.00</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide " style="margin-right: 15px;">
-                                        <div class="content content-shadow-product">
-                                            <a href="http://localhost:8000/product-details/">
-                                                <div class="image">
-                                                    <img src="{{ url('images/product2.jpg') }}" alt="">
-                                                </div>
-                                                <div class="text">
-                                                    <p>7 sold</p>
-                                                    <span class="notifi-line"></span>
-                                                    <p class="price">$49.00</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" style="margin-right: 15px;">
-                                        <div class="content content-shadow-product">
-                                            <a href="http://localhost:8000/product-details/">
-                                                <div class="image">
-                                                    <img src="{{ url('images/product3.jpg') }}" alt="">
-                                                </div>
-                                                <div class="text">
-                                                    <p>7 sold</p>
-                                                    <span class="notifi-line"></span>
-                                                    <p class="price">$49.00</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" style="margin-right: 15px;">
-                                        <div class="content content-shadow-product">
-                                            <a href="http://localhost:8000/product-details/">
-                                                <div class="image">
-                                                    <img src="{{ url('images/product4.jpg') }}" alt="">
-                                                </div>
-                                                <div class="text">
-                                                    <p>7 sold</p>
-                                                    <span class="notifi-line"></span>
-                                                    <p class="price">$49.00</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <flash-sale-component></flash-sale-component>
+{{--                            <div class="swiper-container swiper2">--}}
+{{--                                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">--}}
+{{--                                    <div class="swiper-slide" style="margin-right: 15px;">--}}
+{{--                                        <div class="content content-shadow-product">--}}
+{{--                                            <a href="http://localhost:8000/product-details/">--}}
+{{--                                                <div class="image">--}}
+{{--                                                    <img src="{{ url('images/product1.jpg') }}" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text">--}}
+{{--                                                    <p>7 sold</p>--}}
+{{--                                                    <span class="notifi-line"></span>--}}
+{{--                                                    <p class="price">$49.00</p>--}}
+{{--                                                </div>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="swiper-slide " style="margin-right: 15px;">--}}
+{{--                                        <div class="content content-shadow-product">--}}
+{{--                                            <a href="http://localhost:8000/product-details/">--}}
+{{--                                                <div class="image">--}}
+{{--                                                    <img src="{{ url('images/product2.jpg') }}" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text">--}}
+{{--                                                    <p>7 sold</p>--}}
+{{--                                                    <span class="notifi-line"></span>--}}
+{{--                                                    <p class="price">$49.00</p>--}}
+{{--                                                </div>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="swiper-slide" style="margin-right: 15px;">--}}
+{{--                                        <div class="content content-shadow-product">--}}
+{{--                                            <a href="http://localhost:8000/product-details/">--}}
+{{--                                                <div class="image">--}}
+{{--                                                    <img src="{{ url('images/product3.jpg') }}" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text">--}}
+{{--                                                    <p>7 sold</p>--}}
+{{--                                                    <span class="notifi-line"></span>--}}
+{{--                                                    <p class="price">$49.00</p>--}}
+{{--                                                </div>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="swiper-slide" style="margin-right: 15px;">--}}
+{{--                                        <div class="content content-shadow-product">--}}
+{{--                                            <a href="http://localhost:8000/product-details/">--}}
+{{--                                                <div class="image">--}}
+{{--                                                    <img src="{{ url('images/product4.jpg') }}" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text">--}}
+{{--                                                    <p>7 sold</p>--}}
+{{--                                                    <span class="notifi-line"></span>--}}
+{{--                                                    <p class="price">$49.00</p>--}}
+{{--                                                </div>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
                         <!-- end flash sale -->
 
