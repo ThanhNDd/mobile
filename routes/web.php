@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@show');
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('product-details/{id}', 'ProductController@getProduct');
+Route::get('/product-details/{id}', 'ProductController@getProduct');
 
 Route::get('/all-reviews/{id}', function () {
     return view('theme.page.product.reviews');
@@ -33,3 +34,5 @@ Route::get('/info', 'InfoController@show');
 Route::get('/notifications', function () {
     return view('theme.page.notifications');
 });
+
+

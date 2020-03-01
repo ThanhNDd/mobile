@@ -16,21 +16,21 @@
                                     <div class="swiper-slide">
                                         <div class="content">
                                             <div class="mask"></div>
-                                            <img data-image="black" src="{{ url('images/product-details1.jpg') }}" alt="">
+                                            <img data-image="black" src="{{ url($product->image) }}" alt="">
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="content">
-                                            <div class="mask"></div>
-                                            <img data-image="blue" src="{{ url('images/product-details2.jpg') }}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="content">
-                                            <div class="mask"></div>
-                                            <img data-image="red" src="{{ url('images/product-details3.jpg') }}" alt="">
-                                        </div>
-                                    </div>
+{{--                                    <div class="swiper-slide">--}}
+{{--                                        <div class="content">--}}
+{{--                                            <div class="mask"></div>--}}
+{{--                                            <img data-image="blue" src="{{ url('images/product-details2.jpg') }}" alt="">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="swiper-slide">--}}
+{{--                                        <div class="content">--}}
+{{--                                            <div class="mask"></div>--}}
+{{--                                            <img data-image="red" src="{{ url('images/product-details3.jpg') }}" alt="">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                 </div>
                                 <div class="swiper-pagination swiper-pagination-detail-product"></div>
                             </div>
@@ -40,8 +40,8 @@
                         <!-- wrap content product details -->
                         <div class="wrapper-content">
                             <div class="wrap-title-product wrap-c-margin">
-                                <h4>cheap elegant sweater with collar</h4>
-                                <p class="price">$45.00</p>
+                                <h4>{{ $product->name }}</h4>
+                                <p class="price">{{ $product->retail }}</p>
                             </div>
                             <div class="freeship">
                                 <p><i class="fas fa-truck"></i> Free Shipping</p>
