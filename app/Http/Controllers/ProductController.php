@@ -10,7 +10,7 @@ class ProductController extends Controller
     public function index() {
         $products = DB::table('smi_products')->where('status', 0)
             ->orderBy('id', 'desc')
-            ->take(4)
+            ->take(6)
             ->get()->jsonSerialize();
         return response($products, Response::HTTP_OK);
     }

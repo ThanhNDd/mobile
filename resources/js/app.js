@@ -7,6 +7,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.VueRoute = require('vue-router');
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload);
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,6 +26,8 @@ window.Vue = require('vue');
 Vue.component('latest-product-component', require('./components/LatestProductComponent.vue').default);
 Vue.component('flash-sale-component', require('./components/FlashSaleProductComponent.vue').default);
 Vue.component('sale-component', require('./components/SaleComponent.vue').default);
+Vue.component('best-seller-component', require('./components/BestSellerComponent.vue').default);
+Vue.component('attributes-component', require('./components/AttributeComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

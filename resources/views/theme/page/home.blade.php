@@ -17,7 +17,7 @@
                 <div class="page-content">
                     <!-- slider -->
                     <div class="slider">
-                        <div class="swiper-container swiper1">
+                        <div class="swiper-container swiper1" >
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="content">
@@ -52,11 +52,11 @@
                     <div class="latest-product segments no-pd-b">
                         <div class="container">
                             <div class="section-title">
-                                <h3>Mới nhất</h3>
+                                <h3>New Arrivals</h3>
                             </div>
                             <latest-product-component></latest-product-component>
                             <div class="row justify-content-center">
-                                <a href="#" class="view-more">Xem thêm 12 sản phẩm <i
+                                <a href="#" class="view-more">Xem thêm <i
                                             class="fas fa-caret-down"></i></a>
                             </div>
                         </div>
@@ -83,70 +83,71 @@
                         <div class="popular-product product segments-bottom">
                             <div class="container">
                                 <div class="section-title">
-                                    <h3>Nổi bật</h3>
+                                    <h3>Best Seller</h3>
                                 </div>
-                                <div class="row">
-                                    <div class="col-50">
-                                        <div class="content content-shadow-product">
-                                            <a href="http://localhost:8000/product-details/">
-                                                <div class="image">
-                                                    <img src="{{ url('images/product1.jpg') }}" alt="">
-                                                </div>
-                                                <div class="text">
-                                                    <p class="title-product title-product-center">Elegant Blue
-                                                        t-Shirt</p>
-                                                    <p class="price">$80.00</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-50">
-                                        <div class="content content-shadow-product">
-                                            <a href="http://localhost:8000/product-details/">
-                                                <div class="image">
-                                                    <img src="{{ url('images/product2.jpg') }}" alt="">
-                                                </div>
-                                                <div class="text">
-                                                    <p class="title-product title-product-center">Elegant Blue
-                                                        t-Shirt</p>
-                                                    <p class="price">$80.00</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-50">
-                                        <div class="content content-shadow-product">
-                                            <a href="http://localhost:8000/product-details/">
-                                                <div class="image">
-                                                    <img src="{{ url('images/product3.jpg') }}" alt="">
-                                                </div>
-                                                <div class="text">
-                                                    <p class="title-product title-product-center">Elegant Blue
-                                                        t-Shirt</p>
-                                                    <p class="price">$80.00</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-50">
-                                        <div class="content content-shadow-product">
-                                            <a href="http://localhost:8000/product-details/">
-                                                <div class="image">
-                                                    <img src="{{ url('images/product4.jpg') }}" alt="">
-                                                </div>
-                                                <div class="text">
-                                                    <p class="title-product title-product-center">Elegant Blue
-                                                        t-Shirt</p>
-                                                    <p class="price">$80.00</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <best-seller-component></best-seller-component>
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-50">--}}
+{{--                                        <div class="content content-shadow-product">--}}
+{{--                                            <a href="http://localhost:8000/product-details/">--}}
+{{--                                                <div class="image">--}}
+{{--                                                    <img src="{{ url('images/product1.jpg') }}" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text">--}}
+{{--                                                    <p class="title-product title-product-center">Elegant Blue--}}
+{{--                                                        t-Shirt</p>--}}
+{{--                                                    <p class="price">$80.00</p>--}}
+{{--                                                </div>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-50">--}}
+{{--                                        <div class="content content-shadow-product">--}}
+{{--                                            <a href="http://localhost:8000/product-details/">--}}
+{{--                                                <div class="image">--}}
+{{--                                                    <img src="{{ url('images/product2.jpg') }}" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text">--}}
+{{--                                                    <p class="title-product title-product-center">Elegant Blue--}}
+{{--                                                        t-Shirt</p>--}}
+{{--                                                    <p class="price">$80.00</p>--}}
+{{--                                                </div>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-50">--}}
+{{--                                        <div class="content content-shadow-product">--}}
+{{--                                            <a href="http://localhost:8000/product-details/">--}}
+{{--                                                <div class="image">--}}
+{{--                                                    <img src="{{ url('images/product3.jpg') }}" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text">--}}
+{{--                                                    <p class="title-product title-product-center">Elegant Blue--}}
+{{--                                                        t-Shirt</p>--}}
+{{--                                                    <p class="price">$80.00</p>--}}
+{{--                                                </div>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-50">--}}
+{{--                                        <div class="content content-shadow-product">--}}
+{{--                                            <a href="http://localhost:8000/product-details/">--}}
+{{--                                                <div class="image">--}}
+{{--                                                    <img src="{{ url('images/product4.jpg') }}" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text">--}}
+{{--                                                    <p class="title-product title-product-center">Elegant Blue--}}
+{{--                                                        t-Shirt</p>--}}
+{{--                                                    <p class="price">$80.00</p>--}}
+{{--                                                </div>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="row justify-content-center">
-                                    <a href="http://localhost:8000/#" class="view-more">Xem thêm 30 sản phẩm <i
+                                    <a href="http://localhost:8000/#" class="view-more">Xem thêm <i
                                                 class="fas fa-caret-down"></i></a>
                                 </div>
                             </div>

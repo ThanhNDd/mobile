@@ -22,3 +22,9 @@ Route::Resource('/products', 'ProductController');
 Route::Resource('/flash-sales', 'SaleController');
 
 Route::Resource('/sales', 'SaleController');
+
+Route::Resource('/best-seller', 'BestSellerController');
+
+Route::Resource('/attributes', 'AttributesController', ['parameters' => [
+    'attributes' => 'id'
+]]);

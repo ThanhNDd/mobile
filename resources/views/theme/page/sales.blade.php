@@ -7,11 +7,19 @@
             <!-- navbar -->
             <div class="navbar navbar-page">
                 <div class="navbar-inner">
-                    <div class="left"></div>
+                    <div class="left">
+                        <a href="#" class="panel-open">
+                            <i class="fas fa-align-left"></i>
+                        </a>
+                    </div>
                     <div class="title">
                         Khuyến mãi
                     </div>
-                    <div class="right"></div>
+                    <div class="right">
+                        <a href="/notifications/">
+                            <i class="fas fa-bell"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <!-- end navbar -->
@@ -52,95 +60,11 @@
                     <div class="product-brand segments-bottom product">
                         <div class="container">
                             <sale-component></sale-component>
-{{--                            <div class="row">--}}
-{{--                                <div class="col-50">--}}
-{{--                                    <div class="content content-shadow-product">--}}
-{{--                                        <a href="/product-details/">--}}
-{{--                                            <div class="image">--}}
-{{--                                                <img src="images/product1.png" alt="product">--}}
-{{--                                            </div>--}}
-{{--                                            <div class="text">--}}
-{{--                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>--}}
-{{--                                                <p class="price">$80.00</p>--}}
-{{--                                            </div>--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-50">--}}
-{{--                                    <div class="content content-shadow-product">--}}
-{{--                                        <a href="/product-details/">--}}
-{{--                                            <div class="image">--}}
-{{--                                                <img src="images/product2.png" alt="product">--}}
-{{--                                            </div>--}}
-{{--                                            <div class="text">--}}
-{{--                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>--}}
-{{--                                                <p class="price">$80.00</p>--}}
-{{--                                            </div>--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-50">--}}
-{{--                                    <div class="content content-shadow-product">--}}
-{{--                                        <a href="/product-details/">--}}
-{{--                                            <div class="image">--}}
-{{--                                                <img src="images/product3.png" alt="product">--}}
-{{--                                            </div>--}}
-{{--                                            <div class="text">--}}
-{{--                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>--}}
-{{--                                                <p class="price">$80.00</p>--}}
-{{--                                            </div>--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-50">--}}
-{{--                                    <div class="content content-shadow-product">--}}
-{{--                                        <a href="/product-details/">--}}
-{{--                                            <div class="image">--}}
-{{--                                                <img src="images/product4.png" alt="product">--}}
-{{--                                            </div>--}}
-{{--                                            <div class="text">--}}
-{{--                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>--}}
-{{--                                                <p class="price">$80.00</p>--}}
-{{--                                            </div>--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-50">--}}
-{{--                                    <div class="content content-shadow-product">--}}
-{{--                                        <a href="/product-details/">--}}
-{{--                                            <div class="image">--}}
-{{--                                                <img src="images/product5.png" alt="product">--}}
-{{--                                            </div>--}}
-{{--                                            <div class="text">--}}
-{{--                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>--}}
-{{--                                                <p class="price">$80.00</p>--}}
-{{--                                            </div>--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-50">--}}
-{{--                                    <div class="content content-shadow-product">--}}
-{{--                                        <a href="/product-details/">--}}
-{{--                                            <div class="image">--}}
-{{--                                                <img src="images/product6.png" alt="product">--}}
-{{--                                            </div>--}}
-{{--                                            <div class="text">--}}
-{{--                                                <p class="title-product title-product-center">Elegant Blue t-Shirt</p>--}}
-{{--                                                <p class="price">$80.00</p>--}}
-{{--                                            </div>--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                         </div>
                     </div>
                     <!-- end product brand -->
                     <div class="row justify-content-center pb-4">
-                        <a href="#" class="view-more">Xem thêm 12 khuyến mãi<i
+                        <a href="#" class="view-more">Xem thêm <i
                                 class="fas fa-caret-down"></i></a>
                     </div>
                 </div>

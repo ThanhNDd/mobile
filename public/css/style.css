@@ -323,7 +323,9 @@ ul li {
     font-size: 13px;
     font-weight: 400;
 }
-
+.text p {
+    margin: 0 !important;
+}
 .price {
     margin-bottom: 8px;
     font-size: 14px;
@@ -499,14 +501,13 @@ ul li {
 .navbar-home .navbar-inner .right a span {
     display: inline-block;
     background: #ff3643;
-    width: 20px;
-    height: 20px;
     border-radius: 50%;
     position: absolute;
     top: -6px;
     right: -9px;
     font-size: 14px;
     text-align: center;
+    padding: 2px;
 }
 
 .navbar-home::after {
@@ -691,10 +692,10 @@ ul li {
     color: #333 !important;
 }
 
-.latest-product .content .text .price {
-    margin-bottom: 0;
-    font-size: 16px;
-}
+/*.latest-product .content .text .price {*/
+/*    margin-bottom: 0;*/
+/*    font-size: 16px;*/
+/*}*/
 
 /*flash sale*/
 .flash-sale {
@@ -782,6 +783,7 @@ ul li {
 
 .product .content .text {
     padding: 10px;
+    text-align: center;
 }
 
 /*popular product*/
@@ -2808,7 +2810,7 @@ form.list ul::after {
     font-weight: 700;
     color: var(--main-color) !important;
     border: 1px solid var(--main-color);
-    padding: 5px 40px;
+    padding: 5px 20px;
     border-radius: 4px;
 }
 
@@ -2886,23 +2888,26 @@ a.back {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.33);
 }
 
-.color-choose input[type="radio"]#red + label span {
-    background-color: #C91524;
-}
-.color-choose input[type="radio"]#blue + label span {
-    background-color: #314780;
-}
-.color-choose input[type="radio"]#black + label span {
-    background-color: #323232;
-}
+/*.color-choose input[type="radio"]#red + label span {*/
+/*    background-color: #C91524;*/
+/*}*/
+/*.color-choose input[type="radio"]#blue + label span {*/
+/*    background-color: #314780;*/
+/*}*/
+/*.color-choose input[type="radio"]#black + label span {*/
+/*    background-color: #323232;*/
+/*}*/
 .color-choose input[type="radio"]:checked + label span {
     background-image: url(../images/check-icn.svg);
     background-repeat: no-repeat;
     background-position: center;
+    border: 2px solid #005bbd;
+    box-shadow: 0 1px 5px 0 #005bbd57;
 }
 
 .size-choose div {
     display: inline-block;
+    margin: 0 2px 2px 0;
 }
 
 .size-choose input[type="radio"] {

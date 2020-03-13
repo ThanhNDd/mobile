@@ -6,11 +6,19 @@
         <div class="page">
             <div class="navbar navbar-page">
                 <div class="navbar-inner">
-                    <div class="left"></div>
+                    <div class="left">
+                        <a href="#" class="panel-open">
+                            <i class="fas fa-align-left"></i>
+                        </a>
+                    </div>
                     <div class="title">
                         Danh mục
                     </div>
-                    <div class="right"></div>
+                    <div class="right">
+                        <a href="/notifications/">
+                            <i class="fas fa-bell"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="page-content">

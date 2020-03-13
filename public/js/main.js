@@ -4,10 +4,16 @@ var swiper = new Swiper('.swiper1', {
         dynamicBullets: true,
         paginationClickable: true
     },
+    autoplay: {
+        delay: 5000,
+    },
 });
 
-var swiper2 = new Swiper('.swiper2',{
-    slidesPerView: 3
+new Swiper('.swiper-flash-sale',{
+    slidesPerView: 2,
+    autoplay: {
+        delay: 5000,
+    },
 });
 var swiper3 = new Swiper('.swiper-detail-product', {
     pagination: {
