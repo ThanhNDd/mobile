@@ -1,7 +1,7 @@
 @extends('theme.layout.layout')
 
 @section('content')
-    <div class="view view-reviews ios-edges">
+    <div id="app" class="view view-reviews ios-edges">
         @include('theme.layout.tabbar')
         <div class="page">
             <div class="navbar navbar-page">

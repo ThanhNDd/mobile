@@ -31,6 +31,7 @@ var swiper5 = new Swiper('.swiper-recommended-product',{
 // var swiper6 = new Swiper('.swiper6',{
 //     slidesPerView: 3
 // });
+
 $(document).ready(function () {
     $('a[href="#tab-home"]').click(function(){
         set_active_tab('tab-home');

@@ -1,7 +1,7 @@
 @extends('theme.layout.layout')
 @section('title', 'Shop Mẹ Ỉn - Thời trang trẻ em cao cấp')
 @section('content')
-<div class="view view-main view-init ios-edges">
+<div id="app" class="view view-main view-init ios-edges">
     <div class="page page-home page-with-subnavbar">
         @include('theme.layout.tabbar')
         <div class="tabs">

@@ -1,20 +1,4 @@
 <template>
-<!--    <div class="row">-->
-<!--        <div class="col-50" v-for="product in products">-->
-<!--            <div class="content content-shadow-product">-->
-<!--                <a v-bind:href="'/product-details/' + product.id">-->
-<!--                    <div class="image">-->
-<!--                        <img v-bind:src="format_image(product.image)" v-bind:alt="product.name">-->
-<!--                    </div>-->
-<!--                    <div class="text">-->
-<!--                        <p class="title-product title-product-center" v-text="product.name"></p>-->
-<!--                        <p class="price sale-price" v-text="formatPrice(product.retail)"></p>-->
-<!--                        <p class="price" v-text="formatSalePrice(product.discount, product.retail, product.discount)"></p>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
     <ul>
         <li>
             <a href="#" class="item-link item-content sheet-open">
@@ -24,8 +8,7 @@
                         <div class="item-cell">
                             <div class="color-choose">
                                 <div v-for="attr in attributes.colors">
-                                    <input type="radio" v-bind:id="attr.color"
-                                           name="color" v-bind:value="attr.color">
+                                    <input type="radio" v-bind:id="attr.color" name="color" v-bind:value="attr.color" v-model="color">
                                     <label v-bind:for="attr.color"><span v-bind:style="format_color(attr.color)"></span></label>
                                 </div>
                             </div>
@@ -42,8 +25,7 @@
                         <div class="item-cell">
                             <div class="size-choose">
                                 <div v-for="attr in attributes.size">
-                                    <input type="radio" v-bind:id="attr.size" name="size"
-                                           v-bind:value="attr.size">
+                                    <input type="radio" v-bind:id="attr.size" name="size" v-bind:value="attr.size">
                                     <label v-bind:for="attr.size"><span v-text="attr.size"></span></label>
                                 </div>
                             </div>
@@ -70,7 +52,8 @@
     export default {
         data() {
             return {
-                attributes: []
+                attributes: [],
+                color: ''
             }
         },
         created() {
