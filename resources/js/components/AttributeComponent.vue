@@ -9,7 +9,7 @@
                             <div class="color-choose">
                                 <div v-for="attr in attributes.colors">
                                     <input type="radio" v-bind:id="attr.color" name="color" v-bind:value="attr.color" v-model="color">
-                                    <label v-bind:for="attr.color"><span v-bind:style="format_color(attr.color)"></span></label>
+                                    <label v-bind:for="attr.color"><span v-bind:style="attr.color | format_color"></span></label>
                                 </div>
                             </div>
                         </div>
@@ -64,49 +64,6 @@
                 });
         },
         methods: {
-            format_color(value) {
-                let color_code = '';
-                switch (value) {
-                    case 'Trắng':
-                        color_code = 'background-color: white';
-                        break;
-                    case 'Xanh':
-                        color_code = 'background-color: lightseagreen';
-                        break;
-                    case 'Đỏ':
-                        color_code = 'background-color: red';
-                        break;
-                    case 'Tím':
-                        color_code = 'background-color: purple';
-                        break;
-                    case 'Vàng':
-                        color_code = 'background-color: yellow';
-                        break;
-                    case 'Xám':
-                        color_code = 'background-color: gray';
-                        break;
-                    case 'Hồng':
-                        color_code = 'background-color: pink';
-                        break;
-                    case 'Đen':
-                        color_code = 'background-color: black';
-                        break;
-                    case 'Nâu':
-                        color_code = 'background-color: brown';
-                        break;
-                    case 'Kem':
-                        color_code = 'background-color: blue';
-                        break;
-                    case 'Cam':
-                        color_code = 'background-color: orange';
-                        break;
-                    case 'Kẻ':
-                        color_code = 'background-image: linear-gradient(90deg, rgba(200,0,0,.5) 50%, transparent 50%), linear-gradient(rgba(200,0,0,.5) 50%, transparent 50%);\n' +
-                            '}';
-                        break;
-                }
-                return color_code;
-            }
         }
     }
 </script>

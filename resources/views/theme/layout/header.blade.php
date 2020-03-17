@@ -22,7 +22,9 @@
                 <a href="{{ url('/cart') }}">
                     <i class="fas fa-shopping-cart"></i>
 {{--                    <span class="badge badge-danger" id="cart_number"></span>--}}
-                    <cart-number-component/>
+                    <div class="cart_detail">
+                        <cart-number-component/>
+                    </div>
                 </a>
             @else
                 <a href="{{ url('/notifications') }}">

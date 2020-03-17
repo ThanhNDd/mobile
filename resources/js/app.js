@@ -36,11 +36,75 @@ Vue.component('flash-sale-component', require('./components/FlashSaleProductComp
 Vue.component('sale-component', require('./components/SaleComponent.vue').default);
 Vue.component('best-seller-component', require('./components/BestSellerComponent.vue').default);
 Vue.component('attributes-component', require('./components/AttributeComponent.vue').default);
-<<<<<<< HEAD
 Vue.component('relate-product-component', require('./components/RelateProductComponent.vue').default);
-=======
 Vue.component('cart-number-component', require('./components/CartComponent.vue').default);
->>>>>>> 59727cb1390fb6262641839c3a0ca1f19a7b7624
+Vue.component('items-cart-component', require('./components/ItemsInCartComponent.vue').default);
+
+Vue.filter('formatPrice', function (value) {
+    let val = (value/1).toFixed(0).replace('.', ',');
+    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' đ';
+});
+Vue.filter('formatSalePrice', function (discount, retail) {
+    let sale_price = retail - (discount * retail) / 100;
+    let val = (sale_price).toFixed(0).replace('.', ',');
+    val = val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' đ';
+    if(discount > 0) {
+        val += ' (-' + discount + '%)';
+    }
+    return val;
+});
+Vue.filter('format_image', function (value) {
+    let image = JSON.parse(value);
+    let src = image[0].src;
+    let type = image[0].type;
+    if(type === 'upload') {
+        src = 'https://admin.shopmein.vn/dist/uploads/' + src;
+    }
+    return src;
+});
+Vue.filter('format_color', function (value) {
+    let color_code = '';
+    switch (value) {
+        case 'Trắng':
+            color_code = 'background-color: white';
+            break;
+        case 'Xanh':
+            color_code = 'background-color: lightseagreen';
+            break;
+        case 'Đỏ':
+            color_code = 'background-color: red';
+            break;
+        case 'Tím':
+            color_code = 'background-color: purple';
+            break;
+        case 'Vàng':
+            color_code = 'background-color: yellow';
+            break;
+        case 'Xám':
+            color_code = 'background-color: gray';
+            break;
+        case 'Hồng':
+            color_code = 'background-color: pink';
+            break;
+        case 'Đen':
+            color_code = 'background-color: black';
+            break;
+        case 'Nâu':
+            color_code = 'background-color: brown';
+            break;
+        case 'Kem':
+            color_code = 'background-color: blue';
+            break;
+        case 'Cam':
+            color_code = 'background-color: orange';
+            break;
+        case 'Kẻ':
+            color_code = 'background-image: linear-gradient(90deg, rgba(200,0,0,.5) 50%, transparent 50%), linear-gradient(rgba(200,0,0,.5) 50%, transparent 50%);\n' +
+                '}';
+            break;
+    }
+    return color_code;
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -50,4 +114,10 @@ Vue.component('cart-number-component', require('./components/CartComponent.vue')
 
 const app = new Vue({
     el: '#app',
+    // filters: {
+    //     formatPrice: function(value) {
+    //         let val = (value/1).toFixed(0).replace('.', ',');
+    //         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' đ';
+    //     }
+    // }
 });

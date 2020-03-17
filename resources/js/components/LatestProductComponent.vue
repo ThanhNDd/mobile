@@ -4,11 +4,11 @@
             <div class="content content-shadow-product">
                 <a v-bind:href="'/product-details/' + product.id">
                     <div class="image">
-                        <img v-bind:src="format_image(product.image)" v-bind:alt="product.name">
+                        <img v-bind:src="product.image | format_image" v-bind:alt="product.name">
                     </div>
                     <div class="text">
                         <p class="title-product title-product-center" v-text="product.name"></p>
-                        <p class="price" v-text="formatPrice(product.retail) + ' đ'"></p>
+                        <p class="price">{{product.retail | formatPrice}}</p>
                     </div>
                 </a>
             </div>
@@ -30,19 +30,6 @@
                 });
         },
         methods: {
-            formatPrice(value) {
-                let val = (value/1).toFixed(0).replace('.', ',');
-                return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            },
-            format_image(value) {
-                let image = JSON.parse(value);
-                let src = image[0].src;
-                let type = image[0].type;
-                if(type === 'upload') {
-                    src = 'https://admin.shopmein.vn/dist/uploads/' + src;
-                }
-                return src;
-            }
         }
     }
 </script>

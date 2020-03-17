@@ -1670,7 +1670,7 @@ ul li {
 }
 
 .product-details .wrapper-content .wrap-info .list .item-content .item-row .item-cell:first-child {
-    color: #888;
+    /*color: #888;*/
 }
 
 .product-details .wrap-store {
@@ -2979,8 +2979,14 @@ p.price.sale-price {
     font-size: 14px;
     font-weight: normal;
     padding: 4px;
-    /*position: absolute;*/
-    top: -9px;
-    right: -7px;
+    top: -5px;
+    right: -14px;
     display: inline-block;
+}
+.cart_detail .cart_number .badge {
+    top: -29px;
+    right: -10px;
+}
+label.trash {
+    font-size: 14px;
 }
