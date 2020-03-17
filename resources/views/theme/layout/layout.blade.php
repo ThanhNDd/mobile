@@ -21,7 +21,7 @@
 </head>
 <body>
 
-	<div id="app" class="framework7-root">
+	<div class="framework7-root">
 		<div class="panel-backdrop"></div>
 	    @include('theme.layout.sidebar')
         @yield('content')
@@ -34,6 +34,6 @@
     <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
 
 	<script src="{!! asset('js/main.js') !!}"></script>
-
+	@yield('script')
 </body>
 </html>

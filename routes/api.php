@@ -29,4 +29,9 @@ Route::Resource('/attributes', 'AttributesController', ['parameters' => [
     'attributes' => 'id'
 ]]);
 
+<<<<<<< HEAD
 Route::Resource('/relate.category', 'RelateProductController');
+=======
+Route::Resource('/cart', 'CartController');
+
+>>>>>>> 59727cb1390fb6262641839c3a0ca1f19a7b7624

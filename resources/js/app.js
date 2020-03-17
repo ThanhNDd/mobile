@@ -8,10 +8,18 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 window.VueRoute = require('vue-router');
-import VueLazyload from 'vue-lazyload'
+import VueLazyload from 'vue-lazyload';
+
+import 'vue2-toast/lib/toast.css';
+import Toast from 'vue2-toast';
+Vue.use(Toast, {
+    type: 'center',
+    duration: 3000,
+    wordWrap: true,
+    width: '90%'
+});
 
 Vue.use(VueLazyload);
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -28,7 +36,11 @@ Vue.component('flash-sale-component', require('./components/FlashSaleProductComp
 Vue.component('sale-component', require('./components/SaleComponent.vue').default);
 Vue.component('best-seller-component', require('./components/BestSellerComponent.vue').default);
 Vue.component('attributes-component', require('./components/AttributeComponent.vue').default);
+<<<<<<< HEAD
 Vue.component('relate-product-component', require('./components/RelateProductComponent.vue').default);
+=======
+Vue.component('cart-number-component', require('./components/CartComponent.vue').default);
+>>>>>>> 59727cb1390fb6262641839c3a0ca1f19a7b7624
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
