@@ -28,6 +28,7 @@ Vue.component('flash-sale-component', require('./components/FlashSaleProductComp
 Vue.component('sale-component', require('./components/SaleComponent.vue').default);
 Vue.component('best-seller-component', require('./components/BestSellerComponent.vue').default);
 Vue.component('attributes-component', require('./components/AttributeComponent.vue').default);
+Vue.component('relate-product-component', require('./components/RelateProductComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

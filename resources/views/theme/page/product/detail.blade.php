@@ -12,6 +12,7 @@
                         <!-- wrap content product details -->
                         <div class="wrapper-content">
                             <input type="hidden" id="product_id" ref="productId" value="{{$product->id}}">
+                            <input type="hidden" id="cat_id" ref="catId" value="{{$product->category_id}}">
                             <div class="slider-p-details">
                                 <div class="swiper-container swiper-detail-product">
                                     <div class="swiper-pagination"></div>
@@ -36,73 +37,6 @@
                             <div class="wrap-info">
                                 <div class="list">
                                     <attributes-component></attributes-component>
-{{--                                    <ul>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="#" class="item-link item-content sheet-open">--}}
-{{--                                                <div class="item-inner item-cell">--}}
-{{--                                                    <div class="item-row">--}}
-{{--                                                        <div class="item-cell ">Màu sắc</div>--}}
-{{--                                                        <div class="item-cell">--}}
-{{--                                                            <div class="color-choose">--}}
-{{--                                                                <div>--}}
-{{--                                                                    <input data-image="red" type="radio" id="red"--}}
-{{--                                                                           name="color" value="red">--}}
-{{--                                                                    <label for="red"><span></span></label>--}}
-{{--                                                                </div>--}}
-{{--                                                                <div>--}}
-{{--                                                                    <input data-image="blue" type="radio" id="blue"--}}
-{{--                                                                           name="color" value="blue">--}}
-{{--                                                                    <label for="blue"><span></span></label>--}}
-{{--                                                                </div>--}}
-{{--                                                                <div>--}}
-{{--                                                                    <input data-image="black" type="radio" id="black"--}}
-{{--                                                                           name="color" value="black">--}}
-{{--                                                                    <label for="black"><span></span></label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="#" class="item-link item-content sheet-open">--}}
-{{--                                                <div class="item-inner item-cell">--}}
-{{--                                                    <div class="item-row">--}}
-{{--                                                        <div class="item-cell ">Size</div>--}}
-{{--                                                        <div class="item-cell">--}}
-{{--                                                            <div class="size-choose">--}}
-{{--                                                                <div>--}}
-{{--                                                                    <input type="radio" id="XXL" name="size"--}}
-{{--                                                                           value="XXL">--}}
-{{--                                                                    <label for="XXL"><span>XXL</span></label>--}}
-{{--                                                                </div>--}}
-{{--                                                                <div>--}}
-{{--                                                                    <input type="radio" id="XL" name="size" value="XL">--}}
-{{--                                                                    <label for="XL"><span>XL</span></label>--}}
-{{--                                                                </div>--}}
-{{--                                                                <div>--}}
-{{--                                                                    <input type="radio" id="160" name="size"--}}
-{{--                                                                           value="160">--}}
-{{--                                                                    <label for="160"><span>160</span></label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="#" class="item-link item-content sheet-open">--}}
-{{--                                                <div class="item-inner item-cell">--}}
-{{--                                                    <div class="item-row">--}}
-{{--                                                        <div class="item-cell ">Thông tin sản phẩm</div>--}}
-{{--                                                        <div class="item-cell description">Mô tả</div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
                                 </div>
                             </div>
                         </div>
@@ -113,7 +47,7 @@
 {{--                                    <a href="{{ url("/categories/boys") }}" class="see-all-link">Xem thêm &raquo;</a>--}}
                                 </h3>
                             </div>
-                            <flash-sale-component></flash-sale-component>
+                            <relate-product-component></relate-product-component>
 {{--                            <div class="swiper-container swiper-relate-product">--}}
 {{--                                <div class="swiper-wrapper">--}}
 {{--                                    <div class="swiper-slide">--}}

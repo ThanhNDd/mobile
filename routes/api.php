@@ -28,3 +28,5 @@ Route::Resource('/best-seller', 'BestSellerController');
 Route::Resource('/attributes', 'AttributesController', ['parameters' => [
     'attributes' => 'id'
 ]]);
+
+Route::Resource('/relate.category', 'RelateProductController');

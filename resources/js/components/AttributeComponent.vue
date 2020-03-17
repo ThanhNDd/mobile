@@ -1,20 +1,4 @@
 <template>
-<!--    <div class="row">-->
-<!--        <div class="col-50" v-for="product in products">-->
-<!--            <div class="content content-shadow-product">-->
-<!--                <a v-bind:href="'/product-details/' + product.id">-->
-<!--                    <div class="image">-->
-<!--                        <img v-bind:src="format_image(product.image)" v-bind:alt="product.name">-->
-<!--                    </div>-->
-<!--                    <div class="text">-->
-<!--                        <p class="title-product title-product-center" v-text="product.name"></p>-->
-<!--                        <p class="price sale-price" v-text="formatPrice(product.retail)"></p>-->
-<!--                        <p class="price" v-text="formatSalePrice(product.discount, product.retail, product.discount)"></p>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
     <ul>
         <li>
             <a href="#" class="item-link item-content sheet-open">
