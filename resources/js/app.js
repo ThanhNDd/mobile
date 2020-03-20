@@ -39,6 +39,7 @@ Vue.component('attributes-component', require('./components/AttributeComponent.v
 Vue.component('relate-product-component', require('./components/RelateProductComponent.vue').default);
 Vue.component('cart-number-component', require('./components/CartComponent.vue').default);
 Vue.component('items-cart-component', require('./components/ItemsInCartComponent.vue').default);
+Vue.component('checkout-component', require('./components/CheckoutComponent.vue').default);
 
 Vue.filter('formatPrice', function (value) {
     let val = (value/1).toFixed(0).replace('.', ',');

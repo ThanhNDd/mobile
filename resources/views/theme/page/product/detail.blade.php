@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="wrap-info">
                                     <div class="list">
-                                        <attributes-component></attributes-component>
+                                        <attributes-component/>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
         <div class="sheet-modal description-sheet">
             <div class="toolbar">
                 <div class="toolbar-inner">
-                    <div class="left">Mô tả sản phẩm</div>
+                    <div class="left">Bảng chọn size</div>
                     <div class="right">
                         <a href="#" class="link sheet-close"><i class="fas fa-check"></i></a>
                     </div>
@@ -243,25 +243,53 @@
             <div class="sheet-modal-inner segments">
                 <div class="page-content">
                     <div class="container">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere
-                            eveniet totam optio eaque nemo, autem doloremque in impedit sequi
-                            deleniti!</p>
-                        <!-- divider space for text -->
-                        <div class="divider-space-text"></div>
-                        <!-- end divider space for text -->
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur,
-                            laudantium.</p>
-                        <!-- divider space for text -->
-                        <div class="divider-space-text"></div>
-                        <!-- end divider space for text -->
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
-                            odit accusamus laborum nemo magnam suscipit!</p>
-                        <!-- divider space for text -->
-                        <div class="divider-space-text"></div>
-                        <!-- end divider space for text -->
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum
-                            quidem expedita nihil molestias quibusdam dolores at sunt obcaecati
-                            repudiandae nemo.</p>
+                        <h3 class="center">Bảng chọn size cho bé</h3>
+                        <div class="table-responsive">
+                            <h5>1. Size quần áo</h5>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tuổi</th>
+                                    <th>Chiều cao (cm)</th>
+                                    <th>Cân nặng (kg)</th>
+                                    <th>Size</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Anna</td>
+                                    <td>Pitt</td>
+                                    <td>35</td>
+                                    <td>New York</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-responsive">
+                            <h5>2. Size giày dép</h5>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tuổi</th>
+                                    <th>Chiều cao (cm)</th>
+                                    <th>Cân nặng (kg)</th>
+                                    <th>Size</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Anna</td>
+                                    <td>Pitt</td>
+                                    <td>35</td>
+                                    <td>New York</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -300,12 +328,12 @@
                         "color": color.value,
                         "size": size.value,
                     });
-                    this.storeInSession();
+                    this.storeInCart();
                 },
                 buyNow: function (id, name, price, image) {
                     this.addToCart(id, name, price, image);
                 },
-                storeInSession: function () {
+                storeInCart: function () {
                     axios.post("/api/cart", {
                         body: this.products
                     }).then(response => {
@@ -314,6 +342,9 @@
                     })
                 }
             }
+        });
+        new Swiper('.swiper-relate-product',{
+            slidesPerView: 3
         });
     </script>
 @endsection

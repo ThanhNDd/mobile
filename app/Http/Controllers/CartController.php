@@ -102,7 +102,6 @@ class CartController extends Controller
     {
         $body = $request->body;
         $body = $body[0];
-        $new_carts = array();
         if($request->session()->has("cart")) {
             $carts = $request->session()->get("cart");
             foreach ($carts as $key => $c) {
@@ -116,5 +115,11 @@ class CartController extends Controller
         }
         $request->session()->put('cart', $carts);
         return response()->json($carts);
+    }
+
+    public function checkout()
+    {
+        $is_active = 'checkout';
+        return view('theme.page.checkout', compact('is_active'));
     }
 }

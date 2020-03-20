@@ -38,8 +38,8 @@
             <a href="#" class="item-link item-content sheet-open">
                 <div class="item-inner item-cell">
                     <div class="item-row">
-                        <div class="item-cell ">Thông tin sản phẩm</div>
-                        <div class="item-cell description">Mô tả</div>
+                        <div class="item-cell ">Cách chọn size</div>
+                        <div class="item-cell description">Chi tiết</div>
                     </div>
                 </div>
             </a>
@@ -53,7 +53,7 @@
         data() {
             return {
                 attributes: [],
-                color: ''
+                color: ""
             }
         },
         created() {

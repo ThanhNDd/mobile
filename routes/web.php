@@ -30,6 +30,7 @@ Route::group(['prefix' => '/categories'], function () {
 
 Route::get('/sales', 'SaleController@get_all_products');
 Route::get('/cart', 'CartController@show');
+Route::get('/checkout', 'CartController@checkout');
 Route::get('/info', 'InfoController@show');
 Route::get('/notifications', function () {
     return view('theme.page.notifications');

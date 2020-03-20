@@ -22,9 +22,7 @@ var swiper3 = new Swiper('.swiper-detail-product', {
         paginationClickable: true
     },
 });
-var swiper4 = new Swiper('.swiper-relate-product',{
-    slidesPerView: 3
-});
+
 var swiper5 = new Swiper('.swiper-recommended-product',{
     slidesPerView: 3
 });
