@@ -9,9 +9,15 @@ require('./bootstrap');
 window.Vue = require('vue');
 window.VueRoute = require('vue-router');
 import VueLazyload from 'vue-lazyload';
-
 import 'vue2-toast/lib/toast.css';
 import Toast from 'vue2-toast';
+
+Vue.http.headers.common['Content-Type'] = 'application/json'
+Vue.http.headers.common['Access-Control-Allow-Origin'] = '*'
+Vue.http.headers.common['Accept'] = 'application/json, text/plain, */*'
+Vue.http.headers.common['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, Authorization, Access-Control-Allow-Origin'
+
+
 Vue.use(Toast, {
     type: 'center',
     duration: 3000,

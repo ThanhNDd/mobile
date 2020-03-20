@@ -2125,10 +2125,65 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      carts: []
+      carts: [],
+      errors: [],
+      name: null,
+      phone: null,
+      email: null,
+      address: null,
+      city: []
     };
   },
   created: function created() {
@@ -2136,6 +2191,22 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/api/carts').then(function (response) {
       _this.carts = response.data;
+    }); // axios.get('https://admin.shopmein.vn/src/controller/orders/OrderController.php?orders=loadDataCity', { crossdomain: true }
+    // )
+    //     .then(response => {
+    //         this.city = response.data
+    //     });
+
+    axios.get('https://admin.shopmein.vn/src/controller/orders/OrderController.php?orders=loadDataCity', {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, GET, PUT, OPTIONS, DELETE',
+        'Access-Control-Allow-Headers': 'Access-Control-Allow-Methods, Access-Control-Allow-Origin, Origin, Accept, Content-Type',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then(function (response) {
+      _this.city = response.data;
     });
   },
   computed: {
@@ -2167,6 +2238,27 @@ __webpack_require__.r(__webpack_exports__);
     formatPrice: function formatPrice(value) {
       var val = (value / 1).toFixed(0).replace('.', ',');
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' đ';
+    },
+    checkForm: function checkForm(e) {
+      if (this.name && this.phone && this.address) {
+        return true;
+      }
+
+      this.errors = [];
+
+      if (!this.name) {
+        this.errors.push('Bạn chưa nhập tên.');
+      }
+
+      if (!this.phone) {
+        this.errors.push('Bạn chưa nhập số điện thoại.');
+      }
+
+      if (!this.address) {
+        this.errors.push('Bạn chưa nhập địa chỉ.');
+      }
+
+      e.preventDefault();
     }
   }
 });
@@ -40549,69 +40641,215 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _vm._l(_vm.carts, function(cart, index) {
-        return _c("div", { staticClass: "content" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-20" }, [
-              _c("div", { staticClass: "content-image" }, [
-                _c("img", { attrs: { src: cart["image"], alt: "" } })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-40" }, [
-              _c("div", { staticClass: "content-text" }, [
-                _c("p", {
-                  staticClass: "title-product",
-                  domProps: {
-                    textContent: _vm._s(
-                      cart["name"] +
-                        " - " +
-                        cart["color"] +
-                        " - " +
-                        cart["size"]
-                    )
-                  }
-                }),
-                _vm._v(" "),
-                _c("p", {
-                  domProps: {
-                    textContent: _vm._s(
-                      _vm.displayPrice(cart["price"], cart["qty"])
-                    )
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-30 align-self-center" })
-          ])
-        ])
-      }),
+  return _c("div", { staticClass: "page-content" }, [
+    _c("div", { staticClass: "cart segments" }, [
+      _c("h5", [_vm._v("Danh sách sản phẩm")]),
       _vm._v(" "),
       _c("div", { staticClass: "divider-space-content" }),
       _vm._v(" "),
-      _c("div", { staticClass: "wrap-total-cart" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "content-total" }, [
-            _c("ul", [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("li", [
-                _c("h6", [_vm._v(_vm._s(_vm._f("formatPrice")(_vm.Total)))])
+      _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _vm._l(_vm.carts, function(cart, index) {
+            return _c("div", { staticClass: "content" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-20" }, [
+                  _c("div", { staticClass: "content-image" }, [
+                    _c("img", { attrs: { src: cart["image"], alt: "" } })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-80" }, [
+                  _c("div", { staticClass: "content-text" }, [
+                    _c("p", {
+                      staticClass: "title-product",
+                      domProps: {
+                        textContent: _vm._s(
+                          cart["name"] +
+                            " - " +
+                            cart["color"] +
+                            " - " +
+                            cart["size"]
+                        )
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", {
+                      domProps: {
+                        textContent: _vm._s(
+                          _vm.displayPrice(cart["price"], cart["qty"])
+                        )
+                      }
+                    })
+                  ])
+                ])
+              ])
+            ])
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "divider-space-content" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "wrap-total-cart" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "content-total" }, [
+                _c("ul", [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("h6", [_vm._v(_vm._s(_vm._f("formatPrice")(_vm.Total)))])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "cart segments" }, [
+      _c("h5", [_vm._v("Thông tin người nhận")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "divider-space-content" }),
+      _vm._v(" "),
+      _c("form", { staticClass: "list", on: { submit: _vm.checkForm } }, [
+        _vm.errors.length
+          ? _c(
+              "ul",
+              _vm._l(_vm.errors, function(error) {
+                return _c("li", [
+                  _c(
+                    "p",
+                    { staticStyle: { "font-size": "14px", color: "red" } },
+                    [_vm._v(_vm._s(error))]
+                  )
+                ])
+              }),
+              0
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("ul", [
+          _c("li", { staticClass: "item-content item-input" }, [
+            _c("div", { staticClass: "item-inner" }, [
+              _c("div", { staticClass: "item-input-wrap" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.name,
+                      expression: "name"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "Họ tên" },
+                  domProps: { value: _vm.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.name = $event.target.value
+                    }
+                  }
+                })
               ])
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("li", { staticClass: "item-content item-input" }, [
+            _c("div", { staticClass: "item-inner" }, [
+              _c("div", { staticClass: "item-input-wrap" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.phone,
+                      expression: "phone"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "Số điện thoại" },
+                  domProps: { value: _vm.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.phone = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "item-content item-input" }, [
+            _c("div", { staticClass: "item-inner" }, [
+              _c("div", { staticClass: "item-input-wrap" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    }
+                  ],
+                  attrs: { type: "email", placeholder: "Email" },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "item-content item-input" }, [
+            _c("div", { staticClass: "item-inner" }, [
+              _c("div", { staticClass: "item-input-wrap" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.address,
+                      expression: "address"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "Địa chỉ" },
+                  domProps: { value: _vm.address },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.address = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _vm._m(4)
         ])
       ])
-    ],
-    2
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -40624,11 +40862,54 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-button" }, [
+    return _c("li", { staticClass: "item-content item-input" }, [
+      _c("div", { staticClass: "item-inner" }, [
+        _c("div", { staticClass: "item-input-wrap" }, [
+          _c(
+            "button",
+            { staticClass: "button primary-button", attrs: { type: "submit" } },
+            [
+              _c("i", { staticClass: "fas fa-shopping-bag" }),
+              _vm._v("Thực hiện thanh toán\n                                ")
+            ]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
       _c(
-        "a",
-        { staticClass: "button primary-button", attrs: { href: "/checkout/" } },
-        [_c("i", { staticClass: "fas fa-shopping-bag" }), _vm._v("Checkout")]
+        "p",
+        { staticStyle: { "font-size": "13px", "font-style": "italic" } },
+        [_vm._v("* Free ship khu vực Hà Nội với đơn hàng > 300k.")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "p",
+        { staticStyle: { "font-size": "13px", "font-style": "italic" } },
+        [_vm._v("* Free ship toàn quốc với đơn hàng > 500k.")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "p",
+        { staticStyle: { "font-size": "13px", "font-style": "italic" } },
+        [_vm._v("* Ship khu vực Hà Nội 20k, toàn quốc 30k.")]
       )
     ])
   }
@@ -40852,7 +41133,7 @@ var staticRenderFns = [
       _c(
         "a",
         { staticClass: "button primary-button", attrs: { href: "/checkout/" } },
-        [_c("i", { staticClass: "fas fa-shopping-bag" }), _vm._v("Checkout")]
+        [_c("i", { staticClass: "fas fa-shopping-bag" }), _vm._v("Thanh toán")]
       )
     ])
   }
@@ -56362,6 +56643,10 @@ window.VueRoute = __webpack_require__(/*! vue-router */ "./node_modules/vue-rout
 
 
 
+Vue.http.headers.common['Content-Type'] = 'application/json';
+Vue.http.headers.common['Access-Control-Allow-Origin'] = '*';
+Vue.http.headers.common['Accept'] = 'application/json, text/plain, */*';
+Vue.http.headers.common['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, Authorization, Access-Control-Allow-Origin';
 Vue.use(vue2_toast__WEBPACK_IMPORTED_MODULE_2___default.a, {
   type: 'center',
   duration: 3000,
@@ -57171,8 +57456,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\mobile\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\mobile\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/mobile/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/mobile/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
