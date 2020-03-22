@@ -73,8 +73,19 @@
                     </li>
                     <li class="item-content item-input">
                         <div class="item-inner">
-                            <div class="item-input-wrap">
-                                <input type="text" placeholder="Địa chỉ" v-model="address">
+                            <div class="item-input-wrap input-dropdown-wrap">
+<!--                                <select placeholder="Select city" v-model="city_id" id="select_city">-->
+<!--                                    <option v-for="option in city" v-bind:value="option.id">-->
+<!--                                        {{ option.text }}-->
+<!--                                    </option>-->
+<!--                                </select>-->
+<!--                                <select placeholder="Select city" id="select_city">-->
+<!--                                    <option v-for="option in city" v-bind:value="option.id">-->
+<!--                                        {{ option.text }}-->
+<!--                                    </option>-->
+<!--                                </select>-->
+
+                                <v-select :options="city" :reduce="city => city.id" label="text"></v-select>
                             </div>
                         </div>
                     </li>
@@ -119,6 +130,7 @@
                 email: null,
                 address: null,
                 city: [],
+                city_id: ''
             }
         },
         created() {
@@ -126,26 +138,10 @@
                 .then(response => {
                     this.carts = response.data
                 });
-            // axios.get('https://admin.shopmein.vn/src/controller/orders/OrderController.php?orders=loadDataCity', { crossdomain: true }
-            // )
-            //     .then(response => {
-            //         this.city = response.data
-            //     });
-
-
-            axios.get('https://admin.shopmein.vn/src/controller/orders/OrderController.php?orders=loadDataCity',
-                {
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'POST, GET, PUT, OPTIONS, DELETE',
-                        'Access-Control-Allow-Headers': 'Access-Control-Allow-Methods, Access-Control-Allow-Origin, Origin, Accept, Content-Type',
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    }
-                }
-            ).then(response => {
-                this.city = response.data
-            });
+            axios.get('/api/zone/city')
+                .then(response => {
+                    this.city = JSON.parse(response.data).results;
+                });
         },
         computed: {
             /**
@@ -176,22 +172,31 @@
                 return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' đ';
             },
             checkForm: function (e) {
+                e.preventDefault();
                 if (this.name && this.phone && this.address) {
                     return true;
                 }
                 this.errors = [];
                 if (!this.name) {
                     this.errors.push('Bạn chưa nhập tên.');
+                    return;
                 }
                 if (!this.phone) {
                     this.errors.push('Bạn chưa nhập số điện thoại.');
+                    return;
                 }
                 if (!this.address) {
                     this.errors.push('Bạn chưa nhập địa chỉ.');
                 }
-                e.preventDefault();
             },
-
-        }
+            myChangeEvent(val) {
+                console.log(val);
+            },
+            mySelectEvent({id, text}) {
+                console.log({id, text})
+            }
+        },
     }
+
 </script>
+<style src='vue-select/dist/vue-select.css'></style>

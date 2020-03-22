@@ -5,19 +5,27 @@
  */
 
 require('./bootstrap');
-
-window.Vue = require('vue');
-window.VueRoute = require('vue-router');
+import $ from 'jquery'
+import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import VueLazyload from 'vue-lazyload';
-import 'vue2-toast/lib/toast.css';
+
 import Toast from 'vue2-toast';
 
-Vue.http.headers.common['Content-Type'] = 'application/json'
-Vue.http.headers.common['Access-Control-Allow-Origin'] = '*'
-Vue.http.headers.common['Accept'] = 'application/json, text/plain, */*'
-Vue.http.headers.common['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, Authorization, Access-Control-Allow-Origin'
+import vSelect from "vue-select";
 
 
+
+
+window.Vue = require('vue');
+
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'vue2-toast/lib/toast.css';
+
+
+window.VueRoute = require('vue-router');
+Vue.use(BootstrapVue);
 Vue.use(Toast, {
     type: 'center',
     duration: 3000,
@@ -26,6 +34,11 @@ Vue.use(Toast, {
 });
 
 Vue.use(VueLazyload);
+
+// Vue.component('Select2', Select2);
+
+Vue.component("v-select", vSelect);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -126,5 +139,8 @@ const app = new Vue({
     //         let val = (value/1).toFixed(0).replace('.', ',');
     //         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' đ';
     //     }
+    // }
+    // components: {
+    //     "vue-select": require("vue-select")
     // }
 });

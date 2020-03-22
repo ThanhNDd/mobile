@@ -38,5 +38,14 @@ Route::group(['prefix' => 'cart'], function(){
     Route::post('/change', 'CartController@change');
     Route::post('/remove', 'CartController@remove');
 });
+Route::group(['prefix' => 'zone'], function(){
+    Route::get('/city', 'ZoneController@city');
+    Route::post('/district', 'ZoneController@district', ['parameters' => [
+        'city_id' => 'id'
+    ]]);
+    Route::post('/village', 'ZoneController@village', ['parameters' => [
+        'district_id' => 'id'
+    ]]);
+});
 
 

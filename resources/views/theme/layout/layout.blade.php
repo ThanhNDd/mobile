@@ -14,10 +14,14 @@
 
 	<link rel="stylesheet" href="{!! asset('css/framework7.bundle.min.css') !!}">
 	<link rel="stylesheet" href="{!! asset('css/font-awesome.min.css') !!}">
-	<link rel="stylesheet" href="{!! asset('css/swiper.min.css') !!}">
-	<link rel="stylesheet" href="{!! asset('css/bootstrap.min.css') !!}">
-
+{{--	<link rel="stylesheet" href="{!! asset('css/swiper.min.css') !!}">--}}
+{{--	<link rel="stylesheet" href="{!! asset('css/bootstrap.min.css') !!}">--}}
 	<link rel="stylesheet" href="{!! asset('css/style.css') !!}">
+{{--	<link--}}
+{{--			rel="stylesheet"--}}
+{{--			type="text/css"--}}
+{{--			href="https://unpkg.com/select2@4.0.3/dist/css/select2.min.css"--}}
+{{--	/>--}}
 </head>
 <body>
 
@@ -29,10 +33,10 @@
 
 </div>
     <script src="/js/app.js"></script>
-    <script src="{!! asset('js/jquery-3.4.1.min.js') !!}"></script>
+{{--    <script src="{!! asset('js/jquery-3.4.1.min.js') !!}"></script>--}}
     <script src="{!! asset('js/swiper.min.js') !!}"></script>
-    <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
-
+{{--    <script src="{!! asset('js/bootstrap.min.js') !!}"></script>--}}
+{{--	<script src="https://unpkg.com/select2@4.0.3/dist/js/select2.js"></script>--}}
 	<script src="{!! asset('js/main.js') !!}"></script>
 	@yield('script')
 </body>

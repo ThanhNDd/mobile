@@ -23,26 +23,6 @@
             </div>
             <!-- end navbar -->
             <checkout-component/>
-
-{{--            <div class="page-content">--}}
-{{--                <!-- content cart -->--}}
-{{--                <div class="cart segments">--}}
-{{--                    <h5>Danh sách sản phẩm</h5>--}}
-{{--                    <div class="divider-space-content"></div>--}}
-{{--                    <checkout-component/>--}}
-{{--                </div>--}}
-{{--                <div class="cart segments">--}}
-{{--                    <h5>Thông tin</h5>--}}
-{{--                    <div class="divider-space-content"></div>--}}
-
-{{--                </div>--}}
-{{--                <div class="content-button">--}}
-{{--                    <a href="{{ url('/process-checkout') }}" class="button primary-button" style="width: 60%;margin: auto;">--}}
-{{--                        <i class="fas fa-shopping-bag"></i>Thực hiện thanh toán--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--                <!-- end content cart -->--}}
-{{--            </div>--}}
         </div>
     </div>
 @endsection
