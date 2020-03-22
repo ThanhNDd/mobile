@@ -11,17 +11,19 @@
 	<link rel="icon" href="{{ url('images/favicon.png') }}">
 	<title>@yield('title')</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,900&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="{!! asset('css/bootstrap.min.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/vue-select.css') !!}">
 	<link rel="stylesheet" href="{!! asset('css/framework7.bundle.min.css') !!}">
 	<link rel="stylesheet" href="{!! asset('css/font-awesome.min.css') !!}">
 {{--	<link rel="stylesheet" href="{!! asset('css/swiper.min.css') !!}">--}}
-{{--	<link rel="stylesheet" href="{!! asset('css/bootstrap.min.css') !!}">--}}
+
 	<link rel="stylesheet" href="{!! asset('css/style.css') !!}">
 {{--	<link--}}
 {{--			rel="stylesheet"--}}
 {{--			type="text/css"--}}
 {{--			href="https://unpkg.com/select2@4.0.3/dist/css/select2.min.css"--}}
 {{--	/>--}}
+
 </head>
 <body>
 

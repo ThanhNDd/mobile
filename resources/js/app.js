@@ -19,9 +19,9 @@ import vSelect from "vue-select";
 window.Vue = require('vue');
 
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
-import 'vue2-toast/lib/toast.css';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap-vue/dist/bootstrap-vue.css';
+// import 'vue2-toast/lib/toast.css';
 
 
 window.VueRoute = require('vue-router');

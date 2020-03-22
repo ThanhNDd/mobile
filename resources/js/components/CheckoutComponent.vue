@@ -43,74 +43,100 @@
         <div class="cart segments">
             <h5>Thông tin người nhận</h5>
             <div class="divider-space-content"></div>
-            <form class="list" @submit="checkForm">
+            <form @submit="checkForm">
                 <ul v-if="errors.length">
                     <li v-for="error in errors">
                         <p style="font-size: 14px;color: red;">{{ error }}</p>
                     </li>
                 </ul>
-                <ul>
-                    <li class="item-content item-input">
-                        <div class="item-inner">
-                            <div class="item-input-wrap">
-                                <input type="text" placeholder="Họ tên" v-model="name">
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-content item-input">
-                        <div class="item-inner">
-                            <div class="item-input-wrap">
-                                <input type="text" placeholder="Số điện thoại" v-model="phone">
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-content item-input">
-                        <div class="item-inner">
-                            <div class="item-input-wrap">
-                                <input type="email" placeholder="Email" v-model="email">
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-content item-input">
-                        <div class="item-inner">
-                            <div class="item-input-wrap input-dropdown-wrap">
-<!--                                <select placeholder="Select city" v-model="city_id" id="select_city">-->
-<!--                                    <option v-for="option in city" v-bind:value="option.id">-->
-<!--                                        {{ option.text }}-->
-<!--                                    </option>-->
-<!--                                </select>-->
-<!--                                <select placeholder="Select city" id="select_city">-->
-<!--                                    <option v-for="option in city" v-bind:value="option.id">-->
-<!--                                        {{ option.text }}-->
-<!--                                    </option>-->
-<!--                                </select>-->
-
-                                <v-select :options="city" :reduce="city => city.id" label="text"></v-select>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-content item-input">
-                        <div class="item-inner">
-                            <div class="item-input-wrap">
-                                <button type="submit"  class="button primary-button">
-                                    <i class="fas fa-shopping-bag"></i>Thực hiện thanh toán
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <p style="font-size:13px;font-style: italic;">* Free ship khu vực Hà Nội với đơn hàng > 300k.</p>
-                    </li>
-                    <li>
-                        <p style="font-size:13px;font-style: italic;">* Free ship toàn quốc với đơn hàng > 500k.</p>
-                    </li>
-                    <li>
-                        <p style="font-size:13px;font-style: italic;">* Ship khu vực Hà Nội 20k, toàn quốc 30k.</p>
-                    </li>
-                </ul>
-
+                <div class="form-group">
+<!--                    <label for="email">Email address:</label>-->
+                    <input type="text" placeholder="Họ tên" class="form-control" v-model="name">
+                </div>
+                <div class="form-group">
+<!--                    <label for="pwd">Password:</label>-->
+                    <input type="text" placeholder="Số điện thoại" class="form-control" v-model="phone">
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" class="form-control" v-model="email">
+                </div>
+                <v-select :options="city" :reduce="city => city.id" placeholder="Select city" label="text"></v-select>
+                <button type="submit"  class="button primary-button">
+                    <i class="fas fa-shopping-bag"></i>Thực hiện thanh toán
+                </button>
             </form>
+<!--            <form class="list" @submit="checkForm">-->
+<!--                <ul v-if="errors.length">-->
+<!--                    <li v-for="error in errors">-->
+<!--                        <p style="font-size: 14px;color: red;">{{ error }}</p>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <ul>-->
+<!--                    <li class="item-content item-input">-->
+<!--                        <div class="item-inner">-->
+<!--                            <div class="item-input-wrap">-->
+<!--                                <input type="text" placeholder="Họ tên" v-model="name">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li class="item-content item-input">-->
+<!--                        <div class="item-inner">-->
+<!--                            <div class="item-input-wrap">-->
+<!--                                <input type="text" placeholder="Số điện thoại" v-model="phone">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li class="item-content item-input">-->
+<!--                        <div class="item-inner">-->
+<!--                            <div class="item-input-wrap">-->
+<!--                                <input type="email" placeholder="Email" v-model="email">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <v-select :options="city" :reduce="city => city.id" label="text"></v-select>-->
+<!--                    </li>-->
+<!--&lt;!&ndash;                    <li class="item-content item-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="item-inner">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="item-input-wrap input-dropdown-wrap">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <select placeholder="Select city" v-model="city_id" id="select_city">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                    <option v-for="option in city" v-bind:value="option.id">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        {{ option.text }}&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                    </option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                </select>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <select placeholder="Select city" id="select_city">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                    <option v-for="option in city" v-bind:value="option.id">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        {{ option.text }}&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                    </option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                </select>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                                <v-select :options="city" :reduce="city => city.id" label="text"></v-select>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--                    <li class="item-content item-input">-->
+<!--                        <div class="item-inner">-->
+<!--                            <div class="item-input-wrap">-->
+<!--                                <button type="submit"  class="button primary-button">-->
+<!--                                    <i class="fas fa-shopping-bag"></i>Thực hiện thanh toán-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <p style="font-size:13px;font-style: italic;">* Free ship khu vực Hà Nội với đơn hàng > 300k.</p>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <p style="font-size:13px;font-style: italic;">* Free ship toàn quốc với đơn hàng > 500k.</p>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <p style="font-size:13px;font-style: italic;">* Ship khu vực Hà Nội 20k, toàn quốc 30k.</p>-->
+<!--                    </li>-->
+<!--                </ul>-->
+
+<!--            </form>-->
         </div>
+
 <!--        <div class="content-button">-->
 <!--            <a href="/process-checkout" class="button primary-button" style="width: 60%;margin: auto;">-->
 <!--                <i class="fas fa-shopping-bag"></i>Thực hiện thanh toán-->
@@ -130,7 +156,8 @@
                 email: null,
                 address: null,
                 city: [],
-                city_id: ''
+                city_id: '',
+                
             }
         },
         created() {
@@ -199,4 +226,3 @@
     }
 
 </script>
-<style src='vue-select/dist/vue-select.css'></style>

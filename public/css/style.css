@@ -73,7 +73,7 @@ order history
 body {
     font-family: 'Roboto', sans-serif;
     color: #888;
-    font-size: 12px;
+    font-size: 12px !important;
     font-weight: 400;
     background: #fff;
 }
@@ -2989,4 +2989,12 @@ p.price.sale-price {
 }
 label.trash {
     font-size: 14px;
+}
+input.form-control {
+    border: 1px solid #ced4da !important;
+    padding: .375rem .75rem !important;
+    border-radius: .25rem !important;
+}
+.v-select .vs__dropdown-toggle {
+    height: 30px !important;
 }
