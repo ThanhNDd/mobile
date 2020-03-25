@@ -51,7 +51,7 @@
                 </div>
                 <div class="content-button">
                     <a href="/checkout/" class="button primary-button"><i
-                        class="fas fa-shopping-bag"></i>Thanh toán</a>
+                        class="fas fa-shopping-bag"></i>Xác nhận thanh toán</a>
                 </div>
             </div>
         </div>

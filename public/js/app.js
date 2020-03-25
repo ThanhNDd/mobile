@@ -2159,58 +2159,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2221,7 +2169,14 @@ __webpack_require__.r(__webpack_exports__);
       email: null,
       address: null,
       city: [],
-      city_id: ''
+      city_id: '',
+      district: [],
+      district_id: '',
+      village: [],
+      village_id: '',
+      total: 0,
+      total_amount: 0,
+      shipping: 0
     };
   },
   created: function created() {
@@ -2238,22 +2193,48 @@ __webpack_require__.r(__webpack_exports__);
     /**
      * @return {number}
      */
-    Total: function Total() {
-      var total = 0;
+    totalAmount: function totalAmount() {
+      var _this2 = this;
+
+      // let total = 0;
       this.carts.forEach(function (cart) {
-        total += cart['price'] * cart['qty'];
+        _this2.total_amount += cart['price'] * cart['qty'];
       });
-      return total;
+      return this.total_amount;
+    },
+
+    /**
+     * @return {number}
+     */
+    totalShipping: function totalShipping() {
+      if (this.city_id === 1) {
+        if (this.total_amount > 250000) {
+          this.shipping = 0;
+        } else {
+          this.shipping = 20000;
+        }
+      } else {
+        if (this.total_amount > 500000) {
+          this.shipping = 0;
+        } else {
+          this.shipping = 30000;
+        }
+      }
+
+      return this.shipping;
+    },
+    totalMoney: function totalMoney() {
+      return this.total = this.total_amount + this.shipping;
     }
   },
   methods: {
     process: function process(products) {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.post("/api/cart/checkout", {
         body: products
       }).then(function (response) {
-        _this2.carts = response.data;
+        _this3.carts = response.data;
       });
     },
     displayPrice: function displayPrice(price, qty) {
@@ -2267,36 +2248,74 @@ __webpack_require__.r(__webpack_exports__);
     checkForm: function checkForm(e) {
       e.preventDefault();
 
-      if (this.name && this.phone && this.address) {
+      if (this.name && this.phone && this.address && this.city && this.district && this.village && this.address) {
         return true;
       }
 
-      this.errors = [];
-
       if (!this.name) {
-        this.errors.push('Bạn chưa nhập tên.');
+        this.$toast.top('Bạn chưa nhập tên');
+        this.$refs.name.focus();
         return;
       }
 
       if (!this.phone) {
-        this.errors.push('Bạn chưa nhập số điện thoại.');
+        this.$toast.top('Bạn chưa nhập số điện thoại.');
+        this.$refs.phone.focus();
+        return;
+      } else {}
+
+      if (!this.city_id) {
+        this.$toast.top('Bạn chưa chọn thành phố.');
+        return;
+      }
+
+      if (!this.district_id) {
+        this.$toast.top('Bạn chưa chọn quận huyện.');
+        return;
+      }
+
+      if (!this.village_id) {
+        this.$toast.top('Bạn chưa chọn phường xã.');
         return;
       }
 
       if (!this.address) {
-        this.errors.push('Bạn chưa nhập địa chỉ.');
+        this.$toast.top('Bạn chưa nhập số nhà.');
+        this.$refs.address.focus();
       }
     },
-    myChangeEvent: function myChangeEvent(val) {
-      console.log(val);
-    },
-    mySelectEvent: function mySelectEvent(_ref) {
-      var id = _ref.id,
-          text = _ref.text;
-      console.log({
-        id: id,
-        text: text
+    changeCity: function changeCity(val) {
+      var _this4 = this;
+
+      this.city_id = val;
+      axios.get('/api/zone/district/' + val).then(function (response) {
+        console.log(response.data);
+        _this4.district = JSON.parse(response.data).results;
       });
+    },
+    changeDistrict: function changeDistrict(val) {
+      var _this5 = this;
+
+      this.district_id = val;
+      axios.get('/api/zone/village/' + val).then(function (response) {
+        console.log(response.data);
+        _this5.village = JSON.parse(response.data).results;
+      });
+    },
+    changeVillage: function changeVillage(val) {
+      this.village_id = val;
+    },
+    checkout: function checkout() {
+      console.log(this.name);
+      console.log(this.phone);
+      console.log(this.email);
+      console.log(this.city_id);
+      console.log(this.district_id);
+      console.log(this.village_id);
+      console.log(this.address);
+      console.log(this.total_amount);
+      console.log(this.shipping);
+      console.log(this.total);
     }
   }
 });
@@ -36200,6 +36219,112 @@ var BootstrapVue = /*#__PURE__*/{
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue2-toast/lib/toast.css":
+/*!*******************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue2-toast/lib/toast.css ***!
+  \*******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".lx-toast {\r\n    position: fixed;\r\n    bottom: 100px;\r\n    left: 50%;\r\n    box-sizing: border-box;\r\n    max-width: 80%;\r\n    height: 40px;\r\n    line-height: 20px;\r\n    padding: 10px 20px;\r\n    transform: translateX(-50%);\r\n    -webkit-transform: translateX(-50%);\r\n    text-align: center;\r\n    z-index: 9999;\r\n    font-size: 14px;\r\n    color: #fff;\r\n    border-radius: 5px;\r\n    background: rgba(0, 0, 0, 0.7);\r\n    animation: show-toast .5s;\r\n    -webkit-animation: show-toast .5s;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.lx-toast.lx-word-wrap {\r\n    width: 80%;\r\n    white-space: inherit;\r\n    height: auto;\r\n}\r\n\r\n.lx-toast.lx-toast-top {\r\n    top: 50px;\r\n    bottom: inherit;\r\n}\r\n\r\n.lx-toast.lx-toast-center {\r\n    top: 50%;\r\n    margin-top: -20px;\r\n    bottom: inherit;\r\n}\r\n\r\n@-webkit-keyframes show-toast {\r\n    from {\r\n        opacity: 0;\r\n    }\r\n    to {\r\n        opacity: 1;\r\n    }\r\n}\r\n\r\n@keyframes show-toast {\r\n    from {\r\n        opacity: 0;\r\n    }\r\n    to {\r\n        opacity: 1;\r\n    }\r\n}\r\n\r\n.lx-load-mark {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9999;\r\n}\r\n\r\n.lx-load-box {\r\n    position: fixed;\r\n    z-index: 3;\r\n    width: 7.6em;\r\n    min-height: 7.6em;\r\n    top: 180px;\r\n    left: 50%;\r\n    margin-left: -3.8em;\r\n    background: rgba(0, 0, 0, 0.7);\r\n    text-align: center;\r\n    border-radius: 5px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.lx-load-content {\r\n    margin-top: 64%;\r\n    font-size: 14px;\r\n}\r\n\r\n.lx-loading, .lx-loading-nocontent {\r\n    position: absolute;\r\n    width: 0px;\r\n    left: 50%;\r\n    top: 38%;\r\n}\r\n\r\n.lx-loading-nocontent {\r\n    top: 50%;\r\n}\r\n\r\n.loading_leaf {\r\n    position: absolute;\r\n    top: -1px;\r\n    opacity: 0.25;\r\n}\r\n\r\n.loading_leaf:before {\r\n    content: \" \";\r\n    position: absolute;\r\n    width: 9.14px;\r\n    height: 3.08px;\r\n    background: #d1d1d5;\r\n    box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px;\r\n    border-radius: 1px;\r\n    transform-origin: left 50% 0px;\r\n}\r\n\r\n.loading_leaf_0 {\r\n    -webkit-animation: opacity-0 1.25s linear infinite;\r\n    animation: opacity-0 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_0:before {\r\n    transform: rotate(0deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_1 {\r\n    -webkit-animation: opacity-1 1.25s linear infinite;\r\n    animation: opacity-1 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_1:before {\r\n    transform: rotate(30deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_2 {\r\n    -webkit-animation: opacity-2 1.25s linear infinite;\r\n    animation: opacity-2 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_2:before {\r\n    transform: rotate(60deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_3 {\r\n    -webkit-animation: opacity-3 1.25s linear infinite;\r\n    animation: opacity-3 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_3:before {\r\n    transform: rotate(90deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_4 {\r\n    -webkit-animation: opacity-4 1.25s linear infinite;\r\n    animation: opacity-4 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_4:before {\r\n    transform: rotate(120deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_5 {\r\n    -webkit-animation: opacity-5 1.25s linear infinite;\r\n    animation: opacity-5 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_5:before {\r\n    transform: rotate(150deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_6 {\r\n    -webkit-animation: opacity-6 1.25s linear infinite;\r\n    animation: opacity-6 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_6:before {\r\n    transform: rotate(180deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_7 {\r\n    -webkit-animation: opacity-7 1.25s linear infinite;\r\n    animation: opacity-7 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_7:before {\r\n    transform: rotate(210deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_8 {\r\n    -webkit-animation: opacity-8 1.25s linear infinite;\r\n    animation: opacity-8 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_8:before {\r\n    transform: rotate(240deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_9 {\r\n    -webkit-animation: opacity-9 1.25s linear infinite;\r\n    animation: opacity-9 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_9:before {\r\n    transform: rotate(270deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_10 {\r\n    -webkit-animation: opacity-10 1.25s linear infinite;\r\n    animation: opacity-10 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_10:before {\r\n    transform: rotate(300deg) translate(7.92px, 0px);\r\n}\r\n\r\n.loading_leaf_11 {\r\n    -webkit-animation: opacity-11 1.25s linear infinite;\r\n    animation: opacity-11 1.25s linear infinite;\r\n}\r\n\r\n.loading_leaf_11:before {\r\n    transform: rotate(330deg) translate(7.92px, 0px);\r\n}\r\n\r\n@-webkit-keyframes opacity-0 {\r\n    0% {\r\n        opacity: 0.25;\r\n    }\r\n    0.01% {\r\n        opacity: 0.25;\r\n    }\r\n    0.02% {\r\n        opacity: 1;\r\n    }\r\n    60.01% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.25;\r\n    }\r\n}\r\n\r\n@keyframes opacity-0 {\r\n    0% {\r\n        opacity: 0.25;\r\n    }\r\n    0.01% {\r\n        opacity: 0.25;\r\n    }\r\n    0.02% {\r\n        opacity: 1;\r\n    }\r\n    60.01% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.25;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-1 {\r\n    0% {\r\n        opacity: 0.25;\r\n    }\r\n    8.34333% {\r\n        opacity: 0.25;\r\n    }\r\n    8.35333% {\r\n        opacity: 1;\r\n    }\r\n    68.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.25;\r\n    }\r\n}\r\n\r\n@keyframes opacity-1 {\r\n    0% {\r\n        opacity: 0.25;\r\n    }\r\n    8.34333% {\r\n        opacity: 0.25;\r\n    }\r\n    8.35333% {\r\n        opacity: 1;\r\n    }\r\n    68.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.25;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-2 {\r\n    0% {\r\n        opacity: 0.25;\r\n    }\r\n    16.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    16.6867% {\r\n        opacity: 1;\r\n    }\r\n    76.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.25;\r\n    }\r\n}\r\n\r\n@keyframes opacity-2 {\r\n    0% {\r\n        opacity: 0.25;\r\n    }\r\n    16.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    16.6867% {\r\n        opacity: 1;\r\n    }\r\n    76.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.25;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-3 {\r\n    0% {\r\n        opacity: 0.25;\r\n    }\r\n    25.01% {\r\n        opacity: 0.25;\r\n    }\r\n    25.02% {\r\n        opacity: 1;\r\n    }\r\n    85.01% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.25;\r\n    }\r\n}\r\n\r\n@keyframes opacity-3 {\r\n    0% {\r\n        opacity: 0.25;\r\n    }\r\n    25.01% {\r\n        opacity: 0.25;\r\n    }\r\n    25.02% {\r\n        opacity: 1;\r\n    }\r\n    85.01% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.25;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-4 {\r\n    0% {\r\n        opacity: 0.25;\r\n    }\r\n    33.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    33.3533% {\r\n        opacity: 1;\r\n    }\r\n    93.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.25;\r\n    }\r\n}\r\n\r\n@keyframes opacity-4 {\r\n    0% {\r\n        opacity: 0.25;\r\n    }\r\n    33.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    33.3533% {\r\n        opacity: 1;\r\n    }\r\n    93.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.25;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-5 {\r\n    0% {\r\n        opacity: 0.270958333333333;\r\n    }\r\n    41.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    41.6867% {\r\n        opacity: 1;\r\n    }\r\n    1.67667% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.270958333333333;\r\n    }\r\n}\r\n\r\n@keyframes opacity-5 {\r\n    0% {\r\n        opacity: 0.270958333333333;\r\n    }\r\n    41.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    41.6867% {\r\n        opacity: 1;\r\n    }\r\n    1.67667% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.270958333333333;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-6 {\r\n    0% {\r\n        opacity: 0.375125;\r\n    }\r\n    50.01% {\r\n        opacity: 0.25;\r\n    }\r\n    50.02% {\r\n        opacity: 1;\r\n    }\r\n    10.01% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.375125;\r\n    }\r\n}\r\n\r\n@keyframes opacity-6 {\r\n    0% {\r\n        opacity: 0.375125;\r\n    }\r\n    50.01% {\r\n        opacity: 0.25;\r\n    }\r\n    50.02% {\r\n        opacity: 1;\r\n    }\r\n    10.01% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.375125;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-7 {\r\n    0% {\r\n        opacity: 0.479291666666667;\r\n    }\r\n    58.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    58.3533% {\r\n        opacity: 1;\r\n    }\r\n    18.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.479291666666667;\r\n    }\r\n}\r\n\r\n@keyframes opacity-7 {\r\n    0% {\r\n        opacity: 0.479291666666667;\r\n    }\r\n    58.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    58.3533% {\r\n        opacity: 1;\r\n    }\r\n    18.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.479291666666667;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-8 {\r\n    0% {\r\n        opacity: 0.583458333333333;\r\n    }\r\n    66.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    66.6867% {\r\n        opacity: 1;\r\n    }\r\n    26.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.583458333333333;\r\n    }\r\n}\r\n\r\n@keyframes opacity-8 {\r\n    0% {\r\n        opacity: 0.583458333333333;\r\n    }\r\n    66.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    66.6867% {\r\n        opacity: 1;\r\n    }\r\n    26.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.583458333333333;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-9 {\r\n    0% {\r\n        opacity: 0.687625;\r\n    }\r\n    75.01% {\r\n        opacity: 0.25;\r\n    }\r\n    75.02% {\r\n        opacity: 1;\r\n    }\r\n    35.01% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.687625;\r\n    }\r\n}\r\n\r\n@keyframes opacity-9 {\r\n    0% {\r\n        opacity: 0.687625;\r\n    }\r\n    75.01% {\r\n        opacity: 0.25;\r\n    }\r\n    75.02% {\r\n        opacity: 1;\r\n    }\r\n    35.01% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.687625;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-10 {\r\n    0% {\r\n        opacity: 0.791791666666667;\r\n    }\r\n    83.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    83.3533% {\r\n        opacity: 1;\r\n    }\r\n    43.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.791791666666667;\r\n    }\r\n}\r\n\r\n@keyframes opacity-10 {\r\n    0% {\r\n        opacity: 0.791791666666667;\r\n    }\r\n    83.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    83.3533% {\r\n        opacity: 1;\r\n    }\r\n    43.3433% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.791791666666667;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes opacity-11 {\r\n    0% {\r\n        opacity: 0.895958333333333;\r\n    }\r\n    91.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    91.6867% {\r\n        opacity: 1;\r\n    }\r\n    51.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.895958333333333;\r\n    }\r\n}\r\n\r\n@keyframes opacity-11 {\r\n    0% {\r\n        opacity: 0.895958333333333;\r\n    }\r\n    91.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    91.6867% {\r\n        opacity: 1;\r\n    }\r\n    51.6767% {\r\n        opacity: 0.25;\r\n    }\r\n    100% {\r\n        opacity: 0.895958333333333;\r\n    }\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/*!*************************************************!*\
+  !*** ./node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/jquery/dist/jquery.js":
 /*!********************************************!*\
   !*** ./node_modules/jquery/dist/jquery.js ***!
@@ -67577,6 +67702,515 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/lib/addStyles.js":
+/*!****************************************************!*\
+  !*** ./node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target, parent) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target, parent);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertAt.before, target);
+		target.insertBefore(style, nextSibling);
+	} else {
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/urls.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-loader/lib/urls.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/timers-browserify/main.js":
 /*!************************************************!*\
   !*** ./node_modules/timers-browserify/main.js ***!
@@ -69735,184 +70369,277 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "page-content" }, [
-    _c("div", { staticClass: "cart segments" }, [
-      _c("h5", [_vm._v("Danh sách sản phẩm")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "divider-space-content" }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "container" },
-        [
-          _vm._l(_vm.carts, function(cart, index) {
-            return _c("div", { staticClass: "content" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-20" }, [
-                  _c("div", { staticClass: "content-image" }, [
-                    _c("img", { attrs: { src: cart["image"], alt: "" } })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-80" }, [
-                  _c("div", { staticClass: "content-text" }, [
-                    _c("p", {
-                      staticClass: "title-product",
-                      domProps: {
-                        textContent: _vm._s(
-                          cart["name"] +
-                            " - " +
-                            cart["color"] +
-                            " - " +
-                            cart["size"]
-                        )
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("p", {
-                      domProps: {
-                        textContent: _vm._s(
-                          _vm.displayPrice(cart["price"], cart["qty"])
-                        )
-                      }
-                    })
+    _c("form", { on: { submit: _vm.checkForm } }, [
+      _c("div", { staticClass: "cart segments" }, [
+        _c("h5", [_vm._v("Danh sách sản phẩm")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "divider-space-content" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "container" }, [
+          _c(
+            "div",
+            {
+              staticClass: "row",
+              staticStyle: { "max-height": "147px", overflow: "auto" }
+            },
+            _vm._l(_vm.carts, function(cart, index) {
+              return _c("div", { staticClass: "content" }, [
+                _c("div", { staticClass: "row col-12" }, [
+                  _c("div", { staticClass: "col-20" }, [
+                    _c("div", { staticClass: "content-image" }, [
+                      _c("img", { attrs: { src: cart["image"], alt: "" } })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-80" }, [
+                    _c("div", { staticClass: "content-text" }, [
+                      _c("p", {
+                        staticClass: "title-product",
+                        domProps: {
+                          textContent: _vm._s(
+                            cart["name"] +
+                              " - " +
+                              cart["color"] +
+                              " - " +
+                              cart["size"]
+                          )
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("p", {
+                        domProps: {
+                          textContent: _vm._s(
+                            _vm.displayPrice(cart["price"], cart["qty"])
+                          )
+                        }
+                      })
+                    ])
                   ])
                 ])
               ])
+            }),
+            0
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "cart segments" }, [
+        _c("h5", [_vm._v("Thông tin người nhận")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "divider-space-content" }),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticStyle: {
+              height: "200px",
+              overflow: "auto",
+              "margin-bottom": "20px"
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.name,
+                    expression: "name"
+                  }
+                ],
+                ref: "name",
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Họ tên" },
+                domProps: { value: _vm.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.name = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.phone,
+                    expression: "phone"
+                  }
+                ],
+                ref: "phone",
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Số điện thoại" },
+                domProps: { value: _vm.phone },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.phone = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email"
+                  }
+                ],
+                ref: "email",
+                staticClass: "form-control",
+                attrs: { type: "email", placeholder: "Email" },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.email = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("v-select", {
+              ref: "city",
+              staticClass: "form-group",
+              attrs: {
+                options: _vm.city,
+                reduce: function(city) {
+                  return city.id
+                },
+                placeholder: "Thành phố",
+                label: "text"
+              },
+              on: { input: _vm.changeCity }
+            }),
+            _vm._v(" "),
+            _c("v-select", {
+              ref: "district",
+              staticClass: "form-group",
+              attrs: {
+                options: _vm.district,
+                reduce: function(district) {
+                  return district.id
+                },
+                placeholder: "Quận huyện",
+                label: "text"
+              },
+              on: { input: _vm.changeDistrict }
+            }),
+            _vm._v(" "),
+            _c("v-select", {
+              ref: "village\n",
+              staticClass: "form-group",
+              attrs: {
+                options: _vm.village,
+                reduce: function(village) {
+                  return village.id
+                },
+                placeholder: "Phường xã",
+                label: "text"
+              },
+              on: { input: _vm.changeVillage }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.address,
+                    expression: "address"
+                  }
+                ],
+                ref: "address",
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Thôn xóm, số nhà ..." },
+                domProps: { value: _vm.address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.address = $event.target.value
+                  }
+                }
+              })
             ])
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "divider-space-content" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "wrap-total-cart" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "content-total" }, [
-                _c("ul", [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("h6", [_vm._v(_vm._s(_vm._f("formatPrice")(_vm.Total)))])
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "cart segments" }, [
+        _c("div", { staticClass: "wrap-total-cart" }, [
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "content-total" }, [
+              _c("ul", [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("li", [
+                  _c("h6", [
+                    _vm._v(_vm._s(_vm._f("formatPrice")(_vm.totalAmount)))
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "content-total" }, [
+              _c("ul", [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("li", [
+                  _c("h6", [
+                    _vm._v(_vm._s(_vm._f("formatPrice")(_vm.totalShipping)))
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "content-total" }, [
+              _c("ul", [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("li", [
+                  _c("h6", [
+                    _vm._v(_vm._s(_vm._f("formatPrice")(_vm.totalMoney)))
                   ])
                 ])
               ])
             ])
           ])
-        ],
-        2
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "cart segments" }, [
-      _c("h5", [_vm._v("Thông tin người nhận")]),
+        ])
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "divider-space-content" }),
-      _vm._v(" "),
-      _c(
-        "form",
-        { on: { submit: _vm.checkForm } },
-        [
-          _vm.errors.length
-            ? _c(
-                "ul",
-                _vm._l(_vm.errors, function(error) {
-                  return _c("li", [
-                    _c(
-                      "p",
-                      { staticStyle: { "font-size": "14px", color: "red" } },
-                      [_vm._v(_vm._s(error))]
-                    )
-                  ])
-                }),
-                0
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.name,
-                  expression: "name"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Họ tên" },
-              domProps: { value: _vm.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.name = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.phone,
-                  expression: "phone"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Số điện thoại" },
-              domProps: { value: _vm.phone },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.phone = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.email,
-                  expression: "email"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "email", placeholder: "Email" },
-              domProps: { value: _vm.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.email = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("v-select", {
-            attrs: {
-              options: _vm.city,
-              reduce: function(city) {
-                return city.id
-              },
-              placeholder: "Select city",
-              label: "text"
-            }
-          }),
-          _vm._v(" "),
-          _vm._m(1)
-        ],
-        1
-      )
+      _c("div", { staticClass: "cart segments" }, [
+        _c(
+          "button",
+          {
+            staticClass: "button primary-button",
+            attrs: { type: "submit" },
+            on: { click: _vm.checkout }
+          },
+          [
+            _c("i", { staticClass: "fas fa-shopping-bag" }),
+            _vm._v("Thanh toán\n                ")
+          ]
+        )
+      ])
     ])
   ])
 }
@@ -69921,20 +70648,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [_c("p", [_vm._v("Total")])])
+    return _c("li", [_c("p", [_vm._v("Tổng tiền")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "button primary-button", attrs: { type: "submit" } },
-      [
-        _c("i", { staticClass: "fas fa-shopping-bag" }),
-        _vm._v("Thực hiện thanh toán\n                ")
-      ]
-    )
+    return _c("li", [_c("p", [_vm._v("Phí ship")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("p", [_vm._v("Tổng thanh toán")])])
   }
 ]
 render._withStripped = true
@@ -70156,7 +70882,10 @@ var staticRenderFns = [
       _c(
         "a",
         { staticClass: "button primary-button", attrs: { href: "/checkout/" } },
-        [_c("i", { staticClass: "fas fa-shopping-bag" }), _vm._v("Thanh toán")]
+        [
+          _c("i", { staticClass: "fas fa-shopping-bag" }),
+          _vm._v("Xác nhận thanh toán")
+        ]
       )
     ])
   }
@@ -85558,6 +86287,36 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/vue2-toast/lib/toast.css":
+/*!***********************************************!*\
+  !*** ./node_modules/vue2-toast/lib/toast.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./toast.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue2-toast/lib/toast.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -85639,6 +86398,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_toast__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue2_toast__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue2_toast_lib_toast_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue2-toast/lib/toast.css */ "./node_modules/vue2-toast/lib/toast.css");
+/* harmony import */ var vue2_toast_lib_toast_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue2_toast_lib_toast_css__WEBPACK_IMPORTED_MODULE_5__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -85653,7 +86414,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // import 'bootstrap/dist/css/bootstrap.css';
 // import 'bootstrap-vue/dist/bootstrap-vue.css';
-// import 'vue2-toast/lib/toast.css';
+
 
 window.VueRoute = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 Vue.use(bootstrap_vue_dist_bootstrap_vue_esm__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -85710,6 +86471,17 @@ Vue.filter('format_image', function (value) {
   }
 
   return src;
+});
+Vue.filter('validateEmail', function (email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+});
+Vue.filter('validatePhone', function (phone) {
+  var reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+  return reg.test(String(phone).toLowerCase());
+});
+Vue.filter('formatNumber', function (num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 });
 Vue.filter('format_color', function (value) {
   var color_code = '';
