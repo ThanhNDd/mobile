@@ -2227,6 +2227,12 @@ __webpack_require__.r(__webpack_exports__);
       return this.total = this.total_amount + this.shipping;
     }
   },
+  watch: {
+    valiPhone: function valiPhone(phone) {
+      var reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+      return reg.test(String(phone).toLowerCase());
+    }
+  },
   methods: {
     process: function process(products) {
       var _this3 = this;
@@ -70465,26 +70471,10 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.phone,
-                    expression: "phone"
-                  }
-                ],
                 ref: "phone",
                 staticClass: "form-control",
                 attrs: { type: "text", placeholder: "Số điện thoại" },
-                domProps: { value: _vm.phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.phone = $event.target.value
-                  }
-                }
+                domProps: { value: _vm._f("validatePhone")(_vm.phone) }
               })
             ]),
             _vm._v(" "),

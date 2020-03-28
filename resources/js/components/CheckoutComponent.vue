@@ -32,7 +32,7 @@
                         <input type="text" placeholder="Họ tên" class="form-control" v-model="name" ref="name">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Số điện thoại" class="form-control" v-model="phone" ref="phone">
+                        <input type="text" placeholder="Số điện thoại" class="form-control" v-bind:value="phone | validatePhone" ref="phone">
                     </div>
                     <div class="form-group">
                         <input type="email" placeholder="Email" class="form-control" v-model="email" ref="email">
@@ -157,6 +157,12 @@
             totalMoney: function() {
                 return this.total = this.total_amount + this.shipping;
             }
+        },
+        watch:{
+            valiPhone: function(phone) {
+                let reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+                return reg.test(String(phone).toLowerCase());
+            },
         },
         methods: {
             process: function(products){
