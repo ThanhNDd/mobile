@@ -8,10 +8,10 @@ require('./bootstrap');
 import $ from 'jquery'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import VueLazyload from 'vue-lazyload';
-
 import Toast from 'vue2-toast';
-
 import vSelect from "vue-select";
+// import Vue from 'vue'
+import Vuelidate from 'vuelidate'
 
 window.Vue = require('vue');
 
@@ -27,10 +27,8 @@ Vue.use(Toast, {
     wordWrap: true,
     width: '90%'
 });
-
+Vue.use(Vuelidate);
 Vue.use(VueLazyload);
-
-// Vue.component('Select2', Select2);
 
 Vue.component("v-select", vSelect);
 

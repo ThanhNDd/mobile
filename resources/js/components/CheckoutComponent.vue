@@ -31,14 +31,14 @@
                     <div class="form-group">
                         <input type="text" placeholder="Họ tên" class="form-control" v-model="name" ref="name">
                     </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Số điện thoại" class="form-control" v-bind:value="phone | validatePhone" ref="phone">
+                    <div :class="['form-group', isPhoneValid()]">
+                        <input type="text" placeholder="Số điện thoại" class="form-control" v-model="phone" ref="phone">
                     </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email" class="form-control" v-model="email" ref="email">
+                    <div :class="['form-group', isEmailValid()]">
+                        <input type="email" class="form-control" placeholder="Email" v-model="email" ref="email" />
                     </div>
                     <v-select :options="city" :reduce="city => city.id" @input="changeCity" placeholder="Thành phố" label="text" ref="city" class="form-group"></v-select>
-                    <v-select :options="district" :reduce="district => district.id" @input="changeDistrict" placeholder="Quận huyện" label="text" ref="district" class="form-group"></v-select>
+                    <v-select :options="district" :reduce="district => district.id" @input="changeDistrict" @change="someMethod" placeholder="Quận huyện" label="text" ref="district" class="form-group"></v-select>
                     <v-select :options="village" :reduce="village => village.id" @input="changeVillage" placeholder="Phường xã" label="text" ref="village
 " class="form-group"></v-select>
                     <div class="form-group">
@@ -85,7 +85,7 @@
             </div>
             <!-- end wrap total cart -->
             <div class="cart segments">
-                <button type="submit"  class="button primary-button" @click="checkout">
+                <button type="submit"  class="button primary-button">
                     <i class="fas fa-shopping-bag"></i>Thanh toán
                 </button>
             </div>
@@ -100,8 +100,8 @@
                 carts: [],
                 errors: [],
                 name: null,
-                phone: null,
-                email: null,
+                phone: '',
+                email: '',
                 address: null,
                 city: [],
                 city_id: '',
@@ -158,12 +158,6 @@
                 return this.total = this.total_amount + this.shipping;
             }
         },
-        watch:{
-            valiPhone: function(phone) {
-                let reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-                return reg.test(String(phone).toLowerCase());
-            },
-        },
         methods: {
             process: function(products){
                 axios.post("/api/cart/checkout", {
@@ -183,36 +177,47 @@
             checkForm: function (e) {
                 e.preventDefault();
                 if (this.name && this.phone && this.address && this.city && this.district && this.village && this.address) {
+                    this.checkout();
                     return true;
                 }
                 if (!this.name) {
                     this.$toast.top('Bạn chưa nhập tên');
                     this.$refs.name.focus();
-                    return;
+                    return false;
                 }
                 if (!this.phone) {
                     this.$toast.top('Bạn chưa nhập số điện thoại.');
                     this.$refs.phone.focus();
-                    return;
-                } else{
-
+                    return false;
                 }
                 if (!this.city_id) {
                     this.$toast.top('Bạn chưa chọn thành phố.');
-                    return;
+                    return false;
                 }
                 if (!this.district_id) {
                     this.$toast.top('Bạn chưa chọn quận huyện.');
-                    return;
+                    return false;
                 }
                 if (!this.village_id) {
                     this.$toast.top('Bạn chưa chọn phường xã.');
-                    return;
+                    return false;
                 }
                 if (!this.address) {
                     this.$toast.top('Bạn chưa nhập số nhà.');
                     this.$refs.address.focus();
+                    return false;
                 }
+            },
+            isPhoneValid: function() {
+                let reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+                return (this.phone === "")? "" : (reg.test(this.phone)) ? 'has-success' : 'has-error';
+            },
+            isEmailValid: function() {
+                let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
+                return (this.email === "")? "" : (reg.test(this.email)) ? 'has-success' : 'has-error';
+            },
+            someMethod: function() {
+                this.district_id = "";
             },
             changeCity: function(val) {
                 this.city_id = val;

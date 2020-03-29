@@ -6003,3 +6003,12 @@ input.form-control {
 input.vs__search {
     padding: 5px 10px;
 }
+
+.has-error .form-control {
+    border: 1px solid #a94442 !important;
+    padding: .375rem .75rem !important;
+    border-radius: .25rem !important;
+    background-color: #f2dede;
+    color: #a94442;
+    box-shadow: none;
+}
