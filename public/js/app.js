@@ -2159,22 +2159,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var email_reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
+var phone_reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       carts: [],
       errors: [],
-      name: null,
+      name: '',
       phone: '',
       email: '',
-      address: null,
+      address: '',
       city: [],
       city_id: '',
       district: [],
       district_id: '',
       village: [],
       village_id: '',
-      total: 0,
+      total_checkout: 0,
       total_amount: 0,
       shipping: 0
     };
@@ -2184,6 +2196,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/api/carts').then(function (response) {
       _this.carts = response.data;
+      console.log(_this.carts.length);
     });
     axios.get('/api/zone/city').then(function (response) {
       _this.city = JSON.parse(response.data).results;
@@ -2224,19 +2237,10 @@ __webpack_require__.r(__webpack_exports__);
       return this.shipping;
     },
     totalMoney: function totalMoney() {
-      return this.total = this.total_amount + this.shipping;
+      return this.total_checkout = this.total_amount + this.shipping;
     }
   },
   methods: {
-    process: function process(products) {
-      var _this3 = this;
-
-      axios.post("/api/cart/checkout", {
-        body: products
-      }).then(function (response) {
-        _this3.carts = response.data;
-      });
-    },
     displayPrice: function displayPrice(price, qty) {
       var val = this.formatPrice(price * qty);
       return this.formatPrice(price) + " x " + qty + " = " + val;
@@ -2263,6 +2267,22 @@ __webpack_require__.r(__webpack_exports__);
         this.$toast.top('Bạn chưa nhập số điện thoại.');
         this.$refs.phone.focus();
         return false;
+      } else {
+        var reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+
+        if (!reg.test(this.phone)) {
+          this.$toast.top('Số điện thoại chưa đúng.');
+          this.$refs.phone.focus();
+          return false;
+        }
+      }
+
+      if (this.email !== '') {
+        if (!email_reg.test(this.email)) {
+          this.$toast.top('Email chưa đúng.');
+          this.$refs.email.focus();
+          return false;
+        }
       }
 
       if (!this.city_id) {
@@ -2287,48 +2307,55 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     isPhoneValid: function isPhoneValid() {
-      var reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-      return this.phone === "" ? "" : reg.test(this.phone) ? 'has-success' : 'has-error';
+      return this.phone === "" ? "" : phone_reg.test(this.phone) ? 'has-success' : 'has-error';
     },
     isEmailValid: function isEmailValid() {
-      var reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
-      return this.email === "" ? "" : reg.test(this.email) ? 'has-success' : 'has-error';
-    },
-    someMethod: function someMethod() {
-      this.district_id = "";
+      return this.email === "" ? "" : email_reg.test(this.email) ? 'has-success' : 'has-error';
     },
     changeCity: function changeCity(val) {
-      var _this4 = this;
+      var _this3 = this;
 
       this.city_id = val;
       axios.get('/api/zone/district/' + val).then(function (response) {
         console.log(response.data);
-        _this4.district = JSON.parse(response.data).results;
+        _this3.district = JSON.parse(response.data).results;
+        _this3.district_id = null;
+        _this3.village_id = null;
       });
     },
     changeDistrict: function changeDistrict(val) {
-      var _this5 = this;
+      var _this4 = this;
 
       this.district_id = val;
       axios.get('/api/zone/village/' + val).then(function (response) {
         console.log(response.data);
-        _this5.village = JSON.parse(response.data).results;
+        _this4.village = JSON.parse(response.data).results;
+        _this4.village_id = null;
       });
     },
     changeVillage: function changeVillage(val) {
       this.village_id = val;
     },
     checkout: function checkout() {
-      console.log(this.name);
-      console.log(this.phone);
-      console.log(this.email);
-      console.log(this.city_id);
-      console.log(this.district_id);
-      console.log(this.village_id);
-      console.log(this.address);
-      console.log(this.total_amount);
-      console.log(this.shipping);
-      console.log(this.total);
+      var orders = [];
+      orders.push({
+        "customer_name": this.name,
+        "number_phone": this.phone,
+        "email": this.email,
+        "cityId": this.city_id,
+        "districtId": this.district_id,
+        "villageId": this.village_id,
+        "address": this.address,
+        "total_amount": this.total_amount,
+        "shipping": this.shipping,
+        "total_checkout": this.total_checkout
+      });
+      console.log(JSON.stringify(orders));
+      axios.post("/api/process-checkout", {
+        body: orders
+      }).then(function (response) {
+        console.log(response.data);
+      });
     }
   }
 });
@@ -2392,6 +2419,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70381,269 +70417,320 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "page-content" }, [
-    _c("form", { on: { submit: _vm.checkForm } }, [
-      _c("div", { staticClass: "cart segments" }, [
-        _c("h5", [_vm._v("Danh sách sản phẩm")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "divider-space-content" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "container" }, [
-          _c(
-            "div",
-            {
-              staticClass: "row",
-              staticStyle: { "max-height": "147px", overflow: "auto" }
-            },
-            _vm._l(_vm.carts, function(cart, index) {
-              return _c("div", { staticClass: "content" }, [
-                _c("div", { staticClass: "row col-12" }, [
-                  _c("div", { staticClass: "col-20" }, [
-                    _c("div", { staticClass: "content-image" }, [
-                      _c("img", { attrs: { src: cart["image"], alt: "" } })
+  return _vm.carts.length === 0
+    ? _c("div", { staticClass: "page-content" }, [_vm._m(0)])
+    : _c("div", { staticClass: "page-content" }, [
+        _c(
+          "form",
+          { attrs: { novalidate: "true" }, on: { submit: _vm.checkForm } },
+          [
+            _c("div", { staticClass: "cart segments" }, [
+              _c("h5", [_vm._v("Danh sách sản phẩm")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "divider-space-content" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "container" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "row",
+                    staticStyle: { "max-height": "147px", overflow: "auto" }
+                  },
+                  _vm._l(_vm.carts, function(cart, index) {
+                    return _c("div", { staticClass: "content" }, [
+                      _c("div", { staticClass: "row col-12" }, [
+                        _c("div", { staticClass: "col-20" }, [
+                          _c("div", { staticClass: "content-image" }, [
+                            _c("img", {
+                              attrs: { src: cart["image"], alt: "" }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-80" }, [
+                          _c("div", { staticClass: "content-text" }, [
+                            _c("p", {
+                              staticClass: "title-product",
+                              domProps: {
+                                textContent: _vm._s(
+                                  cart["name"] +
+                                    " - " +
+                                    cart["color"] +
+                                    " - " +
+                                    cart["size"]
+                                )
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("p", {
+                              domProps: {
+                                textContent: _vm._s(
+                                  _vm.displayPrice(cart["price"], cart["qty"])
+                                )
+                              }
+                            })
+                          ])
+                        ])
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "cart segments" }, [
+              _c("h5", [_vm._v("Thông tin người nhận")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "divider-space-content" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    height: "200px",
+                    overflow: "auto",
+                    "margin-bottom": "20px"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.name,
+                          expression: "name"
+                        }
+                      ],
+                      ref: "name",
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Họ tên" },
+                      domProps: { value: _vm.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.name = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { class: ["form-group", _vm.isPhoneValid()] }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.phone,
+                          expression: "phone"
+                        }
+                      ],
+                      ref: "phone",
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Số điện thoại" },
+                      domProps: { value: _vm.phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.phone = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { class: ["form-group", _vm.isEmailValid()] }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.email,
+                          expression: "email"
+                        }
+                      ],
+                      ref: "email",
+                      staticClass: "form-control",
+                      attrs: { type: "email", placeholder: "Email" },
+                      domProps: { value: _vm.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.email = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("v-select", {
+                    ref: "city",
+                    staticClass: "form-group",
+                    attrs: {
+                      options: _vm.city,
+                      reduce: function(city) {
+                        return city.id
+                      },
+                      placeholder: "Thành phố",
+                      label: "text"
+                    },
+                    on: { input: _vm.changeCity },
+                    model: {
+                      value: _vm.city_id,
+                      callback: function($$v) {
+                        _vm.city_id = $$v
+                      },
+                      expression: "city_id"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-select", {
+                    ref: "district",
+                    staticClass: "form-group",
+                    attrs: {
+                      options: _vm.district,
+                      reduce: function(district) {
+                        return district.id
+                      },
+                      placeholder: "Quận huyện",
+                      label: "text"
+                    },
+                    on: { input: _vm.changeDistrict },
+                    model: {
+                      value: _vm.district_id,
+                      callback: function($$v) {
+                        _vm.district_id = $$v
+                      },
+                      expression: "district_id"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-select", {
+                    ref: "village\n",
+                    staticClass: "form-group",
+                    attrs: {
+                      options: _vm.village,
+                      reduce: function(village) {
+                        return village.id
+                      },
+                      placeholder: "Phường xã",
+                      label: "text"
+                    },
+                    on: { input: _vm.changeVillage },
+                    model: {
+                      value: _vm.village_id,
+                      callback: function($$v) {
+                        _vm.village_id = $$v
+                      },
+                      expression: "village_id"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.address,
+                          expression: "address"
+                        }
+                      ],
+                      ref: "address",
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Thôn xóm, số nhà ..."
+                      },
+                      domProps: { value: _vm.address },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.address = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "cart segments" }, [
+              _c("div", { staticClass: "wrap-total-cart" }, [
+                _c("div", { staticClass: "container" }, [
+                  _c("div", { staticClass: "content-total" }, [
+                    _c("ul", [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c("h6", [
+                          _vm._v(_vm._s(_vm._f("formatPrice")(_vm.totalAmount)))
+                        ])
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-80" }, [
-                    _c("div", { staticClass: "content-text" }, [
-                      _c("p", {
-                        staticClass: "title-product",
-                        domProps: {
-                          textContent: _vm._s(
-                            cart["name"] +
-                              " - " +
-                              cart["color"] +
-                              " - " +
-                              cart["size"]
-                          )
-                        }
-                      }),
+                  _c("div", { staticClass: "content-total" }, [
+                    _c("ul", [
+                      _vm._m(2),
                       _vm._v(" "),
-                      _c("p", {
-                        domProps: {
-                          textContent: _vm._s(
-                            _vm.displayPrice(cart["price"], cart["qty"])
+                      _c("li", [
+                        _c("h6", [
+                          _vm._v(
+                            _vm._s(_vm._f("formatPrice")(_vm.totalShipping))
                           )
-                        }
-                      })
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "content-total" }, [
+                    _c("ul", [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c("h6", [
+                          _vm._v(_vm._s(_vm._f("formatPrice")(_vm.totalMoney)))
+                        ])
+                      ])
                     ])
                   ])
                 ])
               ])
-            }),
-            0
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "cart segments" }, [
-        _c("h5", [_vm._v("Thông tin người nhận")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "divider-space-content" }),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticStyle: {
-              height: "200px",
-              overflow: "auto",
-              "margin-bottom": "20px"
-            }
-          },
-          [
-            _c("div", { staticClass: "form-group" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.name,
-                    expression: "name"
-                  }
-                ],
-                ref: "name",
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Họ tên" },
-                domProps: { value: _vm.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.name = $event.target.value
-                  }
-                }
-              })
             ]),
             _vm._v(" "),
-            _c("div", { class: ["form-group", _vm.isPhoneValid()] }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.phone,
-                    expression: "phone"
-                  }
-                ],
-                ref: "phone",
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Số điện thoại" },
-                domProps: { value: _vm.phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.phone = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { class: ["form-group", _vm.isEmailValid()] }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.email,
-                    expression: "email"
-                  }
-                ],
-                ref: "email",
-                staticClass: "form-control",
-                attrs: { type: "email", placeholder: "Email" },
-                domProps: { value: _vm.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.email = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("v-select", {
-              ref: "city",
-              staticClass: "form-group",
-              attrs: {
-                options: _vm.city,
-                reduce: function(city) {
-                  return city.id
-                },
-                placeholder: "Thành phố",
-                label: "text"
-              },
-              on: { input: _vm.changeCity }
-            }),
-            _vm._v(" "),
-            _c("v-select", {
-              ref: "district",
-              staticClass: "form-group",
-              attrs: {
-                options: _vm.district,
-                reduce: function(district) {
-                  return district.id
-                },
-                placeholder: "Quận huyện",
-                label: "text"
-              },
-              on: { input: _vm.changeDistrict, change: _vm.someMethod }
-            }),
-            _vm._v(" "),
-            _c("v-select", {
-              ref: "village\n",
-              staticClass: "form-group",
-              attrs: {
-                options: _vm.village,
-                reduce: function(village) {
-                  return village.id
-                },
-                placeholder: "Phường xã",
-                label: "text"
-              },
-              on: { input: _vm.changeVillage }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.address,
-                    expression: "address"
-                  }
-                ],
-                ref: "address",
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Thôn xóm, số nhà ..." },
-                domProps: { value: _vm.address },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.address = $event.target.value
-                  }
-                }
-              })
-            ])
-          ],
-          1
+            _vm._m(4)
+          ]
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "cart segments" }, [
-        _c("div", { staticClass: "wrap-total-cart" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "content-total" }, [
-              _c("ul", [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("li", [
-                  _c("h6", [
-                    _vm._v(_vm._s(_vm._f("formatPrice")(_vm.totalAmount)))
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "content-total" }, [
-              _c("ul", [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("li", [
-                  _c("h6", [
-                    _vm._v(_vm._s(_vm._f("formatPrice")(_vm.totalShipping)))
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "content-total" }, [
-              _c("ul", [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("li", [
-                  _c("h6", [
-                    _vm._v(_vm._s(_vm._f("formatPrice")(_vm.totalMoney)))
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(3)
-    ])
-  ])
+      ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "cart segments" }, [
+      _c("h5", { staticClass: "center" }, [
+        _vm._v("Không tồn tại sản phẩm để thanh toán")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "divider-space-content" }),
+      _vm._v(" "),
+      _c("a", { staticClass: "button primary-button", attrs: { href: "/" } }, [
+        _c("i", { staticClass: "fas fa-arrow-alt-circle-left" }),
+        _vm._v(" Quay về trang chủ\n            ")
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -70774,115 +70861,134 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _vm._l(_vm.carts, function(cart, index) {
-        return _c("div", { staticClass: "content" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-10" }, [
-              _c("div", { staticClass: "content-checkbox" }, [
-                _c("label", { staticClass: "trash" }, [
-                  _c("i", {
-                    staticClass: "fa fa-trash-alt",
-                    on: {
-                      click: function($event) {
-                        return _vm.removeItem(cart, index)
-                      }
-                    }
-                  })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-20" }, [
-              _c("div", { staticClass: "content-image" }, [
-                _c("img", { attrs: { src: cart["image"], alt: "" } })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-40" }, [
-              _c("div", { staticClass: "content-text" }, [
-                _c("p", {
-                  staticClass: "title-product",
-                  domProps: {
-                    textContent: _vm._s(
-                      cart["name"] +
-                        " - " +
-                        cart["color"] +
-                        " - " +
-                        cart["size"]
-                    )
-                  }
-                }),
-                _vm._v(" "),
-                _c("p", { staticClass: "price" }, [
-                  _vm._v(_vm._s(_vm._f("formatPrice")(cart["price"])))
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-30 align-self-center" }, [
-              _c("div", { staticClass: "number-goods" }, [
-                _c(
-                  "div",
-                  { staticClass: "stepper stepper-small stepper-init" },
-                  [
-                    _c("div", {
-                      staticClass: "stepper-button-minus",
-                      on: {
-                        click: function($event) {
-                          return _vm.minus(cart)
+  return _vm.carts.length === 0
+    ? _c("div", { staticClass: "container" }, [_vm._m(0)])
+    : _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _vm._l(_vm.carts, function(cart, index) {
+            return _c("div", { staticClass: "content" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-10" }, [
+                  _c("div", { staticClass: "content-checkbox" }, [
+                    _c("label", { staticClass: "trash" }, [
+                      _c("i", {
+                        staticClass: "fa fa-trash-alt",
+                        on: {
+                          click: function($event) {
+                            return _vm.removeItem(cart, index)
+                          }
                         }
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-20" }, [
+                  _c("div", { staticClass: "content-image" }, [
+                    _c("img", { attrs: { src: cart["image"], alt: "" } })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-40" }, [
+                  _c("div", { staticClass: "content-text" }, [
+                    _c("p", {
+                      staticClass: "title-product",
+                      domProps: {
+                        textContent: _vm._s(
+                          cart["name"] +
+                            " - " +
+                            cart["color"] +
+                            " - " +
+                            cart["size"]
+                        )
                       }
                     }),
                     _vm._v(" "),
-                    _c("div", { staticClass: "stepper-input-wrap" }, [
-                      _c("input", {
-                        attrs: { type: "text", readonly: "" },
-                        domProps: { value: cart["qty"] }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", {
-                      staticClass: "stepper-button-plus",
-                      on: {
-                        click: function($event) {
-                          return _vm.plus(cart)
-                        }
-                      }
-                    })
-                  ]
-                )
+                    _c("p", { staticClass: "price" }, [
+                      _vm._v(_vm._s(_vm._f("formatPrice")(cart["price"])))
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-30 align-self-center" }, [
+                  _c("div", { staticClass: "number-goods" }, [
+                    _c(
+                      "div",
+                      { staticClass: "stepper stepper-small stepper-init" },
+                      [
+                        _c("div", {
+                          staticClass: "stepper-button-minus",
+                          on: {
+                            click: function($event) {
+                              return _vm.minus(cart)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "stepper-input-wrap" }, [
+                          _c("input", {
+                            attrs: { type: "text", readonly: "" },
+                            domProps: { value: cart["qty"] }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "stepper-button-plus",
+                          on: {
+                            click: function($event) {
+                              return _vm.plus(cart)
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  ])
+                ])
               ])
             ])
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "divider-space-content" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "wrap-total-cart" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "content-total" }, [
+                _c("ul", [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("h6", [_vm._v(_vm._s(_vm._f("formatPrice")(_vm.Total)))])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
           ])
-        ])
-      }),
+        ],
+        2
+      )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content" }, [
+      _c("h5", { staticClass: "center" }, [
+        _vm._v("Không tồn tại sản phẩm để thanh toán")
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "divider-space-content" }),
       _vm._v(" "),
-      _c("div", { staticClass: "wrap-total-cart" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "content-total" }, [
-            _c("ul", [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("li", [
-                _c("h6", [_vm._v(_vm._s(_vm._f("formatPrice")(_vm.Total)))])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _vm._m(1)
-        ])
+      _c("a", { staticClass: "button primary-button", attrs: { href: "/" } }, [
+        _c("i", { staticClass: "fas fa-arrow-alt-circle-left" }),
+        _vm._v(" Quay về trang chủ\n        ")
       ])
-    ],
-    2
-  )
-}
-var staticRenderFns = [
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -87378,8 +87484,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_toast__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue2_toast__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var vue2_toast_lib_toast_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue2-toast/lib/toast.css */ "./node_modules/vue2-toast/lib/toast.css");
 /* harmony import */ var vue2_toast_lib_toast_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue2_toast_lib_toast_css__WEBPACK_IMPORTED_MODULE_6__);
 /**
@@ -87408,7 +87514,7 @@ Vue.use(vue2_toast__WEBPACK_IMPORTED_MODULE_3___default.a, {
   wordWrap: true,
   width: '90%'
 });
-Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_5___default.a);
+Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_7___default.a);
 Vue.use(vue_lazyload__WEBPACK_IMPORTED_MODULE_2__["default"]);
 Vue.component("v-select", vue_select__WEBPACK_IMPORTED_MODULE_4___default.a);
 /**
@@ -88228,8 +88334,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\mobile\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\mobile\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/mobile/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/mobile/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

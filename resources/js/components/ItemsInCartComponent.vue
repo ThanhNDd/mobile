@@ -1,5 +1,14 @@
 <template>
-    <div class="container">
+    <div class="container"  v-if="carts.length === 0">
+        <div class="content">
+            <h5 class="center">Không tồn tại sản phẩm để thanh toán</h5>
+            <div class="divider-space-content"></div>
+            <a href="/" class="button primary-button">
+                <i class="fas fa-arrow-alt-circle-left"></i> Quay về trang chủ
+            </a>
+        </div>
+    </div>
+    <div class="container" v-else>
         <div class="content" v-for="(cart, index) in carts">
             <div class="row">
                 <div class="col-10">

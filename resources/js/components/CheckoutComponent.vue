@@ -1,6 +1,15 @@
 <template>
-    <div class="page-content">
-        <form @submit="checkForm">
+    <div class="page-content"  v-if="carts.length === 0">
+        <div class="cart segments">
+            <h5 class="center">Không tồn tại sản phẩm để thanh toán</h5>
+            <div class="divider-space-content"></div>
+            <a href="/" class="button primary-button">
+                <i class="fas fa-arrow-alt-circle-left"></i> Quay về trang chủ
+            </a>
+        </div>
+    </div>
+    <div class="page-content" v-else>
+        <form @submit="checkForm" novalidate="true">
             <div class="cart segments">
                 <h5>Danh sách sản phẩm</h5>
                 <div class="divider-space-content"></div>
@@ -37,9 +46,9 @@
                     <div :class="['form-group', isEmailValid()]">
                         <input type="email" class="form-control" placeholder="Email" v-model="email" ref="email" />
                     </div>
-                    <v-select :options="city" :reduce="city => city.id" @input="changeCity" placeholder="Thành phố" label="text" ref="city" class="form-group"></v-select>
-                    <v-select :options="district" :reduce="district => district.id" @input="changeDistrict" @change="someMethod" placeholder="Quận huyện" label="text" ref="district" class="form-group"></v-select>
-                    <v-select :options="village" :reduce="village => village.id" @input="changeVillage" placeholder="Phường xã" label="text" ref="village
+                    <v-select :options="city" :reduce="city => city.id" @input="changeCity" v-model="city_id" placeholder="Thành phố" label="text" ref="city" class="form-group"></v-select>
+                    <v-select :options="district" :reduce="district => district.id" @input="changeDistrict" v-model="district_id" placeholder="Quận huyện" label="text" ref="district" class="form-group"></v-select>
+                    <v-select :options="village" :reduce="village => village.id" @input="changeVillage" v-model="village_id" placeholder="Phường xã" label="text" ref="village
 " class="form-group"></v-select>
                     <div class="form-group">
                         <input type="text" placeholder="Thôn xóm, số nhà ..." class="form-control" v-model="address" ref="address">
@@ -85,31 +94,34 @@
             </div>
             <!-- end wrap total cart -->
             <div class="cart segments">
-                <button type="submit"  class="button primary-button">
+                <button type="submit" class="button primary-button">
                     <i class="fas fa-shopping-bag"></i>Thanh toán
                 </button>
             </div>
         </form>
     </div>
+
 </template>
 
 <script>
+    let email_reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
+    let phone_reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
     export default {
         data() {
             return {
                 carts: [],
                 errors: [],
-                name: null,
+                name: '',
                 phone: '',
                 email: '',
-                address: null,
+                address: '',
                 city: [],
                 city_id: '',
                 district: [],
                 district_id: '',
                 village: [],
                 village_id: '',
-                total: 0,
+                total_checkout: 0,
                 total_amount:0,
                 shipping: 0
             }
@@ -117,7 +129,8 @@
         created() {
             axios.get('/api/carts')
                 .then(response => {
-                    this.carts = response.data
+                    this.carts = response.data;
+                    console.log(this.carts.length);
                 });
             axios.get('/api/zone/city')
                 .then(response => {
@@ -155,17 +168,10 @@
                 return this.shipping;
             },
             totalMoney: function() {
-                return this.total = this.total_amount + this.shipping;
+                return this.total_checkout = this.total_amount + this.shipping;
             }
         },
         methods: {
-            process: function(products){
-                axios.post("/api/cart/checkout", {
-                    body: products
-                }).then(response => {
-                    this.carts = response.data
-                })
-            },
             displayPrice: function (price, qty) {
                 let val = this.formatPrice(price*qty);
                 return this.formatPrice(price) + " x " + qty + " = " + val;
@@ -189,6 +195,20 @@
                     this.$toast.top('Bạn chưa nhập số điện thoại.');
                     this.$refs.phone.focus();
                     return false;
+                } else {
+                    let reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+                    if(!reg.test(this.phone)) {
+                        this.$toast.top('Số điện thoại chưa đúng.');
+                        this.$refs.phone.focus();
+                        return false;
+                    }
+                }
+                if(this.email !== '') {
+                    if(!email_reg.test(this.email)) {
+                        this.$toast.top('Email chưa đúng.');
+                        this.$refs.email.focus();
+                        return false;
+                    }
                 }
                 if (!this.city_id) {
                     this.$toast.top('Bạn chưa chọn thành phố.');
@@ -209,15 +229,11 @@
                 }
             },
             isPhoneValid: function() {
-                let reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-                return (this.phone === "")? "" : (reg.test(this.phone)) ? 'has-success' : 'has-error';
+
+                return (this.phone === "")? "" : (phone_reg.test(this.phone)) ? 'has-success' : 'has-error';
             },
             isEmailValid: function() {
-                let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
-                return (this.email === "")? "" : (reg.test(this.email)) ? 'has-success' : 'has-error';
-            },
-            someMethod: function() {
-                this.district_id = "";
+                return (this.email === "")? "" : (email_reg.test(this.email)) ? 'has-success' : 'has-error';
             },
             changeCity: function(val) {
                 this.city_id = val;
@@ -225,6 +241,8 @@
                     .then(response => {
                         console.log(response.data);
                         this.district = JSON.parse(response.data).results;
+                        this.district_id = null;
+                        this.village_id = null;
                     });
             },
             changeDistrict: function(val) {
@@ -233,22 +251,32 @@
                     .then(response => {
                         console.log(response.data);
                         this.village = JSON.parse(response.data).results;
+                        this.village_id = null;
                     });
             },
             changeVillage: function(val) {
                 this.village_id = val;
             },
             checkout: function() {
-                console.log(this.name);
-                console.log(this.phone);
-                console.log(this.email);
-                console.log(this.city_id);
-                console.log(this.district_id);
-                console.log(this.village_id);
-                console.log(this.address);
-                console.log(this.total_amount);
-                console.log(this.shipping);
-                console.log(this.total);
+                let orders = [];
+                orders.push({
+                    "customer_name": this.name,
+                    "number_phone": this.phone,
+                    "email": this.email,
+                    "cityId" : this.city_id,
+                    "districtId" : this.district_id,
+                    "villageId" : this.village_id,
+                    "address" : this.address,
+                    "total_amount" : this.total_amount,
+                    "shipping" : this.shipping,
+                    "total_checkout" : this.total_checkout
+                });
+                console.log(JSON.stringify(orders));
+                axios.post("/api/process-checkout", {
+                    body: orders
+                }).then(response => {
+                    console.log(response.data);
+                })
             }
         },
     }

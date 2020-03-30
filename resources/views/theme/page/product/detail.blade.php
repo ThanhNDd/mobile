@@ -206,23 +206,25 @@
                                         <a href="#"><i class="fas fa-comment"></i></a>
                                     </div>
                                 </div>
+                                @foreach (json_decode($product->image) as $image)
+                                    @if ($loop->first)
                                 <div class="col-40">
                                     <div class="content-button">
-                                        @foreach (json_decode($product->image) as $image)
-                                            @if ($loop->first)
-                                                <a href="#" class="button secondary-button"
-                                                   v-on:click="addToCart('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? 'https://admin.shopmein.vn/dist/uploads/'.$image->src : $image->src) }}')">
-                                                    <i class="fas fa-cart-arrow-down"></i> Thêm vào giỏ</a>
-                                            @endif
-                                        @endforeach
+                                        <a href="#" class="button secondary-button"
+                                           v-on:click="addToCart('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? 'https://admin.shopmein.vn/dist/uploads/'.$image->src : $image->src) }}')">
+                                            <i class="fas fa-cart-arrow-down"></i> Thêm vào giỏ</a>
                                     </div>
                                 </div>
                                 <div class="col-40">
                                     <div class="content-button">
-                                        <a href="#" class="button secondary-button"><i class="fas fa-cart-plus"></i> Mua
-                                            ngay</a>
+                                        <a href="#" class="button secondary-button"
+                                           v-on:click="buyNow('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? 'https://admin.shopmein.vn/dist/uploads/'.$image->src : $image->src) }}')">
+                                            <i class="fas fa-cart-plus"></i> Mua ngay
+                                        </a>
                                     </div>
                                 </div>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -304,7 +306,8 @@
             el: '#detail',
             data() {
                 return {
-                    products: []
+                    products: [],
+                    type: ''
                 }
             },
             methods: {
@@ -331,6 +334,7 @@
                     this.storeInCart();
                 },
                 buyNow: function (id, name, price, image) {
+                    this.type = "buyNow";
                     this.addToCart(id, name, price, image);
                 },
                 storeInCart: function () {
@@ -339,6 +343,9 @@
                     }).then(response => {
                         this.$toast.top('Đã thêm vào giỏ hàng');
                         document.querySelector('.cart_number').innerHTML = '<span class="badge badge-danger">' + response.data.length + '</span>';
+                        if(this.type === "buyNow") {
+                            window.location.href =  window.location.protocol + '//' + window.location.hostname + ":" + window.location.port +  "/checkout";
+                        }
                     })
                 }
             }
