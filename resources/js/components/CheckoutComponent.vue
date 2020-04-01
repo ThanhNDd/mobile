@@ -104,8 +104,6 @@
 </template>
 
 <script>
-    let email_reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
-    let phone_reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
     export default {
         data() {
             return {
@@ -123,7 +121,9 @@
                 village_id: '',
                 total_checkout: 0,
                 total_amount:0,
-                shipping: 0
+                shipping: 0,
+                email_reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
+                phone_reg : /((09|03|07|08|05)+([0-9]{8})\b)/g
             }
         },
         created() {
@@ -195,20 +195,15 @@
                     this.$toast.top('Bạn chưa nhập số điện thoại.');
                     this.$refs.phone.focus();
                     return false;
-                } else {
-                    let reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-                    if(!reg.test(this.phone)) {
-                        this.$toast.top('Số điện thoại chưa đúng.');
-                        this.$refs.phone.focus();
-                        return false;
-                    }
+                } else if(!this.phone_reg.test(this.phone)) {
+                    this.$toast.top('Số điện thoại chưa đúng.');
+                    this.$refs.phone.focus();
+                    return false;
                 }
-                if(this.email !== '') {
-                    if(!email_reg.test(this.email)) {
-                        this.$toast.top('Email chưa đúng.');
-                        this.$refs.email.focus();
-                        return false;
-                    }
+                if(this.email !== '' && !this.email_reg.test(this.email)) {
+                    this.$toast.top('Email chưa đúng.');
+                    this.$refs.email.focus();
+                    return false;
                 }
                 if (!this.city_id) {
                     this.$toast.top('Bạn chưa chọn thành phố.');
@@ -229,11 +224,10 @@
                 }
             },
             isPhoneValid: function() {
-
-                return (this.phone === "")? "" : (phone_reg.test(this.phone)) ? 'has-success' : 'has-error';
+                return (this.phone === "")? "" : (this.phone_reg.test(this.phone)) ? 'has-success' : 'has-error';
             },
             isEmailValid: function() {
-                return (this.email === "")? "" : (email_reg.test(this.email)) ? 'has-success' : 'has-error';
+                return (this.email === "")? "" : (this.email_reg.test(this.email)) ? 'has-success' : 'has-error';
             },
             changeCity: function(val) {
                 this.city_id = val;

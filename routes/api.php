@@ -44,5 +44,5 @@ Route::group(['prefix' => 'zone'], function(){
     Route::get('/village/{id}', 'ZoneController@village');
 });
 
-Route::post('/process-checkout', 'CheckoutController@checkout');
+Route::post('/process-checkout', 'CheckoutController@store');
 

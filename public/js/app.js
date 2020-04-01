@@ -2169,8 +2169,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var email_reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
-var phone_reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2188,7 +2186,9 @@ var phone_reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
       village_id: '',
       total_checkout: 0,
       total_amount: 0,
-      shipping: 0
+      shipping: 0,
+      email_reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
+      phone_reg: /((09|03|07|08|05)+([0-9]{8})\b)/g
     };
   },
   created: function created() {
@@ -2267,22 +2267,16 @@ var phone_reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
         this.$toast.top('Bạn chưa nhập số điện thoại.');
         this.$refs.phone.focus();
         return false;
-      } else {
-        var reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-
-        if (!reg.test(this.phone)) {
-          this.$toast.top('Số điện thoại chưa đúng.');
-          this.$refs.phone.focus();
-          return false;
-        }
+      } else if (!this.phone_reg.test(this.phone)) {
+        this.$toast.top('Số điện thoại chưa đúng.');
+        this.$refs.phone.focus();
+        return false;
       }
 
-      if (this.email !== '') {
-        if (!email_reg.test(this.email)) {
-          this.$toast.top('Email chưa đúng.');
-          this.$refs.email.focus();
-          return false;
-        }
+      if (this.email !== '' && !this.email_reg.test(this.email)) {
+        this.$toast.top('Email chưa đúng.');
+        this.$refs.email.focus();
+        return false;
       }
 
       if (!this.city_id) {
@@ -2307,10 +2301,10 @@ var phone_reg = /((09|03|07|08|05)+([0-9]{8})\b)/g;
       }
     },
     isPhoneValid: function isPhoneValid() {
-      return this.phone === "" ? "" : phone_reg.test(this.phone) ? 'has-success' : 'has-error';
+      return this.phone === "" ? "" : this.phone_reg.test(this.phone) ? 'has-success' : 'has-error';
     },
     isEmailValid: function isEmailValid() {
-      return this.email === "" ? "" : email_reg.test(this.email) ? 'has-success' : 'has-error';
+      return this.email === "" ? "" : this.email_reg.test(this.email) ? 'has-success' : 'has-error';
     },
     changeCity: function changeCity(val) {
       var _this3 = this;
@@ -87484,8 +87478,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_toast__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue2_toast__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var vue2_toast_lib_toast_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue2-toast/lib/toast.css */ "./node_modules/vue2-toast/lib/toast.css");
 /* harmony import */ var vue2_toast_lib_toast_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue2_toast_lib_toast_css__WEBPACK_IMPORTED_MODULE_6__);
 /**
@@ -87514,7 +87508,7 @@ Vue.use(vue2_toast__WEBPACK_IMPORTED_MODULE_3___default.a, {
   wordWrap: true,
   width: '90%'
 });
-Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_7___default.a);
+Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_5___default.a);
 Vue.use(vue_lazyload__WEBPACK_IMPORTED_MODULE_2__["default"]);
 Vue.component("v-select", vue_select__WEBPACK_IMPORTED_MODULE_4___default.a);
 /**
