@@ -10,16 +10,28 @@ import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import VueLazyload from 'vue-lazyload';
 import Toast from 'vue2-toast';
 import vSelect from "vue-select";
-// import Vue from 'vue'
 import Vuelidate from 'vuelidate'
+// import VueSweetalert2 from 'vue-sweetalert2';
 
-window.Vue = require('vue');
+// import Swal from 'sweetalert2';
 
-// import 'bootstrap/dist/css/bootstrap.css';
-// import 'bootstrap-vue/dist/bootstrap-vue.css';
+// CommonJS
+// const Swal = require('sweetalert2');
+
+// import 'sweetalert2/dist/sweetalert2.min.css';
 import 'vue2-toast/lib/toast.css';
 
+
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
+// import 'sweetalert2/src/sweetalert2.scss'
+
+import swal from 'sweetalert';
+
+window.Vue = require('vue');
 window.VueRoute = require('vue-router');
+
+// Vue.use(Swal);
 Vue.use(BootstrapVue);
 Vue.use(Toast, {
     type: 'center',

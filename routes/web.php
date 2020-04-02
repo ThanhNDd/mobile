@@ -35,5 +35,5 @@ Route::get('/info', 'InfoController@show');
 Route::get('/notifications', function () {
     return view('theme.page.notifications');
 });
-
+Route::get('/finish', 'CheckoutController@finish');
 

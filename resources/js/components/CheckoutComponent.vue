@@ -270,6 +270,16 @@
                     body: orders
                 }).then(response => {
                     console.log(response.data);
+                    if(response.data === 201) {
+                        window.location.href =  window.location.protocol + '//' + window.location.hostname + ":" + window.location.port +  "/finish";
+                    } else {
+                        swal({
+                            title: "Đã xảy ra lỗi!",
+                            text: "Xin vui lòng thử lại sau!",
+                            icon: "error",
+                            button: "Đồng ý",
+                        });
+                    }
                 })
             }
         },

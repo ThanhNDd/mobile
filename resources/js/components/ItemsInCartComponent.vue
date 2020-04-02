@@ -124,22 +124,28 @@
                 })
             },
             removeItem(cart, index) {
-                if(!confirm('Are you sure want to detele this item?')) {
-                    return;
-                }
-                let products = [];
-                products.push({
-                    "id": cart['id'],
-                    "color": cart['color'],
-                    "size": cart['size']
+                swal({
+                    title: "Bạn chắc chắn muốn xoá sản phẩm này?",
+                    text: "",
+                    icon: "warning",
+                    buttons: ["Huỷ", "Đồng ý"],
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        let products = [];
+                        products.push({
+                            "id": cart['id'],
+                            "color": cart['color'],
+                            "size": cart['size']
+                        });
+                        axios.post("/api/cart/remove", {
+                            body: products
+                        }).then(response => {
+                            this.carts.splice(index, 1);
+                            this.$toast.top('Sản phẩm đã được xoá');
+                        })
+                    }
                 });
-                axios.post("/api/cart/remove", {
-                    body: products
-                }).then(response => {
-
-                    // Vue.set(this.carts, response.data);
-                    this.carts.splice(index, 1);
-                })
             }
         }
     }
