@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\OrderShipped;
+use App\Mail\SendEmail;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -98,12 +98,15 @@ class CheckoutController extends Controller
                 } else {
                     throw new Exception ("Not exist item in cart !!!");
                 }
-                DB::commit();
+
 
                 // clear session
                 $request->session()->forget("cart");
                 $request->session()->put("finish", true);
-                $this->sendMail($data['total_amount'], 'Success Create Order', $orderId);
+
+                Mail::to('thanhit228@gmail.com')->send(new SendEmail());
+
+                DB::commit();
                 return response()->json(201);
             } else {
                 throw new Exception ("Invalid input data");
@@ -115,19 +118,19 @@ class CheckoutController extends Controller
         }
     }
 
-    public function sendMail($total_amount, $content, $orderId) {
-        $to_name = 'ThanhIT';
-        $to_email = 'thanhit228@gmail.com';
-        $data = array('total_amount'=>$total_amount,'content'=>$content, 'orderId'=>$orderId);
-
-//        Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $orderId) {
-//            $message->to($to_email, $to_name)
-//                ->subject('[Shop Mẹ Ỉn] Đơn hàng mới #'.$orderId);
-//            $message->from('thanhit228@gmail.com','Shop Mẹ Ỉn');
-//        });
-
-        Mail::to($to_email)->send(new OrderShipped());
-    }
+//    public function sendMail($total_amount, $content, $orderId) {
+//        $to_name = 'ThanhIT';
+//        $to_email = 'thanhit228@gmail.com';
+//        $data = array('total_amount'=>$total_amount,'content'=>$content, 'orderId'=>$orderId);
+//
+////        Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $orderId) {
+////            $message->to($to_email, $to_name)
+////                ->subject('[Shop Mẹ Ỉn] Đơn hàng mới #'.$orderId);
+////            $message->from('thanhit228@gmail.com','Shop Mẹ Ỉn');
+////        });
+//
+//        Mail::to($to_email)->send(new SendEmail());
+//    }
 
     public function finish() {
         return view('theme.page.finish');

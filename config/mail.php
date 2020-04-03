@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'thanhit228@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'ThanhIT'),
+        'name' => env('MAIL_FROM_NAME', 'Shop Me In'),
     ],
 
     /*
@@ -113,10 +113,9 @@ return [
     */
 
     'markdown' => [
-        'theme' => 'default',
-
+        'theme' => 'mail',
         'paths' => [
-            resource_path('views/vendor/mail'),
+            resource_path('views/theme/page/mail'),
         ],
     ],
 
@@ -135,7 +134,15 @@ return [
 
     'to' => [
         'address' => 'thanhit228@gmail.com',
-        'name' => 'ThanhND46'
+        'name' => ''
+    ],
+
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ],
     ],
 
 ];
