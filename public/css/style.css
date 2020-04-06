@@ -787,7 +787,8 @@ ul li {
 }
 
 /*popular product*/
-.popular-product .content .image {
+.popular-product .content .image,
+.blog .content .image {
     padding: 10px;
     padding-bottom: 0;
 }
@@ -3756,7 +3757,7 @@ ul li {
     border-radius: 12px 12px 0 0;
 }
 
-.product .content .text {
+.product .content .text, .blog .content .text {
     padding: 10px;
     text-align: center;
 }

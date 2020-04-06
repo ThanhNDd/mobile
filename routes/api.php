@@ -17,19 +17,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::Resource('/products', 'ProductController');
+Route::post('/products', 'ProductController@index');
 
 Route::Resource('/flash-sales', 'SaleController');
 
 Route::Resource('/sales', 'SaleController');
 
-Route::Resource('/best-seller', 'BestSellerController');
+Route::post('/best-seller', 'BestSellerController@index');
 
 Route::Resource('/attributes', 'AttributesController', ['parameters' => [
     'attributes' => 'id'
 ]]);
 
-Route::Resource('/relate.category', 'RelateProductController');
+Route::Resource('/relate.category.type', 'RelateProductController');
+Route::Resource('/recommend.category.type', 'RecommendController');
 
 Route::Resource('/cart', 'CartController');
 Route::get('/carts', 'CartController@get_all_items');

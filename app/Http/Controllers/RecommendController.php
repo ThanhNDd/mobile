@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
-class RelateProductController extends Controller
+class RecommendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -48,7 +48,7 @@ class RelateProductController extends Controller
      */
     public function show($id, $cat_id, $type)
     {
-        $products = DB::table('smi_products')->where([['category_id', '=', $cat_id],['id','<>',$id],['status','=','0'],['type','=',$type]])
+        $products = DB::table('smi_products')->where([['category_id', '<>', $cat_id],['id','<>',$id],['status','=','0'],['type','=',$type]])
             ->orderBy('id', 'desc')
             ->take(6)
             ->get()->jsonSerialize();

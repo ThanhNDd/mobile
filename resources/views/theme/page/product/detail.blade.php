@@ -1,5 +1,5 @@
 @extends('theme.layout.layout')
-
+@section('title', $prod_title.' | Shop Mẹ Ỉn - Thời trang trẻ em cao cấp')
 @section('content')
     <div id="app"></div>
     <div id="detail" xmlns:v-on="http://www.w3.org/1999/xhtml">
@@ -15,9 +15,10 @@
                             <div class="wrapper-content">
                                 <input type="hidden" id="cat_id" ref="categoryId" value="{{$product->category_id}}">
                                 <input type="hidden" id="product_id" ref="productId" value="{{$product->id}}">
+                                <input type="hidden" id="type_id" ref="typeId" value="{{$product->type}}">
                                 <div class="slider-p-details">
                                     <div class="swiper-container swiper-detail-product">
-                                        <div class="swiper-pagination"></div>
+{{--                                        <div class="swiper-pagination"></div>--}}
                                         <div class="swiper-wrapper">
                                             @foreach (json_decode($product->image) as $image)
                                                 <div class="swiper-slide">
@@ -140,58 +141,7 @@
                                 <div class="section-title">
                                     <h3>Có thể bạn quan tâm</h3>
                                 </div>
-                                <div class="swiper-container swiper-recommended-product">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="content content-shadow-product">
-                                                <img src="{{ url('images/product1.jpg') }}" alt="">
-                                                <div class="text">
-                                                    <a href="#">
-                                                        <p class="title-product">Sweater with triangle collar</p>
-                                                    </a>
-                                                    <p class="price">$75.00</p>
-                                                    <p class="location">New York</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="content content-shadow-product">
-                                                <img src="{{ url('images/product2.jpg') }}" alt="">
-                                                <div class="text">
-                                                    <a href="#">
-                                                        <p class="title-product">New slim smartwatch</p>
-                                                    </a>
-                                                    <p class="price">$49.00</p>
-                                                    <p class="location">New York</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="content content-shadow-product">
-                                                <img src="{{ url('images/product3.jpg') }}" alt="">
-                                                <div class="text">
-                                                    <a href="#">
-                                                        <p class="title-product">Army jacket premium</p>
-                                                    </a>
-                                                    <p class="price">$99.99</p>
-                                                    <p class="location">New York</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="content content-shadow-product">
-                                                <img src="{{ url('images/product5.jpg') }}" alt="">
-                                                <div class="text">
-                                                    <a href="#">
-                                                        <p class="title-product">Black premium shirt plain</p>
-                                                    </a>
-                                                    <p class="price">$45.00</p>
-                                                    <p class="location">New York</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <recommend-product-component/>
                             </div>
                             <!-- end recommended for you -->
                         </div>
@@ -350,8 +300,18 @@
                 }
             }
         });
+        new Swiper('.swiper-detail-product', {
+            pagination: {
+                el: '.swiper-pagination-detail-product',
+                dynamicBullets: true,
+                paginationClickable: true
+            },
+            autoplay: {
+                delay: 5000,
+            },
+        });
         new Swiper('.swiper-relate-product',{
-            slidesPerView: 3
+            // slidesPerView: 2
         });
     </script>
 @endsection

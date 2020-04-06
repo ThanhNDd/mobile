@@ -29,7 +29,7 @@
             let cat_id = document.querySelector('#cat_id').getAttribute('value');
             let id = document.querySelector('#product_id').getAttribute('value');
             let type = document.querySelector('#type_id').getAttribute('value');
-            axios.get('/api/relate/'+id+'/category/'+cat_id+'/type/'+type)
+            axios.get('/api/recommend/'+id+'/category/'+cat_id+'/type/'+type)
                 .then(response => {
                     this.products = response.data
                 });

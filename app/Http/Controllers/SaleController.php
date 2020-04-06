@@ -14,7 +14,7 @@ class SaleController extends Controller
 
     public function index() {
         $products = DB::table('smi_products')
-            ->where('status', 0)
+            ->where([['status', 0],['social_publish->website',1]])
             ->orderBy('discount', 'desc')
             ->orderBy('id', 'desc')
             ->take(10)

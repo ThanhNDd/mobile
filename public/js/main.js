@@ -15,13 +15,6 @@ new Swiper('.swiper-flash-sale',{
         delay: 5000,
     },
 });
-var swiper3 = new Swiper('.swiper-detail-product', {
-    pagination: {
-        el: '.swiper-pagination-detail-product',
-        dynamicBullets: true,
-        paginationClickable: true
-    },
-});
 
 var swiper5 = new Swiper('.swiper-recommended-product',{
     slidesPerView: 3

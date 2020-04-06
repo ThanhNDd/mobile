@@ -53,10 +53,10 @@
                                 <h3>Best Seller</h3>
                             </div>
                             <best-seller-component></best-seller-component>
-                            <div class="row justify-content-center">
-                                <a href="#" class="view-more">Xem thêm <i
-                                            class="fas fa-caret-down"></i></a>
-                            </div>
+{{--                            <div class="row justify-content-center">--}}
+{{--                                <a href="#" class="view-more">Xem thêm <i--}}
+{{--                                            class="fas fa-caret-down"></i></a>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                     <!-- end latest product -->
@@ -78,10 +78,10 @@
                                     <h3>New Arrivals</h3>
                                 </div>
                                 <latest-product-component></latest-product-component>
-                                <div class="row justify-content-center">
-                                    <a href="http://localhost:8000/#" class="view-more">Xem thêm <i
-                                                class="fas fa-caret-down"></i></a>
-                                </div>
+{{--                                <div class="row justify-content-center">--}}
+{{--                                    <a href="http://localhost:8000/#" class="view-more">Xem thêm <i--}}
+{{--                                                class="fas fa-caret-down"></i></a>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                         <!-- end popular product -->
