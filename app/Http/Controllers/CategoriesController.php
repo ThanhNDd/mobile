@@ -5,10 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
 
 class CategoriesController extends Controller
 {
+    public function boys(Request $request) {
+        $row = $request->row;
+        $rowperpage = $request->rowperpage;
+        $products = $this->getProducts($row, $rowperpage, 0);
+        return response($products, Response::HTTP_OK);
+    }
+
+    public function girls(Request $request) {
+        $row = $request->row;
+        $rowperpage = $request->rowperpage;
+        $products = $this->getProducts($row, $rowperpage, 1);
+        return response($products, Response::HTTP_OK);
+    }
+
+    private function getProducts($row, $rowperpage, $type) {
+        $products = DB::table('smi_products')->where([['status', '=',0],["social_publish->website", "=", 1],['type', '=',$type]])
+            ->orderBy('created_at', 'desc')
+            ->offset($row)
+            ->limit($rowperpage)
+            ->get()->jsonSerialize();
+        return $products;
+    }
 
     public function categories() {
         $is_active = 'categories';

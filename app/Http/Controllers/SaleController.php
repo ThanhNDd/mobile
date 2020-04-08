@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
@@ -12,12 +13,14 @@ use Illuminate\Support\Facades\DB;
 class SaleController extends Controller
 {
 
-    public function index() {
-        $products = DB::table('smi_products')
-            ->where([['status', 0],['social_publish->website',1]])
+    public function index(Request $request) {
+        $row = $request->row;
+        $rowperpage = $request->rowperpage;
+        $products = DB::table('smi_products')->where([['status', '=',0],["social_publish->website", "=", 1]])
             ->orderBy('discount', 'desc')
             ->orderBy('id', 'desc')
-            ->take(10)
+            ->offset($row)
+            ->limit($rowperpage)
             ->get()->jsonSerialize();
         return response($products, Response::HTTP_OK);
     }

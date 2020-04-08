@@ -34,18 +34,14 @@ class ProductController extends Controller
         $type = $product->type;
         $cat_title = '';
         $cat_id = $product->category_id;
+        $cat_uri = '';
         if($type == 0) {
             $cat_title = 'Thời trang bé trai';
+            $cat_uri = '/categories/boys';
         } else if($type == 1) {
             $cat_title = 'Thời trang bé gái';
-        } else
-
-
-        if($cat_id == 5 || $cat_id = 6) {
-            $cat_title = 'Giày dép';
-        } else if($cat_id == 7 || $cat_id = 8) {
-            $cat_title = 'Phụ kiện';
+            $cat_uri = '/categories/girls';
         }
-        return view('theme.page.product.detail', compact('isDetail', 'cat_title', 'prod_title', 'product'));
+        return view('theme.page.product.detail', compact('isDetail', 'cat_title', 'prod_title', 'cat_uri', 'product'));
     }
 }

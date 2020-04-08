@@ -21,7 +21,7 @@ Route::post('/products', 'ProductController@index');
 
 Route::Resource('/flash-sales', 'SaleController');
 
-Route::Resource('/sales', 'SaleController');
+Route::post('/sales', 'SaleController@index');
 
 Route::post('/best-seller', 'BestSellerController@index');
 
@@ -44,6 +44,8 @@ Route::group(['prefix' => 'zone'], function(){
     Route::get('/district/{id}', 'ZoneController@district');
     Route::get('/village/{id}', 'ZoneController@village');
 });
-
 Route::post('/process-checkout', 'CheckoutController@store');
-
+Route::group(['prefix' => 'category'], function(){
+    Route::post('/girls', 'CategoriesController@girls');
+    Route::post('/boys', 'CategoriesController@boys');
+});

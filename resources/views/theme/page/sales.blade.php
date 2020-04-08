@@ -59,14 +59,14 @@
                     <!-- product brand -->
                     <div class="product-brand segments-bottom product">
                         <div class="container">
-                            <sale-component></sale-component>
+                            <sale-component/>
                         </div>
                     </div>
                     <!-- end product brand -->
-                    <div class="row justify-content-center pb-4">
-                        <a href="#" class="view-more">Xem thêm <i
-                                class="fas fa-caret-down"></i></a>
-                    </div>
+{{--                    <div class="row justify-content-center pb-4">--}}
+{{--                        <a href="#" class="view-more">Xem thêm <i--}}
+{{--                                class="fas fa-caret-down"></i></a>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <!-- end official brand -->

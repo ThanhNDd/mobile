@@ -40,7 +40,9 @@
         },
         methods: {
             getProducts: function () {
-                axios.post('./api/sales', {
+                let pathname = window.location.pathname;
+                pathname = pathname.split('/')[2];
+                axios.post('/api/category/'+pathname, {
                     row: this.row,
                     rowperpage: this.rowperpage
                 }).then(response => {

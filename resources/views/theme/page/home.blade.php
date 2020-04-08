@@ -97,9 +97,9 @@
                                 <div class="row">
                                     <div class="col-50">
                                         <div class="content content-shadow-product">
-                                            <a href="http://localhost:8000/product-details/">
+                                            <a href="https://blog.shopmein.vn/easy-crafts-to-make-this-easter/" target="_blank">
                                                 <div class="image">
-                                                    <img src="{{ url('images/product1.jpg') }}" alt="">
+                                                    <img src="https://blog.shopmein.vn/wp-content/uploads/2020/04/6-696x418.jpg" alt="">
                                                 </div>
                                                 <div class="text">
                                                     <p class="title-product title-product-center">Elegant Blue
@@ -110,9 +110,9 @@
                                     </div>
                                     <div class="col-50">
                                         <div class="content content-shadow-product">
-                                            <a href="http://localhost:8000/product-details/">
+                                            <a href="https://blog.shopmein.vn/genius-decorating-ideas-for-every-room-in-your-house/" target="_blank">
                                                 <div class="image">
-                                                    <img src="{{ url('images/product2.jpg') }}" alt="">
+                                                    <img src="http://localhost/blog/wp-content/uploads/2020/04/2.jpg" alt="">
                                                 </div>
                                                 <div class="text">
                                                     <p class="title-product title-product-center">Elegant Blue
