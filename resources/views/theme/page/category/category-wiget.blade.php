@@ -28,7 +28,7 @@
                 <div class="content">
                     <a href="{{ url("/categories/shoes") }}">
                         <div class="icon">
-                            <i class="fas fa-tools"></i>
+                            <i class="fas fa-shoe-prints"></i>
                         </div>
                         <span>Giày dép</span>
                     </a>

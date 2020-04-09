@@ -23,16 +23,44 @@
     export default {
         data() {
             return {
-                products: []
+                products: '',
+                isFinished: false,
+                row: 0, // Record selction position
+                rowperpage: 10, // Number of records fetch at a time
+                buttonText: 'Xem thêm',
             }
         },
         created() {
-            axios.get('/api/flash-sales')
-                .then(response => {
-                    this.products = response.data
-                });
+            this.getProducts();
         },
         methods: {
+            getProducts: function () {
+                axios.post('./api/flash-sales', {
+                    row: this.row,
+                    rowperpage: this.rowperpage
+                }).then(response => {
+                    console.log(response.data);
+                    if (response.data !== '' && response.data.length > 0) {
+                        this.row += this.rowperpage;
+                        let len = this.products.length;
+                        if (len > 0) {
+                            this.buttonText = "Loading ...";
+                            let that = this;
+                            setTimeout(function () {
+                                that.buttonText = 'Xem thêm';
+                                for (let i = 0; i < response.data.length; i++) {
+                                    that.products.push(response.data[i]);
+                                }
+                            }, 500);
+                        } else {
+                            this.products = response.data;
+                        }
+                    } else {
+                        this.buttonText = "Không có thêm sản phẩm.";
+                        this.isFinished = true;
+                    }
+                });
+            }
         }
     }
 </script>

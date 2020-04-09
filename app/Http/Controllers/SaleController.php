@@ -16,7 +16,7 @@ class SaleController extends Controller
     public function index(Request $request) {
         $row = $request->row;
         $rowperpage = $request->rowperpage;
-        $products = DB::table('smi_products')->where([['status', '=',0],["social_publish->website", "=", 1]])
+        $products = DB::table('smi_products')->where([['status', '=',0],["social_publish->website", "=", 1],['discount', '>',0]])
             ->orderBy('discount', 'desc')
             ->orderBy('id', 'desc')
             ->offset($row)

@@ -1957,6 +1957,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2533,17 +2538,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      products: []
+      products: '',
+      isFinished: false,
+      row: 0,
+      // Record selction position
+      rowperpage: 10,
+      // Number of records fetch at a time
+      buttonText: 'Xem thêm'
     };
   },
   created: function created() {
-    var _this = this;
-
-    axios.get('/api/flash-sales').then(function (response) {
-      _this.products = response.data;
-    });
+    this.getProducts();
   },
-  methods: {}
+  methods: {
+    getProducts: function getProducts() {
+      var _this = this;
+
+      axios.post('./api/flash-sales', {
+        row: this.row,
+        rowperpage: this.rowperpage
+      }).then(function (response) {
+        console.log(response.data);
+
+        if (response.data !== '' && response.data.length > 0) {
+          _this.row += _this.rowperpage;
+          var len = _this.products.length;
+
+          if (len > 0) {
+            _this.buttonText = "Loading ...";
+            var that = _this;
+            setTimeout(function () {
+              that.buttonText = 'Xem thêm';
+
+              for (var i = 0; i < response.data.length; i++) {
+                that.products.push(response.data[i]);
+              }
+            }, 500);
+          } else {
+            _this.products = response.data;
+          }
+        } else {
+          _this.buttonText = "Không có thêm sản phẩm.";
+          _this.isFinished = true;
+        }
+      });
+    }
+  }
 });
 
 /***/ }),

@@ -8,8 +8,10 @@
                         <div class="item-cell">
                             <div class="color-choose">
                                 <div v-for="attr in attributes.colors">
-                                    <input type="radio" v-bind:id="attr.color" name="color" v-bind:value="attr.color" v-model="color">
-                                    <label v-bind:for="attr.color"><span v-bind:style="attr.color | format_color"></span></label>
+                                    <input type="radio" v-bind:id="attr.color" name="color" v-bind:value="attr.color"
+                                           v-model="color">
+                                    <label v-bind:for="attr.color"><span
+                                        v-bind:style="attr.color | format_color"></span></label>
                                 </div>
                             </div>
                         </div>
@@ -44,6 +46,9 @@
                 </div>
             </a>
         </li>
+<!--        <li>-->
+<!--            -->
+<!--        </li>-->
     </ul>
 </template>
 
@@ -58,12 +63,11 @@
         },
         created() {
             let id = document.querySelector('#product_id').getAttribute('value');
-            axios.get('/api/attributes/'+id)
+            axios.get('/api/attributes/' + id)
                 .then(response => {
                     this.attributes = response.data
                 });
         },
-        methods: {
-        }
+        methods: {}
     }
 </script>

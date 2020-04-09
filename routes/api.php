@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/products', 'ProductController@index');
 
-Route::Resource('/flash-sales', 'SaleController');
+Route::post('/flash-sales', 'SaleController@index');
 
 Route::post('/sales', 'SaleController@index');
 
@@ -48,4 +48,6 @@ Route::post('/process-checkout', 'CheckoutController@store');
 Route::group(['prefix' => 'category'], function(){
     Route::post('/girls', 'CategoriesController@girls');
     Route::post('/boys', 'CategoriesController@boys');
+    Route::post('/accessories', 'CategoriesController@accessories');
+    Route::post('/shoes', 'CategoriesController@shoes');
 });

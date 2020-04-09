@@ -43,6 +43,17 @@
                                     <div class="list">
                                         <attributes-component/>
                                     </div>
+                                    <div style="position: relative;margin-bottom: 40px;height: 130px;overflow: hidden;">
+                                        <p style="font-size: 13px;color: #333;margin-top: 10px;margin-bottom: 10px;">Mô tả</p>
+                                        <div class="description" style="font-size: 13px;color: #333;height: 50px;">
+                                            {!! $product->description !!}
+                                        </div>
+                                        <div style="font-size: 13px;position: absolute;text-align: center;height: 50px;display: table;width: 100%;bottom: 0;">
+                                            <div style="display: table-cell;background: linear-gradient(rgba(255, 255, 255, 0.7) 10%, rgb(255, 255, 255));vertical-align: middle;">
+                                                <a href="#" class="btn btn-info" style="color: #fff;font-size: 13px;background: var(--main-color);">Xem thêm <i class="fas fa-chevron-circle-down"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- related products -->

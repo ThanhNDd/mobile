@@ -674,8 +674,7 @@ ul li {
 }
 
 .latest-product .content .image {
-    padding: 10px;
-    padding-bottom: 0;
+    padding: 10px 10px 0;
 }
 
 .latest-product .content .image img {
@@ -719,8 +718,7 @@ ul li {
 }
 
 .flash-sale .swiper-slide .content .image {
-    padding: 10px;
-    padding-bottom: 0;
+    padding: 10px 10px 0;
 }
 
 .flash-sale .swiper-slide .content .image img {
@@ -6012,4 +6010,12 @@ input.vs__search {
     background-color: #f2dede;
     color: #a94442;
     box-shadow: none;
+}
+
+.description > p, span {
+    font-size: 13px !important;
+}
+
+.image {
+    padding: 10px;
 }
