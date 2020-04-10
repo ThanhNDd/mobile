@@ -12,7 +12,7 @@ import Toast from 'vue2-toast';
 import vSelect from "vue-select";
 import Vuelidate from 'vuelidate'
 import 'vue2-toast/lib/toast.css';
-
+import {StarRating} from 'vue-rate-it';
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
@@ -33,6 +33,7 @@ Vue.use(Vuelidate);
 Vue.use(VueLazyload);
 
 Vue.component("v-select", vSelect);
+Vue.component('star-rating', StarRating);
 
 /**
  * The following block of code may be used to automatically register your

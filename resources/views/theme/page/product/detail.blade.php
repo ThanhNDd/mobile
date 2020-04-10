@@ -43,15 +43,6 @@
                                     <attributes-component :description="'{{ $product->description }}'"/>
                                 </div>
                             </div>
-                            <!-- related products -->
-{{--                            <div class="related-products segments no-pd-b">--}}
-{{--                                <div class="section-title">--}}
-{{--                                    <h3>Sản phẩm tương tự--}}
-{{--                                        --}}{{--                                    <a href="{{ url("/categories/boys") }}" class="see-all-link">Xem thêm &raquo;</a>--}}
-{{--                                    </h3>--}}
-{{--                                </div>--}}
-{{--                                <relate-product-component/>--}}
-{{--                            </div>--}}
                             <div>
                                 <relate-product-component/>
                             </div>
@@ -59,7 +50,6 @@
                             <div>
                                 <reviews-component/>
                             </div>
-
                             <!-- end product review -->
                             <!-- divider -->
                             <div class="divider-line-full"></div>
@@ -172,48 +162,56 @@
             </div>
         </div>
         <!-- end description sheet modal -->
-        <div class="sheet-modal rating-sheet">
-            <div class="toolbar">
-                <div class="toolbar-inner">
-                    <div class="left">Viết nhận xét</div>
-                    <div class="right">
-                        <a href="#" class="link sheet-close"><i class="fas fa-check"></i></a>
+        <div id="rating" >
+            <div class="sheet-modal rating-sheet">
+                <div class="toolbar">
+                    <div class="toolbar-inner">
+                        <div class="left">Viết nhận xét</div>
+                        <div class="right">
+                            <a href="#" class="link sheet-close" v-on:click="cancelReview()"><i class="fas fa-check"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="sheet-modal-inner segments">
-                <div class="page-content" style="background: #fff;padding-bottom: 20px;">
-                    <div class="container">
-                        <form style="padding-top: 10px;">
-                            <input id="ratings-hidden" name="rating" type="hidden">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Họ tên" id="fullname" autofocus>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nhập số điện thoại" id="phone">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Nhập email" id="email">
-                            </div>
-                            <div class="form-group">
-                                <textarea rows="3" class="form-control" placeholder="Nhập nội dung nhận xét" id="content"></textarea>
-                            </div>
-                            <div class="text-right">
-                                <div class="float-left stars starrr" data-rating="0"></div>
-                                <div class="float-right">
-                                    <button type="button" class="btn btn-primary">Đồng ý</button>
+                <div class="sheet-modal-inner segments">
+                    <div class="page-content" style="background: #fff;padding-bottom: 20px;">
+                        <div class="container">
+                            <form style="padding-top: 10px;">
+                                <input id="ratings-hidden" name="rating" type="hidden">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Họ tên" id="fullname" autofocus v-model="fullname" ref="fullname">
                                 </div>
-                            </div>
-                        </form>
+                                <div :class="['form-group', isPhoneValid()]">
+                                    <input type="text" class="form-control" placeholder="Nhập số điện thoại" id="phone" v-model="phone" ref="phone">
+                                </div>
+                                <div :class="['form-group', isEmailValid()]">
+                                    <input type="email" class="form-control" placeholder="Nhập email" id="email" v-model="email" ref="email">
+                                </div>
+                                <div class="form-group">
+                                    <textarea rows="3" class="form-control" placeholder="Nhập nội dung nhận xét" id="content" v-model="content" ref="content"></textarea>
+                                </div>
+                                <div class="text-right">
+                                    <star-rating :item-size="30"
+                                                 border-color="#ffffff"
+                                                 inactive-color="#D8D8D8"
+                                                 active-color="#ffc107"
+                                                 v-model="rating"
+                                    ></star-rating>
+                                    <div class="float-right">
+                                        <button type="button" class="btn btn-primary">Đồng ý</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 @endsection
 
 @section("script")
-    <script src="{!! asset('js/rating.js') !!}"></script>
+{{--    <script src="{!! asset('js/rating.js') !!}"></script>--}}
     <script>
         const detail = new Vue({
             el: '#detail',
@@ -221,11 +219,18 @@
                 return {
                     products: [],
                     type: '',
-                    description: ''
+                    description: '',
+                    rating: 0,
+                    fullname: '',
+                    phone: '',
+                    email: '',
+                    content: '',
+                    email_reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
+                    phone_reg : /((09|03|07|08|05)+([0-9]{8})\b)/g
                 }
             },
             mounted() {
-                console.log('AskQuestionModal component mounted.')
+
             },
             methods: {
                 addToCart: function (id, name, price, image) {
@@ -264,7 +269,21 @@
                             window.location.href =  window.location.protocol + '//' + window.location.hostname + ":" + window.location.port +  "/checkout";
                         }
                     })
-                }
+                },
+                cancelReview: function () {
+                    this.fullname = '';
+                    this.phone = '';
+                    this.email = '';
+                    this.content = '';
+                    this.rating = 0;
+                    this.$refs.fullname.focus();
+                },
+                isPhoneValid: function() {
+                    return (this.phone === "")? "" : (this.phone_reg.test(this.phone)) ? 'has-success' : 'has-error';
+                },
+                isEmailValid: function() {
+                    return (this.email === "")? "" : (this.email_reg.test(this.email)) ? 'has-success' : 'has-error';
+                },
             }
         });
         new Swiper('.swiper-detail-product', {
@@ -281,5 +300,16 @@
             // slidesPerView: 2
         });
 
+        $(function(){
+            $('#ratingbtn').click(function () {
+                $(".rating-sheet").addClass("modal-in");
+                $("html").addClass("with-modal-sheet");
+                $(".sheet-close").click(function() {
+                    $(".rating-sheet").removeClass("modal-in");
+                    $("html").removeClass("with-modal-sheet");
+
+                });
+            });
+        });
     </script>
 @endsection
