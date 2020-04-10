@@ -40,118 +40,32 @@
                                     <p class="price">{{ number_format($product->retail).' đ' }}</p>
                                 </div>
                                 <div class="wrap-info">
-                                    <div class="list">
-                                        <attributes-component/>
-                                    </div>
-                                    <div style="position: relative;margin-bottom: 40px;height: 130px;overflow: hidden;">
-                                        <p style="font-size: 13px;color: #333;margin-top: 10px;margin-bottom: 10px;">Mô tả</p>
-                                        <div class="description" style="font-size: 13px;color: #333;height: 50px;">
-                                            {!! $product->description !!}
-                                        </div>
-                                        <div style="font-size: 13px;position: absolute;text-align: center;height: 50px;display: table;width: 100%;bottom: 0;">
-                                            <div style="display: table-cell;background: linear-gradient(rgba(255, 255, 255, 0.7) 10%, rgb(255, 255, 255));vertical-align: middle;">
-                                                <a href="#" class="btn btn-info" style="color: #fff;font-size: 13px;background: var(--main-color);">Xem thêm <i class="fas fa-chevron-circle-down"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <attributes-component :description="'{{ $product->description }}'"/>
                                 </div>
                             </div>
                             <!-- related products -->
-                            <div class="related-products segments no-pd-b">
-                                <div class="section-title">
-                                    <h3>Sản phẩm tương tự
-                                        {{--                                    <a href="{{ url("/categories/boys") }}" class="see-all-link">Xem thêm &raquo;</a>--}}
-                                    </h3>
-                                </div>
+{{--                            <div class="related-products segments no-pd-b">--}}
+{{--                                <div class="section-title">--}}
+{{--                                    <h3>Sản phẩm tương tự--}}
+{{--                                        --}}{{--                                    <a href="{{ url("/categories/boys") }}" class="see-all-link">Xem thêm &raquo;</a>--}}
+{{--                                    </h3>--}}
+{{--                                </div>--}}
+{{--                                <relate-product-component/>--}}
+{{--                            </div>--}}
+                            <div>
                                 <relate-product-component/>
                             </div>
                             <!-- product review -->
-                            <div class="product-review segments">
-                                <div class="section-title">
-                                    <h3>Đánh giá sản phẩm
-                                        <a href="http://localhost:8000/#"
-                                           class="see-all-link btn btn-sm btn-warning"
-                                           style="color: #333;">
-                                            <i class="fas fa-pen-nib"></i> Viết nhận xét
-                                        </a>
-                                    </h3>
-                                </div>
-                                <div class="content">
-                                    <img src="{{ url('images/user-buyer2.png') }}" alt="">
-                                    <div class="text">
-                                        <h6>Rashaad</h6>
-                                        <ul class="rate-product">
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star-half-alt"></i></li>
-                                        </ul>
-                                        <p class="date">3 min ago</p>
-                                        <i class="fas fa-thumbs-up like-button"></i>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto,
-                                            explicabo.</p>
-                                    </div>
-                                </div>
-
-                                <!-- divider -->
-                                <div class="divider-line-half"></div>
-                                <!-- end divider -->
-
-                                <div class="content">
-                                    <img src="{{ url('images/user-buyer1.png') }}" alt="">
-                                    <div class="text">
-                                        <h6>Aamir</h6>
-                                        <ul class="rate-product">
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star-half-alt"></i></li>
-                                        </ul>
-                                        <p class="date">3 min ago</p>
-                                        <i class="fas fa-thumbs-up like-button"></i>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto,
-                                            explicabo.</p>
-                                    </div>
-                                </div>
-
-                                <!-- divider -->
-                                <div class="divider-line-half"></div>
-                                <!-- end divider -->
-
-                                <div class="content">
-                                    <img src="{{ url('images/user-buyer3.png') }}" alt="">
-                                    <div class="text">
-                                        <h6>Kemal</h6>
-                                        <ul class="rate-product">
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star-half-alt"></i></li>
-                                        </ul>
-                                        <p class="date">3 min ago</p>
-                                        <i class="fas fa-thumbs-up like-button"></i>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto,
-                                            explicabo.</p>
-                                    </div>
-                                </div>
-                                <!-- view all reviews -->
-                                <div class="view-all-review">
-                                    <a href="/all-reviews/123456">Xem tất cả</a>
-                                </div>
-                                <!-- end view all reviews -->
+                            <div>
+                                <reviews-component/>
                             </div>
+
                             <!-- end product review -->
                             <!-- divider -->
                             <div class="divider-line-full"></div>
                             <!-- end divider -->
                             <!-- recommended for you -->
-                            <div class="recommended-you">
-                                <div class="section-title">
-                                    <h3>Có thể bạn quan tâm</h3>
-                                </div>
+                            <div>
                                 <recommend-product-component/>
                             </div>
                             <!-- end recommended for you -->
@@ -194,7 +108,7 @@
             </div>
         </div>
         <!-- description sheet modal -->
-        <div class="sheet-modal description-sheet">
+        <div class="sheet-modal detail-sheet">
             <div class="toolbar">
                 <div class="toolbar-inner">
                     <div class="left">Bảng chọn size</div>
@@ -258,18 +172,60 @@
             </div>
         </div>
         <!-- end description sheet modal -->
+        <div class="sheet-modal rating-sheet">
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <div class="left">Viết nhận xét</div>
+                    <div class="right">
+                        <a href="#" class="link sheet-close"><i class="fas fa-check"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="sheet-modal-inner segments">
+                <div class="page-content" style="background: #fff;padding-bottom: 20px;">
+                    <div class="container">
+                        <form style="padding-top: 10px;">
+                            <input id="ratings-hidden" name="rating" type="hidden">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Họ tên" id="fullname" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nhập số điện thoại" id="phone">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Nhập email" id="email">
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="3" class="form-control" placeholder="Nhập nội dung nhận xét" id="content"></textarea>
+                            </div>
+                            <div class="text-right">
+                                <div class="float-left stars starrr" data-rating="0"></div>
+                                <div class="float-right">
+                                    <button type="button" class="btn btn-primary">Đồng ý</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
 @section("script")
+    <script src="{!! asset('js/rating.js') !!}"></script>
     <script>
         const detail = new Vue({
             el: '#detail',
             data() {
                 return {
                     products: [],
-                    type: ''
+                    type: '',
+                    description: ''
                 }
+            },
+            mounted() {
+                console.log('AskQuestionModal component mounted.')
             },
             methods: {
                 addToCart: function (id, name, price, image) {
@@ -324,5 +280,6 @@
         new Swiper('.swiper-relate-product',{
             // slidesPerView: 2
         });
+
     </script>
 @endsection

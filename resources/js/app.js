@@ -11,20 +11,10 @@ import VueLazyload from 'vue-lazyload';
 import Toast from 'vue2-toast';
 import vSelect from "vue-select";
 import Vuelidate from 'vuelidate'
-// import VueSweetalert2 from 'vue-sweetalert2';
-
-// import Swal from 'sweetalert2';
-
-// CommonJS
-// const Swal = require('sweetalert2');
-
-// import 'sweetalert2/dist/sweetalert2.min.css';
 import 'vue2-toast/lib/toast.css';
 
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
-
-// import 'sweetalert2/src/sweetalert2.scss'
 
 import swal from 'sweetalert';
 
@@ -66,6 +56,7 @@ Vue.component('items-cart-component', require('./components/ItemsInCartComponent
 Vue.component('checkout-component', require('./components/CheckoutComponent.vue').default);
 Vue.component('recommend-product-component', require('./components/RecommendComponent.vue').default);
 Vue.component('category-component', require('./components/CategoryComponent.vue').default);
+Vue.component('reviews-component', require('./components/ReviewsComponent.vue').default);
 
 Vue.filter('formatPrice', function (value) {
     let val = (value/1).toFixed(0).replace('.', ',');
