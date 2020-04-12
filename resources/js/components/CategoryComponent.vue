@@ -9,15 +9,14 @@
                         </div>
                         <div class="text">
                             <p class="title-product title-product-center" v-text="product.name"></p>
-                            <p class="price sale-price"> {{ product.retail | formatPrice }}</p>
-                            <p class="price">{{product.discount, product.retail | formatSalePrice }}</p>
+                            <p class="price"> {{ product.retail | formatPrice }}</p>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
-            <a href="#" class="view-more" v-bind:class="[isFinished ? 'finish' : 'load-more']" @click='getProducts()'>
+            <a href="#" class="view-more" v-bind:class="[isFinished ? 'hidden' : 'load-more']" @click='getProducts()'>
                 {{ buttonText }} <i class="fas fa-caret-down"></i>
             </a>
         </div>
@@ -65,6 +64,7 @@
                     } else {
                         this.buttonText = "Không có thêm sản phẩm.";
                         this.isFinished = true;
+
                     }
                 });
             }

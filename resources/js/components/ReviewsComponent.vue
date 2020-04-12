@@ -95,31 +95,36 @@
                 </div>
             </div>
         </div>
-        <div v-for="review in reviews">
-            <div class="content">
-                <img src="/images/user-buyer2.png" alt="">
-                <div class="text">
-                    <h6>{{ review.name }}</h6>
-                    <ul class="rate-product">
-                        <li><i v-bind:class="review.rating >= 1 ? 'fas' : 'far'" class="fa-star" ></i></li>
-                        <li><i v-bind:class="review.rating >= 2 ? 'fas' : 'far'" class="fa-star" ></i></li>
-                        <li><i v-bind:class="review.rating >= 3 ? 'fas' : 'far'" class="fa-star" ></i></li>
-                        <li><i v-bind:class="review.rating >= 4 ? 'fas' : 'far'" class="fa-star" ></i></li>
-                        <li><i v-bind:class="review.rating >= 5 ? 'fas' : 'far'" class="fa-star" ></i></li>
-                    </ul>
-                    <p class="date">
-                        {{ review.created_date | moment("from", "now") }}
-                    </p>
-<!--                    <i class="fas fa-thumbs-up like-button"></i>-->
-                    <p v-text="review.content"></p>
+        <div  v-if="ratingAvg > 0">
+            <div v-for="review in reviews">
+                <div class="content">
+                    <img src="/images/user-buyer2.png" alt="">
+                    <div class="text">
+                        <h6>{{ review.name }}</h6>
+                        <ul class="rate-product">
+                            <li><i v-bind:class="review.rating >= 1 ? 'fas' : 'far'" class="fa-star" ></i></li>
+                            <li><i v-bind:class="review.rating >= 2 ? 'fas' : 'far'" class="fa-star" ></i></li>
+                            <li><i v-bind:class="review.rating >= 3 ? 'fas' : 'far'" class="fa-star" ></i></li>
+                            <li><i v-bind:class="review.rating >= 4 ? 'fas' : 'far'" class="fa-star" ></i></li>
+                            <li><i v-bind:class="review.rating >= 5 ? 'fas' : 'far'" class="fa-star" ></i></li>
+                        </ul>
+                        <p class="date">
+                            {{ review.created_date | moment("from", "now") }}
+                        </p>
+                        <!--                    <i class="fas fa-thumbs-up like-button"></i>-->
+                        <p v-text="review.content"></p>
+                    </div>
                 </div>
+                <!-- divider -->
+                <div class="divider-line-half"></div>
             </div>
-            <!-- divider -->
-            <div class="divider-line-half"></div>
+        </div>
+        <div v-else>
+            <p class="center">Hãy trở thành người đầu tiên đánh giá sản phẩm này.</p>
         </div>
         <!-- end divider -->
         <!-- view all reviews -->
-        <div class="view-all-review">
+        <div class="view-all-review" v-if="ratingAvg > 0">
             <a v-bind:href="'/all-reviews/'+this.product_id">Xem thêm</a>
         </div>
         <!-- end view all reviews -->
@@ -182,7 +187,9 @@
                 axios.get('/api/rating-avg/'+this.product_id)
                     .then(response => {
                         console.log(response.data);
-                        this.ratingAvg = response.data;
+                        if(response.data !== '' && response.data > 0) {
+                            this.ratingAvg = response.data;
+                        }
                     });
             },
             getAllReviews: function () {

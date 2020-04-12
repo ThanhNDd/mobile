@@ -41,7 +41,14 @@ class CategoriesController extends Controller
     }
 
     private function getProductsByType($row, $rowperpage, $type) {
-        $products = DB::table('smi_products')->where([['status', '=',0],["social_publish->website", "=", 1],['type', '=',$type]])
+        if($type == 0) {
+            $cat = [1,2,3];
+        } else {
+            $cat = [1,2,3,4];
+        }
+        $products = DB::table('smi_products')
+            ->where([['status', '=',0],["social_publish->website", "=", 1],['type', '=',$type]])
+            ->whereIn('category_id', $cat)
             ->orderBy('created_at', 'desc')
             ->offset($row)
             ->limit($rowperpage)
@@ -50,7 +57,8 @@ class CategoriesController extends Controller
     }
 
     private function getProductsByCategory($row, $rowperpage, $catId) {
-        $products = DB::table('smi_products')->where([['status', '=',0],["social_publish->website", "=", 1]])
+        $products = DB::table('smi_products')
+            ->where([['status', '=',0],["social_publish->website", "=", 1]])
             ->whereIn('category_id', $catId)
             ->orderBy('created_at', 'desc')
             ->offset($row)

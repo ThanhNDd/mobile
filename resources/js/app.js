@@ -79,7 +79,7 @@ Vue.filter('format_image', function (value) {
     let src = image[0].src;
     let type = image[0].type;
     if(type === 'upload') {
-        src = 'https://admin.shopmein.vn/dist/uploads/' + src;
+        src = 'https://img.shopmein.vn/' + src;
     }
     return src;
 });

@@ -25,7 +25,7 @@
                                                     <div class="content">
                                                         <div class="mask"></div>
                                                         <img
-                                                            src="{{ url($image->type == 'upload' ? 'https://admin.shopmein.vn/dist/uploads/'.$image->src : $image->src) }}"
+                                                            src="{{ url($image->type == 'upload' ? 'https://img.shopmein.vn/'.$image->src : $image->src) }}"
                                                             alt="">
                                                     </div>
                                                 </div>
@@ -76,14 +76,14 @@
                                 <div class="col-40">
                                     <div class="content-button">
                                         <a href="#" class="button secondary-button"
-                                           v-on:click="addToCart('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? 'https://admin.shopmein.vn/dist/uploads/'.$image->src : $image->src) }}')">
+                                           v-on:click="addToCart('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? 'https://img.shopmein.vn/'.$image->src : $image->src) }}')">
                                             <i class="fas fa-cart-arrow-down"></i> Thêm vào giỏ</a>
                                     </div>
                                 </div>
                                 <div class="col-40">
                                     <div class="content-button">
                                         <a href="#" class="button secondary-button"
-                                           v-on:click="buyNow('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? 'https://admin.shopmein.vn/dist/uploads/'.$image->src : $image->src) }}')">
+                                           v-on:click="buyNow('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? 'https://img.shopmein.vn/'.$image->src : $image->src) }}')">
                                             <i class="fas fa-cart-plus"></i> Mua ngay
                                         </a>
                                     </div>
