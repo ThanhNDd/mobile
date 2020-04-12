@@ -18,12 +18,11 @@
                         <div class="subnavbar-inner">
                             <div class="all-rating">
                                 <ul>
-                                    <li><i class="{{ $rating_avg >= 1 ? ($rating_avg / 2 == 0 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' }}" ></i></li>
-                                    <li><i class="{{ $rating_avg >= 2 ? ($rating_avg / 2 == 0 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' }}" ></i></li>
-                                    <li><i class="{{ $rating_avg >= 3 ? ($rating_avg / 2 == 0 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' }}" ></i></li>
-                                    <li><i class="{{ $rating_avg >= 4 ? ($rating_avg / 2 == 0 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' }}" ></i></li>
-                                    <li><i class="{{ $rating_avg >= 5 ? ($rating_avg / 2 == 0 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' }}" ></i></li>
-{{--                                    <li><i class="fas fa-star-half-alt"></i></li>--}}
+                                    <li><i class="{{ $rating_avg >= 1 ? 'fas fa-star' : 'far fa-star' }}" ></i></li>
+                                    <li><i class="{{ $rating_avg > 1 ? ($rating_avg >= 2 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' }}" ></i></li>
+                                    <li><i class="{{ $rating_avg > 2 ? ($rating_avg >= 3 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' }}" ></i></li>
+                                    <li><i class="{{ $rating_avg > 3 ? ($rating_avg >= 4 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' }}" ></i></li>
+                                    <li><i class="{{ $rating_avg > 4 ? ($rating_avg == 5 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' }}" ></i></li>
                                     <li class="rating-total">{{$rating_avg}}<span> ({{ count($reviews) }})</span></li>
                                 </ul>
                             </div>

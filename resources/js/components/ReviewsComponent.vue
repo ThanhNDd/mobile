@@ -10,21 +10,21 @@
         </div>
         <div class="row col-sm-12" style="margin: 0;display: inline-block;width: 100%;padding:0px 0px 20px 0px;">
             <div class="rating-block float-left" style="padding: 20px 5px;width: 49%;text-align: center;">
-                <h2 class="bold padding-bottom-7" style="padding-bottom: 5px;font-size: 40px;">4.0</h2>
+                <h2 class="bold padding-bottom-7" style="padding-bottom: 5px;font-size: 40px;">{{ratingAvg}}</h2>
                 <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                    <i class="fas fa-star" style="color:#fff;"></i>
+                    <i v-bind:class="ratingAvg >= 1 ? 'fas fa-star' : 'fas fa-star-half-alt'" style="color:#fff;"></i>
                 </button>
                 <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                    <i class="fas fa-star" style="color:#fff;"></i>
+                    <i v-bind:class="ratingAvg > 1 ? (ratingAvg >= 2 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' " style="color:#fff;"></i>
                 </button>
                 <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                    <i class="fas fa-star" style="color:#fff;"></i>
+                    <i v-bind:class="ratingAvg > 2 ? (ratingAvg >= 3 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' " style="color:#fff;"></i>
                 </button>
                 <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                    <i class="fas fa-star" style="color:#fff;"></i>
+                    <i v-bind:class="ratingAvg > 3 ? (ratingAvg >= 4 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' " style="color:#fff;"></i>
                 </button>
                 <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-                    <i class="fas fa-star" style="color:#fff;"></i>
+                    <i v-bind:class="ratingAvg > 4 ? (ratingAvg >= 5 ? 'fas fa-star' : 'fas fa-star-half-alt') : 'far fa-star' " style="color:#fff;"></i>
                 </button>
             </div>
             <div class="rating-breakdown float-right" style="width: 50%;padding: 0 5px;">
@@ -34,12 +34,12 @@
                     </div>
                     <div class="float-left" style="width:130px;">
                         <div class="progress" style="height:9px; margin:8px 0;">
-                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
+                            <div class="progress-bar bg-success" v-bind:style="{'width':percent_5_star+ '%'}" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5">
                                 <span class="sr-only">80% Complete (danger)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="float-right" style="margin-left:10px;">1</div>
+                    <div class="float-right" style="margin-left:10px;">{{ number_5_star }}</div>
                 </div>
                 <div class="float-left">
                     <div class="float-left" style="width:35px; line-height:1;">
@@ -47,12 +47,12 @@
                     </div>
                     <div class="float-left" style="width:130px;">
                         <div class="progress" style="height:9px; margin:8px 0;">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
+                            <div class="progress-bar bg-primary" v-bind:style="{'width':percent_4_star+ '%'}" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5">
                                 <span class="sr-only">80% Complete (danger)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="float-right" style="margin-left:10px;">1</div>
+                    <div class="float-right" style="margin-left:10px;">{{ number_4_star }}</div>
                 </div>
                 <div class="float-left">
                     <div class="float-left" style="width:35px; line-height:1;">
@@ -60,12 +60,12 @@
                     </div>
                     <div class="float-left" style="width:130px;">
                         <div class="progress" style="height:9px; margin:8px 0;">
-                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
+                            <div class="progress-bar bg-info" v-bind:style="{'width':percent_3_star+ '%'}" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5">
                                 <span class="sr-only">80% Complete (danger)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="float-right" style="margin-left:10px;">0</div>
+                    <div class="float-right" style="margin-left:10px;">{{ number_3_star }}</div>
                 </div>
                 <div class="float-left">
                     <div class="float-left" style="width:35px; line-height:1;">
@@ -73,12 +73,12 @@
                     </div>
                     <div class="float-left" style="width:130px;">
                         <div class="progress" style="height:9px; margin:8px 0;">
-                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
+                            <div class="progress-bar bg-warning" v-bind:style="{'width':percent_2_star+ '%'}" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5">
                                 <span class="sr-only">80% Complete (danger)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="float-right" style="margin-left:10px;">0</div>
+                    <div class="float-right" style="margin-left:10px;">{{ number_2_star }}</div>
                 </div>
                 <div class="float-left">
                     <div class="float-left" style="width:35px; line-height:1;">
@@ -86,12 +86,12 @@
                     </div>
                     <div class="float-left" style="width:130px;">
                         <div class="progress" style="height:9px; margin:8px 0;">
-                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
+                            <div class="progress-bar bg-danger" v-bind:style="{'width':percent_1_star +'%'}" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5">
                                 <span class="sr-only">80% Complete (danger)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="float-right" style="margin-left:10px;">0</div>
+                    <div class="float-right" style="margin-left:10px;">{{ number_1_star }}</div>
                 </div>
             </div>
         </div>
@@ -120,7 +120,7 @@
         <!-- end divider -->
         <!-- view all reviews -->
         <div class="view-all-review">
-            <a v-bind:href="'/all-reviews/'+this.product_id">Xem tất cả</a>
+            <a v-bind:href="'/all-reviews/'+this.product_id">Xem thêm</a>
         </div>
         <!-- end view all reviews -->
     </div>
@@ -130,14 +130,61 @@
     export default {
         data() {
             return {
-                reviews: ''
+                reviews: '',
+                ratingAvg: 0,
+                ratingDetail: '',
+                percent_5_star: 0,
+                number_5_star: 0,
+                percent_4_star: 0,
+                number_4_star: 0,
+                percent_3_star: 0,
+                number_3_star: 0,
+                percent_2_star: 0,
+                number_2_star:0,
+                percent_1_star:0,
+                number_1_star:0
             }
         },
         props: ['product_id'],
         created() {
             this.getAllReviews();
+            this.getRatingAvg();
+            this.getRatingNumberDetail();
         },
         methods: {
+            getRatingNumberDetail: function() {
+                axios.get('/api/rating-number-detail/'+this.product_id)
+                    .then(response => {
+                        console.log(response.data);
+                        this.ratingDetail = response.data;
+                        for(let i=0; i<this.ratingDetail.length; i++) {
+                            let obj = this.ratingDetail[i];
+                            if(obj.rating === 1) {
+                                this.number_1_star = obj.number;
+                                this.percent_1_star = obj.percent;
+                            } else if(obj.rating === 2) {
+                                this.number_2_star = obj.number;
+                                this.percent_2_star = obj.percent;
+                            } else if(obj.rating === 3) {
+                                this.number_3_star = obj.number;
+                                this.percent_3_star = obj.percent;
+                            } else if(obj.rating === 4) {
+                                this.number_4_star = obj.number;
+                                this.percent_4_star = obj.percent;
+                            } else if(obj.rating === 5) {
+                                this.number_5_star = obj.number;
+                                this.percent_5_star = obj.percent;
+                            }
+                        }
+                    });
+            },
+            getRatingAvg: function() {
+                axios.get('/api/rating-avg/'+this.product_id)
+                    .then(response => {
+                        console.log(response.data);
+                        this.ratingAvg = response.data;
+                    });
+            },
             getAllReviews: function () {
                 axios.get('/api/reviews/'+this.product_id)
                     .then(response => {

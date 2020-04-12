@@ -53,6 +53,8 @@ Route::group(['prefix' => 'category'], function(){
 });
 Route::post('/submit-reviews', 'ReviewsController@store');
 Route::Resource('/reviews', 'ReviewsController');
-Route::get('/all-reviews/{id}', 'ReviewsController@all');
+//Route::get('/all-reviews/{id}', 'ReviewsController@all');
+Route::get('/rating-avg/{id}', 'ReviewsController@countRating');
+Route::get('/rating-number-detail/{id}', 'ReviewsController@ratingNumberDetail');
 
 

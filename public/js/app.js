@@ -3148,20 +3148,71 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      reviews: ''
+      reviews: '',
+      ratingAvg: 0,
+      ratingDetail: '',
+      percent_5_star: 0,
+      number_5_star: 0,
+      percent_4_star: 0,
+      number_4_star: 0,
+      percent_3_star: 0,
+      number_3_star: 0,
+      percent_2_star: 0,
+      number_2_star: 0,
+      percent_1_star: 0,
+      number_1_star: 0
     };
   },
   props: ['product_id'],
   created: function created() {
     this.getAllReviews();
+    this.getRatingAvg();
+    this.getRatingNumberDetail();
   },
   methods: {
-    getAllReviews: function getAllReviews() {
+    getRatingNumberDetail: function getRatingNumberDetail() {
       var _this = this;
+
+      axios.get('/api/rating-number-detail/' + this.product_id).then(function (response) {
+        console.log(response.data);
+        _this.ratingDetail = response.data;
+
+        for (var i = 0; i < _this.ratingDetail.length; i++) {
+          var obj = _this.ratingDetail[i];
+
+          if (obj.rating === 1) {
+            _this.number_1_star = obj.number;
+            _this.percent_1_star = obj.percent;
+          } else if (obj.rating === 2) {
+            _this.number_2_star = obj.number;
+            _this.percent_2_star = obj.percent;
+          } else if (obj.rating === 3) {
+            _this.number_3_star = obj.number;
+            _this.percent_3_star = obj.percent;
+          } else if (obj.rating === 4) {
+            _this.number_4_star = obj.number;
+            _this.percent_4_star = obj.percent;
+          } else if (obj.rating === 5) {
+            _this.number_5_star = obj.number;
+            _this.percent_5_star = obj.percent;
+          }
+        }
+      });
+    },
+    getRatingAvg: function getRatingAvg() {
+      var _this2 = this;
+
+      axios.get('/api/rating-avg/' + this.product_id).then(function (response) {
+        console.log(response.data);
+        _this2.ratingAvg = response.data;
+      });
+    },
+    getAllReviews: function getAllReviews() {
+      var _this3 = this;
 
       axios.get('/api/reviews/' + this.product_id).then(function (response) {
         console.log(response.data);
-        _this.reviews = response.data;
+        _this3.reviews = response.data;
       });
     }
   },
@@ -75116,7 +75167,393 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
+      _c(
+        "div",
+        {
+          staticClass: "row col-sm-12",
+          staticStyle: {
+            margin: "0",
+            display: "inline-block",
+            width: "100%",
+            padding: "0px 0px 20px 0px"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "rating-block float-left",
+              staticStyle: {
+                padding: "20px 5px",
+                width: "49%",
+                "text-align": "center"
+              }
+            },
+            [
+              _c(
+                "h2",
+                {
+                  staticClass: "bold padding-bottom-7",
+                  staticStyle: { "padding-bottom": "5px", "font-size": "40px" }
+                },
+                [_vm._v(_vm._s(_vm.ratingAvg))]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-warning btn-sm",
+                  attrs: { type: "button", "aria-label": "Left Align" }
+                },
+                [
+                  _c("i", {
+                    class:
+                      _vm.ratingAvg >= 1
+                        ? "fas fa-star"
+                        : "fas fa-star-half-alt",
+                    staticStyle: { color: "#fff" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-warning btn-sm",
+                  attrs: { type: "button", "aria-label": "Left Align" }
+                },
+                [
+                  _c("i", {
+                    class:
+                      _vm.ratingAvg > 1
+                        ? _vm.ratingAvg >= 2
+                          ? "fas fa-star"
+                          : "fas fa-star-half-alt"
+                        : "far fa-star",
+                    staticStyle: { color: "#fff" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-warning btn-sm",
+                  attrs: { type: "button", "aria-label": "Left Align" }
+                },
+                [
+                  _c("i", {
+                    class:
+                      _vm.ratingAvg > 2
+                        ? _vm.ratingAvg >= 3
+                          ? "fas fa-star"
+                          : "fas fa-star-half-alt"
+                        : "far fa-star",
+                    staticStyle: { color: "#fff" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-warning btn-sm",
+                  attrs: { type: "button", "aria-label": "Left Align" }
+                },
+                [
+                  _c("i", {
+                    class:
+                      _vm.ratingAvg > 3
+                        ? _vm.ratingAvg >= 4
+                          ? "fas fa-star"
+                          : "fas fa-star-half-alt"
+                        : "far fa-star",
+                    staticStyle: { color: "#fff" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default btn-grey btn-sm",
+                  attrs: { type: "button", "aria-label": "Left Align" }
+                },
+                [
+                  _c("i", {
+                    class:
+                      _vm.ratingAvg > 4
+                        ? _vm.ratingAvg >= 5
+                          ? "fas fa-star"
+                          : "fas fa-star-half-alt"
+                        : "far fa-star",
+                    staticStyle: { color: "#fff" }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "rating-breakdown float-right",
+              staticStyle: { width: "50%", padding: "0 5px" }
+            },
+            [
+              _c("div", { staticClass: "float-left" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "float-left",
+                    staticStyle: { width: "130px" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "progress",
+                        staticStyle: { height: "9px", margin: "8px 0" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "progress-bar bg-success",
+                            style: { width: _vm.percent_5_star + "%" },
+                            attrs: {
+                              role: "progressbar",
+                              "aria-valuenow": "5",
+                              "aria-valuemin": "0",
+                              "aria-valuemax": "5"
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("80% Complete (danger)")
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "float-right",
+                    staticStyle: { "margin-left": "10px" }
+                  },
+                  [_vm._v(_vm._s(_vm.number_5_star))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "float-left" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "float-left",
+                    staticStyle: { width: "130px" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "progress",
+                        staticStyle: { height: "9px", margin: "8px 0" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "progress-bar bg-primary",
+                            style: { width: _vm.percent_4_star + "%" },
+                            attrs: {
+                              role: "progressbar",
+                              "aria-valuenow": "4",
+                              "aria-valuemin": "0",
+                              "aria-valuemax": "5"
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("80% Complete (danger)")
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "float-right",
+                    staticStyle: { "margin-left": "10px" }
+                  },
+                  [_vm._v(_vm._s(_vm.number_4_star))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "float-left" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "float-left",
+                    staticStyle: { width: "130px" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "progress",
+                        staticStyle: { height: "9px", margin: "8px 0" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "progress-bar bg-info",
+                            style: { width: _vm.percent_3_star + "%" },
+                            attrs: {
+                              role: "progressbar",
+                              "aria-valuenow": "3",
+                              "aria-valuemin": "0",
+                              "aria-valuemax": "5"
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("80% Complete (danger)")
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "float-right",
+                    staticStyle: { "margin-left": "10px" }
+                  },
+                  [_vm._v(_vm._s(_vm.number_3_star))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "float-left" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "float-left",
+                    staticStyle: { width: "130px" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "progress",
+                        staticStyle: { height: "9px", margin: "8px 0" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "progress-bar bg-warning",
+                            style: { width: _vm.percent_2_star + "%" },
+                            attrs: {
+                              role: "progressbar",
+                              "aria-valuenow": "2",
+                              "aria-valuemin": "0",
+                              "aria-valuemax": "5"
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("80% Complete (danger)")
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "float-right",
+                    staticStyle: { "margin-left": "10px" }
+                  },
+                  [_vm._v(_vm._s(_vm.number_2_star))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "float-left" }, [
+                _vm._m(5),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "float-left",
+                    staticStyle: { width: "130px" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "progress",
+                        staticStyle: { height: "9px", margin: "8px 0" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "progress-bar bg-danger",
+                            style: { width: _vm.percent_1_star + "%" },
+                            attrs: {
+                              role: "progressbar",
+                              "aria-valuenow": "1",
+                              "aria-valuemin": "0",
+                              "aria-valuemax": "5"
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("80% Complete (danger)")
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "float-right",
+                    staticStyle: { "margin-left": "10px" }
+                  },
+                  [_vm._v(_vm._s(_vm.number_1_star))]
+                )
+              ])
+            ]
+          )
+        ]
+      ),
       _vm._v(" "),
       _vm._l(_vm.reviews, function(review) {
         return _c("div", [
@@ -75183,7 +75620,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "view-all-review" }, [
         _c("a", { attrs: { href: "/all-reviews/" + this.product_id } }, [
-          _vm._v("Xem tất cả")
+          _vm._v("Xem thêm")
         ])
       ])
     ],
@@ -75220,415 +75657,86 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "row col-sm-12",
-        staticStyle: {
-          margin: "0",
-          display: "inline-block",
-          width: "100%",
-          padding: "0px 0px 20px 0px"
-        }
+        staticClass: "float-left",
+        staticStyle: { width: "35px", "line-height": "1" }
       },
       [
-        _c(
-          "div",
-          {
-            staticClass: "rating-block float-left",
-            staticStyle: {
-              padding: "20px 5px",
-              width: "49%",
-              "text-align": "center"
-            }
-          },
-          [
-            _c(
-              "h2",
-              {
-                staticClass: "bold padding-bottom-7",
-                staticStyle: { "padding-bottom": "5px", "font-size": "40px" }
-              },
-              [_vm._v("4.0")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-warning btn-sm",
-                attrs: { type: "button", "aria-label": "Left Align" }
-              },
-              [
-                _c("i", {
-                  staticClass: "fas fa-star",
-                  staticStyle: { color: "#fff" }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-warning btn-sm",
-                attrs: { type: "button", "aria-label": "Left Align" }
-              },
-              [
-                _c("i", {
-                  staticClass: "fas fa-star",
-                  staticStyle: { color: "#fff" }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-warning btn-sm",
-                attrs: { type: "button", "aria-label": "Left Align" }
-              },
-              [
-                _c("i", {
-                  staticClass: "fas fa-star",
-                  staticStyle: { color: "#fff" }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-warning btn-sm",
-                attrs: { type: "button", "aria-label": "Left Align" }
-              },
-              [
-                _c("i", {
-                  staticClass: "fas fa-star",
-                  staticStyle: { color: "#fff" }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default btn-grey btn-sm",
-                attrs: { type: "button", "aria-label": "Left Align" }
-              },
-              [
-                _c("i", {
-                  staticClass: "fas fa-star",
-                  staticStyle: { color: "#fff" }
-                })
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "rating-breakdown float-right",
-            staticStyle: { width: "50%", padding: "0 5px" }
-          },
-          [
-            _c("div", { staticClass: "float-left" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "float-left",
-                  staticStyle: { width: "35px", "line-height": "1" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticStyle: { height: "9px", margin: "5px 0" } },
-                    [_vm._v("5 "), _c("i", { staticClass: "far fa-star" })]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "float-left", staticStyle: { width: "130px" } },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "progress",
-                      staticStyle: { height: "9px", margin: "8px 0" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "progress-bar bg-success",
-                          staticStyle: { width: "1000%" },
-                          attrs: {
-                            role: "progressbar",
-                            "aria-valuenow": "5",
-                            "aria-valuemin": "0",
-                            "aria-valuemax": "5"
-                          }
-                        },
-                        [
-                          _c("span", { staticClass: "sr-only" }, [
-                            _vm._v("80% Complete (danger)")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "float-right",
-                  staticStyle: { "margin-left": "10px" }
-                },
-                [_vm._v("1")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "float-left" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "float-left",
-                  staticStyle: { width: "35px", "line-height": "1" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticStyle: { height: "9px", margin: "5px 0" } },
-                    [_vm._v("4 "), _c("i", { staticClass: "far fa-star" })]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "float-left", staticStyle: { width: "130px" } },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "progress",
-                      staticStyle: { height: "9px", margin: "8px 0" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "progress-bar bg-primary",
-                          staticStyle: { width: "80%" },
-                          attrs: {
-                            role: "progressbar",
-                            "aria-valuenow": "4",
-                            "aria-valuemin": "0",
-                            "aria-valuemax": "5"
-                          }
-                        },
-                        [
-                          _c("span", { staticClass: "sr-only" }, [
-                            _vm._v("80% Complete (danger)")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "float-right",
-                  staticStyle: { "margin-left": "10px" }
-                },
-                [_vm._v("1")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "float-left" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "float-left",
-                  staticStyle: { width: "35px", "line-height": "1" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticStyle: { height: "9px", margin: "5px 0" } },
-                    [_vm._v("3 "), _c("i", { staticClass: "far fa-star" })]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "float-left", staticStyle: { width: "130px" } },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "progress",
-                      staticStyle: { height: "9px", margin: "8px 0" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "progress-bar bg-info",
-                          staticStyle: { width: "60%" },
-                          attrs: {
-                            role: "progressbar",
-                            "aria-valuenow": "3",
-                            "aria-valuemin": "0",
-                            "aria-valuemax": "5"
-                          }
-                        },
-                        [
-                          _c("span", { staticClass: "sr-only" }, [
-                            _vm._v("80% Complete (danger)")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "float-right",
-                  staticStyle: { "margin-left": "10px" }
-                },
-                [_vm._v("0")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "float-left" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "float-left",
-                  staticStyle: { width: "35px", "line-height": "1" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticStyle: { height: "9px", margin: "5px 0" } },
-                    [_vm._v("2 "), _c("i", { staticClass: "far fa-star" })]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "float-left", staticStyle: { width: "130px" } },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "progress",
-                      staticStyle: { height: "9px", margin: "8px 0" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "progress-bar bg-warning",
-                          staticStyle: { width: "40%" },
-                          attrs: {
-                            role: "progressbar",
-                            "aria-valuenow": "2",
-                            "aria-valuemin": "0",
-                            "aria-valuemax": "5"
-                          }
-                        },
-                        [
-                          _c("span", { staticClass: "sr-only" }, [
-                            _vm._v("80% Complete (danger)")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "float-right",
-                  staticStyle: { "margin-left": "10px" }
-                },
-                [_vm._v("0")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "float-left" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "float-left",
-                  staticStyle: { width: "35px", "line-height": "1" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticStyle: { height: "9px", margin: "5px 0" } },
-                    [_vm._v("1 "), _c("i", { staticClass: "far fa-star" })]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "float-left", staticStyle: { width: "130px" } },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "progress",
-                      staticStyle: { height: "9px", margin: "8px 0" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "progress-bar bg-danger",
-                          staticStyle: { width: "20%" },
-                          attrs: {
-                            role: "progressbar",
-                            "aria-valuenow": "1",
-                            "aria-valuemin": "0",
-                            "aria-valuemax": "5"
-                          }
-                        },
-                        [
-                          _c("span", { staticClass: "sr-only" }, [
-                            _vm._v("80% Complete (danger)")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "float-right",
-                  staticStyle: { "margin-left": "10px" }
-                },
-                [_vm._v("0")]
-              )
-            ])
-          ]
-        )
+        _c("div", { staticStyle: { height: "9px", margin: "5px 0" } }, [
+          _vm._v("5 "),
+          _c("i", { staticClass: "far fa-star" })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "float-left",
+        staticStyle: { width: "35px", "line-height": "1" }
+      },
+      [
+        _c("div", { staticStyle: { height: "9px", margin: "5px 0" } }, [
+          _vm._v("4 "),
+          _c("i", { staticClass: "far fa-star" })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "float-left",
+        staticStyle: { width: "35px", "line-height": "1" }
+      },
+      [
+        _c("div", { staticStyle: { height: "9px", margin: "5px 0" } }, [
+          _vm._v("3 "),
+          _c("i", { staticClass: "far fa-star" })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "float-left",
+        staticStyle: { width: "35px", "line-height": "1" }
+      },
+      [
+        _c("div", { staticStyle: { height: "9px", margin: "5px 0" } }, [
+          _vm._v("2 "),
+          _c("i", { staticClass: "far fa-star" })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "float-left",
+        staticStyle: { width: "35px", "line-height": "1" }
+      },
+      [
+        _c("div", { staticStyle: { height: "9px", margin: "5px 0" } }, [
+          _vm._v("1 "),
+          _c("i", { staticClass: "far fa-star" })
+        ])
       ]
     )
   }
