@@ -48,7 +48,7 @@
                             </div>
                             <!-- product review -->
                             <div>
-                                <reviews-component/>
+                                <reviews-component :product_id="{{ $product->id }}"></reviews-component>
                             </div>
                             <!-- end product review -->
                             <!-- divider -->
@@ -174,20 +174,20 @@
                 </div>
                 <div class="sheet-modal-inner segments">
                     <div class="page-content" style="background: #fff;padding-bottom: 20px;">
-                        <div class="container">
+                        <div class="container" id="form-review">
                             <form style="padding-top: 10px;">
                                 <input id="ratings-hidden" name="rating" type="hidden">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Họ tên" id="fullname" autofocus v-model="fullname" ref="fullname">
                                 </div>
                                 <div :class="['form-group', isPhoneValid()]">
-                                    <input type="text" class="form-control" placeholder="Nhập số điện thoại" id="phone" v-model="phone" ref="phone">
+                                    <input type="text" class="form-control" placeholder="Số điện thoại" id="phone" v-model="phone" ref="phone">
                                 </div>
                                 <div :class="['form-group', isEmailValid()]">
-                                    <input type="email" class="form-control" placeholder="Nhập email" id="email" v-model="email" ref="email">
+                                    <input type="email" class="form-control" placeholder="Email" id="email" v-model="email" ref="email">
                                 </div>
                                 <div class="form-group">
-                                    <textarea rows="3" class="form-control" placeholder="Nhập nội dung nhận xét" id="content" v-model="content" ref="content"></textarea>
+                                    <textarea rows="3" class="form-control" placeholder="Nội dung nhận xét" id="content" v-model="content" ref="content"></textarea>
                                 </div>
                                 <div class="text-right">
                                     <star-rating :item-size="30"
@@ -197,10 +197,25 @@
                                                  v-model="rating"
                                     ></star-rating>
                                     <div class="float-right">
-                                        <button type="button" class="btn btn-primary">Đồng ý</button>
+                                        <button type="button" class="btn btn-primary" v-on:click="submitReviews('{{$product->id}}')">Đồng ý</button>
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                        <div id="form-review-success" class="hidden">
+                            <div class="swal-icon swal-icon--success">
+                                <span class="swal-icon--success__line swal-icon--success__line--long"></span>
+                                <span class="swal-icon--success__line swal-icon--success__line--tip"></span>
+                                <div class="swal-icon--success__ring"></div>
+                                <div class="swal-icon--success__hide-corners"></div>
+                                </div>
+                            <div class="swal-title" style="">Đăng nhận xét thành công!</div>
+                            <div class="swal-text" style="text-align: center;width: 100%;">Cám ơn bạn đã nhận xét sản phẩm!</div>
+                            <div class="swal-footer" style="text-align: center;margin-top: 0;">
+                                <div class="swal-button-container">
+                                    <button class="link sheet-close btn btn-danger" v-on:click="cancelReview()">Đóng</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -211,7 +226,6 @@
 @endsection
 
 @section("script")
-{{--    <script src="{!! asset('js/rating.js') !!}"></script>--}}
     <script>
         const detail = new Vue({
             el: '#detail',
@@ -226,11 +240,8 @@
                     email: '',
                     content: '',
                     email_reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
-                    phone_reg : /((09|03|07|08|05)+([0-9]{8})\b)/g
+                    phone_reg : /^((09|03|07|08|05)+([0-9]{8})\b)$/
                 }
-            },
-            mounted() {
-
             },
             methods: {
                 addToCart: function (id, name, price, image) {
@@ -277,6 +288,8 @@
                     this.content = '';
                     this.rating = 0;
                     this.$refs.fullname.focus();
+                    $("#form-review").removeClass('hidden');
+                    $("#form-review-success").addClass('hidden');
                 },
                 isPhoneValid: function() {
                     return (this.phone === "")? "" : (this.phone_reg.test(this.phone)) ? 'has-success' : 'has-error';
@@ -284,6 +297,70 @@
                 isEmailValid: function() {
                     return (this.email === "")? "" : (this.email_reg.test(this.email)) ? 'has-success' : 'has-error';
                 },
+                submitReviews: function (product_id) {
+                    if(!this.validate()) {
+                        return false;
+                    }
+                    let review = [];
+                    review.push({
+                        "name": this.fullname,
+                        "phone": this.phone,
+                        "email": this.email,
+                        "content" : this.content,
+                        "rating" : this.rating,
+                        "product_id": product_id
+                    });
+                    console.log(JSON.stringify(review));
+                    axios.post("/api/submit-reviews", {
+                        body: review
+                    }).then(response => {
+                        console.log(response.data);
+                        if(response.data === 201) {
+                            $("#form-review").addClass('hidden');
+                            $("#form-review-success").removeClass('hidden');
+                        } else {
+                            swal({
+                                title: "Đã xảy ra lỗi!",
+                                text: "Xin vui lòng thử lại sau!",
+                                icon: "error",
+                                button: "Đồng ý",
+                            });
+                        }
+                    })
+                },
+                validate: function () {
+                    if(this.fullname && this.phone && this.content && this.rating) {
+                        return true;
+                    }
+                    if(!this.fullname) {
+                        this.$toast.top('Bạn chưa nhập tên');
+                        this.$refs.fullname.focus();
+                        return false;
+                    }
+                    if(this.phone === '') {
+                        this.$toast.top('Bạn chưa nhập số điện thoại');
+                        this.$refs.phone.focus();
+                        return false;
+                    }  else if(!this.phone_reg.test(this.phone)) {
+                        this.$toast.top('Số điện thoại chưa đúng.');
+                        this.$refs.phone.focus();
+                        return false;
+                    }
+                    if(this.email !== '' && !this.email_reg.test(this.email)) {
+                        this.$toast.top('Email chưa đúng.');
+                        this.$refs.email.focus();
+                        return false;
+                    }
+                    if(!this.content) {
+                        this.$toast.top('Bạn chưa nhập nội dung nhận xét');
+                        this.$refs.content.focus();
+                        return false;
+                    }
+                    if(!this.rating) {
+                        this.$toast.top('Bạn chưa chọn số sao');
+                        return false;
+                    }
+                }
             }
         });
         new Swiper('.swiper-detail-product', {

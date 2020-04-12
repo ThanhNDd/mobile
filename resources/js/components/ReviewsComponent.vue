@@ -95,70 +95,32 @@
                 </div>
             </div>
         </div>
-        <div class="content">
-            <img src="/images/user-buyer2.png" alt="">
-            <div class="text">
-                <h6>Rashaad</h6>
-                <ul class="rate-product">
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star-half-alt"></i></li>
-                </ul>
-                <p class="date">3 min ago</p>
-                <i class="fas fa-thumbs-up like-button"></i>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto,
-                    explicabo.</p>
+        <div v-for="review in reviews">
+            <div class="content">
+                <img src="/images/user-buyer2.png" alt="">
+                <div class="text">
+                    <h6>{{ review.name }}</h6>
+                    <ul class="rate-product">
+                        <li><i v-bind:class="review.rating >= 1 ? 'fas' : 'far'" class="fa-star" ></i></li>
+                        <li><i v-bind:class="review.rating >= 2 ? 'fas' : 'far'" class="fa-star" ></i></li>
+                        <li><i v-bind:class="review.rating >= 3 ? 'fas' : 'far'" class="fa-star" ></i></li>
+                        <li><i v-bind:class="review.rating >= 4 ? 'fas' : 'far'" class="fa-star" ></i></li>
+                        <li><i v-bind:class="review.rating >= 5 ? 'fas' : 'far'" class="fa-star" ></i></li>
+                    </ul>
+                    <p class="date">
+                        {{ review.created_date | moment("from", "now") }}
+                    </p>
+<!--                    <i class="fas fa-thumbs-up like-button"></i>-->
+                    <p v-text="review.content"></p>
+                </div>
             </div>
+            <!-- divider -->
+            <div class="divider-line-half"></div>
         </div>
-
-        <!-- divider -->
-        <div class="divider-line-half"></div>
         <!-- end divider -->
-
-        <div class="content">
-            <img src="/images/user-buyer1.png" alt="">
-            <div class="text">
-                <h6>Aamir</h6>
-                <ul class="rate-product">
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star-half-alt"></i></li>
-                </ul>
-                <p class="date">3 min ago</p>
-                <i class="fas fa-thumbs-up like-button"></i>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto,
-                    explicabo.</p>
-            </div>
-        </div>
-
-        <!-- divider -->
-        <div class="divider-line-half"></div>
-        <!-- end divider -->
-
-        <div class="content">
-            <img src="/images/user-buyer3.png" alt="">
-            <div class="text">
-                <h6>Kemal</h6>
-                <ul class="rate-product">
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star"></i></li>
-                    <li><i class="fas fa-star-half-alt"></i></li>
-                </ul>
-                <p class="date">3 min ago</p>
-                <i class="fas fa-thumbs-up like-button"></i>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto,
-                    explicabo.</p>
-            </div>
-        </div>
         <!-- view all reviews -->
         <div class="view-all-review">
-            <a href="/all-reviews/123456">Xem tất cả</a>
+            <a v-bind:href="'/all-reviews/'+this.product_id">Xem tất cả</a>
         </div>
         <!-- end view all reviews -->
     </div>
@@ -168,23 +130,25 @@
     export default {
         data() {
             return {
-                // products: []
+                reviews: ''
             }
         },
+        props: ['product_id'],
         created() {
-
+            this.getAllReviews();
         },
         methods: {
-            // writingReviews: function () {
-                // $(".rating-sheet").addClass("modal-in");
-                // $("html").addClass("with-modal-sheet");
-                // $(".sheet-close").click(function() {
-                //     $(".rating-sheet").removeClass("modal-in");
-                //     $("html").removeClass("with-modal-sheet");
-                //
-                // });
-            // }
-        }
+            getAllReviews: function () {
+                axios.get('/api/reviews/'+this.product_id)
+                    .then(response => {
+                        console.log(response.data);
+                        this.reviews = response.data;
+                    });
+            }
+        },
+        computed: {
+
+        },
     }
 
 </script>

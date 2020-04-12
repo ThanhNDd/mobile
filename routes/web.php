@@ -16,9 +16,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/product-details/{id}', 'ProductController@getProduct');
 
-Route::get('/all-reviews/{id}', function () {
-    return view('theme.page.product.reviews');
-});
+Route::get('/all-reviews/{id}','ReviewsController@getAllReviews');
 
 Route::group(['prefix' => '/categories'], function () {
     Route::get('/', 'CategoriesController@categories');

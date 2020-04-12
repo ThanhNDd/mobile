@@ -31,6 +31,7 @@ Vue.use(Toast, {
 });
 Vue.use(Vuelidate);
 Vue.use(VueLazyload);
+Vue.use(require('vue-moment'));
 
 Vue.component("v-select", vSelect);
 Vue.component('star-rating', StarRating);
@@ -58,6 +59,7 @@ Vue.component('checkout-component', require('./components/CheckoutComponent.vue'
 Vue.component('recommend-product-component', require('./components/RecommendComponent.vue').default);
 Vue.component('category-component', require('./components/CategoryComponent.vue').default);
 Vue.component('reviews-component', require('./components/ReviewsComponent.vue').default);
+Vue.component('all-reviews-component', require('./components/AllReviewsComponent.vue').default);
 
 Vue.filter('formatPrice', function (value) {
     let val = (value/1).toFixed(0).replace('.', ',');

@@ -6058,3 +6058,7 @@ textarea#content {
 .vue-rate-it-rating.vue-rate-it-rating-container {
     float: left;
 }
+
+.hidden {
+    display: none;
+}
