@@ -18,13 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/products', 'ProductController@index');
-
 Route::post('/flash-sales', 'SaleController@index');
-
 Route::post('/sales', 'SaleController@index');
-
 Route::post('/best-seller', 'BestSellerController@index');
-
 Route::Resource('/attributes', 'AttributesController', ['parameters' => [
     'attributes' => 'id'
 ]]);
@@ -32,7 +28,6 @@ Route::Resource('/attributes', 'AttributesController', ['parameters' => [
 Route::Resource('/relate.category.type', 'RelateProductController');
 Route::Resource('/recommend.category.type', 'RecommendController');
 
-Route::Resource('/cart', 'CartController');
 Route::get('/carts', 'CartController@get_all_items');
 Route::group(['prefix' => 'cart'], function(){
     Route::get('/', 'CartController@count');
@@ -53,7 +48,6 @@ Route::group(['prefix' => 'category'], function(){
 });
 Route::post('/submit-reviews', 'ReviewsController@store');
 Route::Resource('/reviews', 'ReviewsController');
-//Route::get('/all-reviews/{id}', 'ReviewsController@all');
 Route::get('/rating-avg/{id}', 'ReviewsController@countRating');
 Route::get('/rating-number-detail/{id}', 'ReviewsController@ratingNumberDetail');
 

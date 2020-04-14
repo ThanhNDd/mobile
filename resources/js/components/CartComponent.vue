@@ -14,7 +14,8 @@
         created() {
             axios.get('/api/cart')
                 .then(response => {
-                    this.cart_number = response.data
+                    console.log(response.data);
+                    this.cart_number = response.data;
                 });
         },
         methods: {
