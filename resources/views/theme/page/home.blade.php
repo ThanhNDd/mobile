@@ -1,5 +1,5 @@
 @extends('theme.layout.layout')
-@section('title', 'Shop Mẹ Ỉn - Thời trang trẻ em cao cấp')
+@section('title', 'Trang chủ')
 @section('content')
 <div id="app" class="view view-main view-init ios-edges">
     <div class="page page-home page-with-subnavbar">
@@ -22,19 +22,19 @@
                                 <div class="swiper-slide">
                                     <div class="content">
                                         <div class="mask"></div>
-                                        <img src="{{ url('/images/banner1.png') }}" alt="">
+                                        <img src="{{ url('public/images/banner1.png') }}" alt="">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="content">
                                         <div class="mask"></div>
-                                        <img src="{{ url('/images/banner3.png') }}" alt="">
+                                        <img src="{{ url('public/images/banner3.png') }}" alt="">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="content">
                                         <div class="mask"></div>
-                                        <img src="{{ url('/images/banner2.png') }}" alt="">
+                                        <img src="{{ url('public/images/banner2.png') }}" alt="">
                                     </div>
                                 </div>
                             </div>

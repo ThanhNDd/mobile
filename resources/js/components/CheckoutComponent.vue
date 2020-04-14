@@ -127,12 +127,12 @@
             }
         },
         created() {
-            axios.get('/api/carts')
+            axios.get(url + '/api/carts')
                 .then(response => {
                     this.carts = response.data;
                     console.log(this.carts.length);
                 });
-            axios.get('/api/zone/city')
+            axios.get(url + '/api/zone/city')
                 .then(response => {
                     this.city = JSON.parse(response.data).results;
                 });
@@ -231,7 +231,7 @@
             },
             changeCity: function(val) {
                 this.city_id = val;
-                axios.get('/api/zone/district/'+val)
+                axios.get(url + '/api/zone/district/'+val)
                     .then(response => {
                         console.log(response.data);
                         this.district = JSON.parse(response.data).results;
@@ -241,7 +241,7 @@
             },
             changeDistrict: function(val) {
                 this.district_id = val;
-                axios.get('/api/zone/village/'+val)
+                axios.get(url + '/api/zone/village/'+val)
                     .then(response => {
                         console.log(response.data);
                         this.village = JSON.parse(response.data).results;
@@ -266,12 +266,12 @@
                     "total_checkout" : this.total_checkout
                 });
                 console.log(JSON.stringify(orders));
-                axios.post("/api/process-checkout", {
+                axios.post(url + "/api/process-checkout", {
                     body: orders
                 }).then(response => {
                     console.log(response.data);
                     if(response.data === 201) {
-                        window.location.href =  window.location.protocol + '//' + window.location.hostname + ":" + window.location.port +  "/finish";
+                        window.location.href =  url + "/finish";
                     } else {
                         swal({
                             title: "Đã xảy ra lỗi!",

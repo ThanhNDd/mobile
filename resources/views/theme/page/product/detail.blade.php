@@ -1,5 +1,5 @@
 @extends('theme.layout.layout')
-@section('title', $prod_title.' | Shop Mẹ Ỉn - Thời trang trẻ em cao cấp')
+@section('title', $prod_title)
 @section('content')
     <div id="app"></div>
     <div id="detail" xmlns:v-on="http://www.w3.org/1999/xhtml">
@@ -25,7 +25,7 @@
                                                     <div class="content">
                                                         <div class="mask"></div>
                                                         <img
-                                                            src="{{ url($image->type == 'upload' ? 'https://img.shopmein.vn/'.$image->src : $image->src) }}"
+                                                            src="{{ url($image->type == 'upload' ? env('IMAGE_URL').$image->src : $image->src) }}"
                                                             alt="">
                                                     </div>
                                                 </div>
@@ -76,14 +76,14 @@
                                 <div class="col-40">
                                     <div class="content-button">
                                         <a href="#" class="button secondary-button"
-                                           v-on:click="addToCart('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? 'https://img.shopmein.vn/'.$image->src : $image->src) }}')">
+                                           v-on:click="addToCart('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? env('IMAGE_URL').$image->src : $image->src) }}')">
                                             <i class="fas fa-cart-arrow-down"></i> Thêm vào giỏ</a>
                                     </div>
                                 </div>
                                 <div class="col-40">
                                     <div class="content-button">
                                         <a href="#" class="button secondary-button"
-                                           v-on:click="buyNow('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? 'https://img.shopmein.vn/'.$image->src : $image->src) }}')">
+                                           v-on:click="buyNow('{{$product->id}}', '{{$product->name}}', '{{$product->retail}}', '{{ url($image->type == 'upload' ? env('IMAGE_URL').$image->src : $image->src) }}')">
                                             <i class="fas fa-cart-plus"></i> Mua ngay
                                         </a>
                                     </div>
@@ -271,7 +271,7 @@
                     this.addToCart(id, name, price, image);
                 },
                 storeInCart: function () {
-                    axios.post("/api/cart", {
+                    axios.post(url +"/api/cart", {
                         body: this.products
                     }).then(response => {
                         this.$toast.top('Đã thêm vào giỏ hàng');
@@ -311,7 +311,7 @@
                         "product_id": product_id
                     });
                     console.log(JSON.stringify(review));
-                    axios.post("/api/submit-reviews", {
+                    axios.post(url + "/api/submit-reviews", {
                         body: review
                     }).then(response => {
                         console.log(response.data);

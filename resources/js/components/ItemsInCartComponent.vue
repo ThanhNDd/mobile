@@ -3,7 +3,7 @@
         <div class="content">
             <h5 class="center">Không tồn tại sản phẩm để thanh toán</h5>
             <div class="divider-space-content"></div>
-            <a href="/" class="button primary-button">
+            <a v-bind:href="url" class="button primary-button">
                 <i class="fas fa-arrow-alt-circle-left"></i> Quay về trang chủ
             </a>
         </div>
@@ -59,7 +59,7 @@
                     </ul>
                 </div>
                 <div class="content-button">
-                    <a href="/checkout/" class="button primary-button"><i
+                    <a v-bind:href="url + '/checkout/'" class="button primary-button"><i
                         class="fas fa-shopping-bag"></i>Xác nhận thanh toán</a>
                 </div>
             </div>
@@ -72,11 +72,13 @@
     export default {
         data() {
             return {
-                carts: []
+                carts: [],
+                url: ''
             }
         },
         created() {
-            axios.get('/api/carts')
+            this.url = url;
+            axios.get(url + '/api/carts')
                 .then(response => {
                     this.carts = response.data
                 });
@@ -117,7 +119,7 @@
                 this.process(products);
             },
             process: function(products){
-                axios.post("/api/cart/change", {
+                axios.post(url + "/api/cart/change", {
                     body: products
                 }).then(response => {
                     this.carts = response.data
@@ -138,7 +140,7 @@
                             "color": cart['color'],
                             "size": cart['size']
                         });
-                        axios.post("/api/cart/remove", {
+                        axios.post(url + "/api/cart/remove", {
                             body: products
                         }).then(response => {
                             this.carts.splice(index, 1);

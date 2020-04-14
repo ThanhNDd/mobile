@@ -80,7 +80,7 @@
         props: ['description'],
         created() {
             let id = document.querySelector('#product_id').getAttribute('value');
-            axios.get('/api/attributes/' + id)
+            axios.get(url + '/api/attributes/' + id)
                 .then(response => {
                     this.attributes = response.data
                 });

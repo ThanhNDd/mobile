@@ -12,14 +12,11 @@
             }
         },
         created() {
-            axios.get('/api/cart')
+            axios.get(url + '/api/cart')
                 .then(response => {
-                    console.log(response.data);
-                    this.cart_number = response.data;
+                    this.cart_number = response.data
                 });
         },
-        methods: {
-
-        }
+        methods: {}
     }
 </script>

@@ -98,7 +98,7 @@
         <div  v-if="ratingAvg > 0">
             <div v-for="review in reviews">
                 <div class="content">
-                    <img src="/images/user-buyer2.png" alt="">
+                    <img v-bind:src="url + '/public/images/user-buyer2.png'" alt="">
                     <div class="text">
                         <h6>{{ review.name }}</h6>
                         <ul class="rate-product">
@@ -125,7 +125,7 @@
         <!-- end divider -->
         <!-- view all reviews -->
         <div class="view-all-review" v-if="ratingAvg > 0">
-            <a v-bind:href="'/all-reviews/'+this.product_id">Xem thêm</a>
+            <a v-bind:href="url + '/all-reviews/'+this.product_id">Xem thêm</a>
         </div>
         <!-- end view all reviews -->
     </div>
@@ -147,18 +147,20 @@
                 percent_2_star: 0,
                 number_2_star:0,
                 percent_1_star:0,
-                number_1_star:0
+                number_1_star:0,
+                url: ''
             }
         },
         props: ['product_id'],
         created() {
+            this.url = url;
             this.getAllReviews();
             this.getRatingAvg();
             this.getRatingNumberDetail();
         },
         methods: {
             getRatingNumberDetail: function() {
-                axios.get('/api/rating-number-detail/'+this.product_id)
+                axios.get(url + '/api/rating-number-detail/'+this.product_id)
                     .then(response => {
                         console.log(response.data);
                         this.ratingDetail = response.data;
@@ -184,7 +186,7 @@
                     });
             },
             getRatingAvg: function() {
-                axios.get('/api/rating-avg/'+this.product_id)
+                axios.get(url + '/api/rating-avg/'+this.product_id)
                     .then(response => {
                         console.log(response.data);
                         if(response.data !== '' && response.data > 0) {
@@ -193,15 +195,12 @@
                     });
             },
             getAllReviews: function () {
-                axios.get('/api/reviews/'+this.product_id)
+                axios.get(url + '/api/reviews/'+this.product_id)
                     .then(response => {
                         console.log(response.data);
                         this.reviews = response.data;
                     });
             }
-        },
-        computed: {
-
         },
     }
 

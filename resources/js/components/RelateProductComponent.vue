@@ -7,7 +7,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide" style="margin-right: 15px;" v-for="product in products">
                     <div class="content content-shadow-product">
-                        <a v-bind:href="'/product-details/' + product.id">
+                        <a v-bind:href="url + '/product-details/' + product.id">
                             <div class="image">
                                 <img v-bind:src="product.image | format_image" v-bind:alt="product.name">
                             </div>
@@ -28,14 +28,16 @@
     export default {
         data() {
             return {
-                products: []
+                products: [],
+                url: ''
             }
         },
         created() {
+            this.url = url;
             let cat_id = document.querySelector('#cat_id').getAttribute('value');
             let id = document.querySelector('#product_id').getAttribute('value');
             let type = document.querySelector('#type_id').getAttribute('value');
-            axios.get('/api/relate/'+id+'/category/'+cat_id+'/type/'+type)
+            axios.get(url + '/api/relate/'+id+'/category/'+cat_id+'/type/'+type)
                 .then(response => {
                     this.products = response.data
                 });

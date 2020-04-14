@@ -5,7 +5,7 @@
  */
 
 require('./bootstrap');
-import $ from 'jquery'
+// import $ from 'jquery'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import VueLazyload from 'vue-lazyload';
 import Toast from 'vue2-toast';
@@ -143,16 +143,6 @@ Vue.filter('format_color', function (value) {
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 const app = new Vue({
     el: '#app',
-    // filters: {
-    //     formatPrice: function(value) {
-    //         let val = (value/1).toFixed(0).replace('.', ',');
-    //         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' đ';
-    //     }
-    // }
-    // components: {
-    //     "vue-select": require("vue-select")
-    // }
 });

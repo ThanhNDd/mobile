@@ -1,5 +1,5 @@
 @extends('theme.layout.layout')
-
+@section('title', 'Khuyến mãi')
 @section('content')
     <div id="app" class="view view-reviews ios-edges">
         @include('theme.layout.tabbar')
@@ -16,7 +16,7 @@
                         Khuyến mãi
                     </div>
                     <div class="right">
-                        <a href="/notifications/">
+                        <a href="{{url('/notifications/')}}">
                             <i class="fas fa-bell"></i>
                         </a>
                     </div>
@@ -35,19 +35,19 @@
                                     <div class="swiper-slide">
                                         <div class="content">
                                             <div class="mask"></div>
-                                            <img src="images/brand1.png" alt="">
+                                            <img src="{{url('public/images/brand1.png')}}" alt="">
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="content">
                                             <div class="mask"></div>
-                                            <img src="images/brand2.png" alt="">
+                                            <img src="{{url('public/images/brand2.png')}}" alt="">
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="content">
                                             <div class="mask"></div>
-                                            <img src="images/brand3.png" alt="">
+                                            <img src="{{url('public/images/brand3.png')}}" alt="">
                                         </div>
                                     </div>
                                 </div>

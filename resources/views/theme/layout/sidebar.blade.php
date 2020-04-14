@@ -1,6 +1,6 @@
 <div class="panel panel-left panel-cover sidebar" id="sidebar">
     <div class="user-view">
-        <img src="{{ url('images/icon.png') }}" alt="">
+        <img src="{{ url('public/images/icon.png') }}" alt="">
         <div class="title-name">
             <h2>Shop Mẹ Ỉn</h2>
             <p class="center">Thời trang trẻ em</p>
@@ -9,7 +9,7 @@
     <div class="list media-list">
         <ul>
             <li>
-                <a href="/" class="item-link panel-close item-content">
+                <a href="{{url('')}}" class="item-link panel-close item-content">
                     <div class="item-media">
                         <i class="fas fa-home"></i>
                     </div>
@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="/categories/girls/" class="item-link panel-close item-content">
+                <a href="{{url('/categories/girls/')}}" class="item-link panel-close item-content">
                     <div class="item-media">
                         <i class="fas fa-tshirt"></i>
                     </div>
@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li>
-                <a href="/categories/boys/" class="item-link panel-close item-content">
+                <a href="{{url('/categories/boys/')}}" class="item-link panel-close item-content">
                     <div class="item-media">
                         <i class="fas fa-tshirt"></i>
                     </div>
@@ -45,7 +45,7 @@
                 </a>
             </li>
             <li>
-                <a href="/categories/shoes/" class="item-link panel-close item-content">
+                <a href="{{url('/categories/shoes/')}}" class="item-link panel-close item-content">
                     <div class="item-media">
                         <i class="fas fa-credit-card"></i>
                     </div>
@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li>
-                <a href="/categories/accessories/" class="item-link panel-close item-content">
+                <a href="{{url('/categories/accessories/')}}" class="item-link panel-close item-content">
                     <div class="item-media">
                         <i class="fas fa-hat-cowboy"></i>
                     </div>
@@ -69,7 +69,7 @@
                 </a>
             </li>
             <li>
-                <a href="/faq/" class="item-link panel-close item-content">
+                <a href="{{url('/faq/')}}" class="item-link panel-close item-content">
                     <div class="item-media">
                         <i class="fas fa-question"></i>
                     </div>
@@ -81,7 +81,7 @@
                 </a>
             </li>
             <li>
-                <a href="/login/" class="item-link panel-close item-content">
+                <a href="{{url('/login/')}}" class="item-link panel-close item-content">
                     <div class="item-media">
                         <i class="fas fa-sign-out-alt"></i>
                     </div>

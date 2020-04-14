@@ -1,5 +1,5 @@
 @extends('theme.layout.layout')
-@section("title", "Giỏ hàng | Shop Mẹ Ỉn - Thời trang trẻ em")
+@section("title", "Giỏ hàng")
 @section('content')
     <div id="app" class="view view-reviews ios-edges">
         @include('theme.layout.tabbar')
@@ -15,7 +15,7 @@
                         Giỏ hàng
                     </div>
                     <div class="right">
-                        <a href="/notifications/">
+                        <a href="{{url('/notifications/')}}">
                             <i class="fas fa-bell"></i>
                         </a>
                     </div>
