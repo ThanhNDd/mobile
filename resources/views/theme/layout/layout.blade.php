@@ -8,14 +8,10 @@
 	<meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 
-	<link rel="icon" href="{{ url('images/favicon.png') }}">
-	<title>@yield('title')</title>
+	<link rel="icon" href="{{ url('public/images/favicon.png') }}">
+	<title>@yield('title') | Shop Mẹ Ỉn - Thời trang trẻ em cao cấp</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{!! asset('css/bootstrap.min.css') !!}">
-    <link rel="stylesheet" href="{!! asset('css/vue-select.css') !!}">
-	<link rel="stylesheet" href="{!! asset('css/framework7.bundle.min.css') !!}">
-	<link rel="stylesheet" href="{!! asset('css/font-awesome.min.css') !!}">
-	<link rel="stylesheet" href="{!! asset('css/style.css') !!}">
+	<link rel="stylesheet" href="{!! url('public/css/all.css') !!}">
 </head>
 <body>
 	<div class="framework7-root">
@@ -24,9 +20,11 @@
         @yield('content')
 	</div>
 </div>
-    <script src="/js/app.js"></script>
-    <script src="{!! asset('js/swiper.min.js') !!}"></script>
-	<script src="{!! asset('js/main.js') !!}"></script>
+    <script>
+        const url = "{{url('')}}";
+    </script>
+    <script src="{!! url('public/js/apps.js') !!}"></script>
+    <script src="{!! url('public/js/swiper.min.js') !!}"></script>
 	@yield('script')
 </body>
 </html>

@@ -1,5 +1,5 @@
 @extends('theme.layout.layout')
-@section('title', 'Đánh giá cho sản phẩm '.$product->name.' | Shop Mẹ Ỉn - Thời trang trẻ em cao cấp')
+@section('title', 'Đánh giá cho sản phẩm '.$product->name)
 @section('content')
     <div id="app" class="view view-reviews ios-edges">
         <div class="page">
@@ -41,7 +41,7 @@
                     <div class="container">
                         @foreach($reviews as $review => $value)
                         <div class="content">
-                            <img src="{{ url('images/user-buyer2.png') }}" alt="">
+                            <img src="{{ url('public/images/user-buyer2.png') }}" alt="">
                             <div class="text">
                                 <h6>{{ $value->name }}</h6>
                                 <ul class="rate-product">

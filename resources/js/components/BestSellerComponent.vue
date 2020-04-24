@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-50" v-for="product in products">
                 <div class="content content-shadow-product">
-                    <a v-bind:href="'/product-details/' + product.id">
+                    <a v-bind:href="url +'/product-details/' + product.id">
                         <div class="image">
                             <img v-bind:src="product.image | format_image" v-bind:alt="product.name">
                         </div>
@@ -34,14 +34,16 @@
                 row: 0, // Record selction position
                 rowperpage: 6, // Number of records fetch at a time
                 buttonText: 'Xem thêm',
+                url: ''
             }
         },
         created() {
+            this.url = url;
             this.getProducts();
         },
         methods: {
             getProducts: function () {
-                axios.post('./api/best-seller', {
+                axios.post(url + '/api/best-seller', {
                     row: this.row,
                     rowperpage: this.rowperpage
                 }).then(response => {

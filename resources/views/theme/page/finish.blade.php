@@ -1,5 +1,5 @@
 @extends('theme.layout.layout')
-@section("title", "Đặt hàng thành công | Shop Mẹ Ỉn - Thời trang trẻ em")
+@section("title", "Đặt hàng thành công")
 @section('content')
     <div id="app" class="view view-reviews ios-edges">
         @include('theme.layout.tabbar')
